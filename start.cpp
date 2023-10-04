@@ -7,4 +7,5 @@ main()
     cout << endl;
     cout << "hi";
     cout << "alo";
+    cout << "alo cc";
 }
