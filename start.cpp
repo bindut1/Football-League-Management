@@ -8,4 +8,5 @@ main()
     cout << "hi";
     cout << "alo";
     cout << "alo cc";
+    cout << "danh dep trai vcl"
 }
