@@ -60,6 +60,10 @@
     "*.html": "html",
     "string": "cpp",
     "iostream": "cpp",
+<<<<<<< HEAD
     "iosfwd": "cpp"
+=======
+    "iomanip": "cpp"
+>>>>>>> ee1b5f768203dee161127f5b75214022ad957635
   }
 }
