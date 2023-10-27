@@ -1,11 +1,23 @@
 #include <iostream>
-#include "FootballTeam/Player.h"
-#include "FootballTeam/Coach.h"
+#include "A.h"
+#include "FootballTeam/LLDB.cpp"
+#include "FootballTeam/node.cpp"
 using namespace std;
 
 int main() {
-    Player p("123","Ngo Van Danh","13/10/2004","VN",19,0,9,"DUT");
-    p.show();
-    Coach p1("123","Ngo Van Danh 2","13/10/2004","VN",19,"MU");
-    p1.show();
-}
+    A a(1);
+    A b(2);
+    A c(3);
+    A d(0);
+    LLDB<A> v;
+    node<A>* head = NULL;
+    v.push_fr(head,a);
+    v.push_fr(head,b);
+    v.push_fr(head,c);
+    v.insert(head,2,d);
+    v.duyetxuoi(head);
+    v.erase(head,3);
+    // v.duyetxuoi(head);
+    v.duyetnguoc(head);
+    cout <<  v.size(head);
+} 

@@ -1,29 +1,25 @@
 #include "LLDB.h"
 #include <iostream>
 using namespace std;
-
-LLDB::LLDB()
-    : head(NULL), tail(NULL)
+template <typename T>
+LLDB<T>::LLDB()
 {
-    cout << "Constructor of LLDB" << endl;
+    // cout << "Constructor of LLDB" << endl;
 }
-
-LLDB::~LLDB()
+template <typename T>
+LLDB<T>::~LLDB()
 {
-    cout << "Destructor of LLDB" << endl;
+    // cout << "Destructor of LLDB" << endl;
 }
 
 template <typename T>
-node LLDB::*makenode(T x)
+node<T>* LLDB<T>::makenode(T x)
 {
-    node *new_node = new node(x);
-    new_node->data = x;
-    new_node->next = NULL;
-    new_node->prev = NULL;
+    node<T>* new_node = new node<T>(x);
     return new_node;
 }
-
-int LLDB::size(node* head)
+template <typename T>
+int LLDB<T>::size(node<T>* head)
 {
     int cnt = 0;
     while (head != NULL)
@@ -35,25 +31,25 @@ int LLDB::size(node* head)
 }
 
 template <typename T>
-void LLDB::push_fr(node** head, T x)
+void LLDB<T>::push_fr(node<T>*& head,T x)
 {
-    node *new_node = makenode(x);
-    new_node->next = (*head);
-    if (*head != NULL)
-        (*head)->prev = new_node;
-    (*head) = new_node;
+    node<T> *new_node = makenode(x);
+    new_node->next = head;
+    if (head != NULL)
+        head->prev = new_node;
+    head = new_node;
 }   
 
 template <typename T>
-void LLDB::push_b(node** head, T x)
+void LLDB<T>::push_b(node<T>*& head, T x)
 {
-    node *new_node = makenode(x);
-    if (*head == NULL)
+    node<T> *new_node = makenode(x);
+    if (head == NULL)
     {
-        *head = new_node;
+        head = new_node;
         return;
     }
-    node *tmp = *head;
+    node<T> *tmp = head;
     while (tmp->next != NULL)
         tmp = tmp->next;
     tmp->next = new_node;
@@ -61,9 +57,9 @@ void LLDB::push_b(node** head, T x)
 }
 
 template <typename T>
-void LLDB::insert(node **head, int k, T x)
+void LLDB<T>::insert(node<T>*& head, int k, T x)
 {
-    int n = LLDB::size(*head);
+    int n = LLDB::size(head);
     if (k < 1 || k > n + 1)
         return;
     if (k == 1)
@@ -72,56 +68,55 @@ void LLDB::insert(node **head, int k, T x)
         LLDB::push_b(head, x);
     else
     {
-        node *tmp = (*head);
+        node<T> *tmp = head;
         for (int i = 1; i < k - 1; i++)
             tmp = tmp->next;
-        node *new_node = makenode(x);
+        node<T> *new_node = makenode(x);
         new_node->next = tmp->next;
         tmp->next->prev = new_node;
         tmp->next = new_node;
         new_node->prev = tmp;
     }
 }
-
-void LLDB::delete_fr(node** head)
+template <typename T>
+void LLDB<T>::delete_fr(node<T>*& head)
 {
-    if (*head == NULL)
+    if (head == NULL)
         return;
-    node *tmp = *head;
-    *head = (*head)->next;
-    if (*head != NULL)
-        (*head)->prev = NULL;
+    node<T> *tmp = head;
+    head = (head)->next;
+    if (head != NULL)
+        head->prev = NULL;
     delete(tmp);
 }
-
-void LLDB::delete_b(node** head)
+template <typename T>
+void LLDB<T>::delete_b(node<T>*&head)
 {
-    if (*head == NULL)
+    if (head == NULL)
         return;
-    node *tmp = *head;
+    node<T> *tmp = head;
     if (tmp->next == NULL)
     {
-        *head = NULL;
+        head = NULL;
         delete(tmp);
         return;
     }
     while (tmp->next != NULL)
         tmp = tmp->next;
-    node *last = tmp->next;
-    tmp->next = NULL;
-    delete(last);
+    tmp->prev->next = NULL;
+    delete(tmp);
 }
-
-void LLDB::erase(node** head, int k)
+template <typename T>
+void LLDB<T>::erase(node<T>*& head, int k)
 {
-    int n = LLDB::size(*head);
+    int n = LLDB<T>::size(head);
     if (k < 1 || k > n)
         return;
     if (k == 1)
         delete_fr(head);
     else
     {
-        node *tmp = *head;
+        node<T> *tmp = head;
         for (int i = 1; i <= k - 1; i++)
             tmp = tmp->next;
         tmp->prev->next = tmp->next;
@@ -129,17 +124,17 @@ void LLDB::erase(node** head, int k)
         delete(tmp);
     }
 }
-
-void LLDB::duyetxuoi(node* head)
+template <typename T>
+void LLDB<T>::duyetxuoi(node<T>* head)
 {
     while (head != NULL)
     {
-    //    cout << head->data; //?????????
+       cout << head->data; //?????????
         head = head->next;
     }
 }
-
-void LLDB::duyetnguoc(node* head)
+template <typename T>
+void LLDB<T>::duyetnguoc(node<T>* head)
 {
     if (head == NULL)
         return;
@@ -147,7 +142,7 @@ void LLDB::duyetnguoc(node* head)
         head = head->next;
     while (head != NULL)
     {
-    //    cout << head->data; //?????????
+       cout << head->data; //?????????
         head = head->prev;
     }
 }

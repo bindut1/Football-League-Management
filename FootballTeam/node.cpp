@@ -1,12 +1,12 @@
 #include "node.h"
-
-node::node()
-    :   data(v), next(NULL), prev(NULL)
+template<typename T>
+node<T>::node(T t)
+    :   data(t), next(NULL), prev(NULL)
 {
-    cout << "Constructor of Node" << endl;
+    // cout << "Constructor of Node" << endl;
 }
-
-node::node()
+template<typename T>
+node<T>::~node()
 {
     cout << "Destructor of Node" << endl;
 }
