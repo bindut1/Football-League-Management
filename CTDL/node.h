@@ -1,7 +1,5 @@
 #include <iostream>
 using namespace std;
-#ifndef A_H
-#define A_H
 template<typename T>
 class node
 {
@@ -23,5 +21,8 @@ public:
         node(T);
         ~node();       
 };
-#endif // A_H
->>>>>>> 45ad9d4a219c42d290c0af62f34c877f53ac97f0
+// <<<<<<< HEAD:FootballTeam/node.h
+// #endif // A_H
+// >>>>>>> 45ad9d4a219c42d290c0af62f34c877f53ac97f0
+// =======
+// >>>>>>> 848a7f4b79ce5551aadd78b84172b932fd51db6f:CTDL/node.h
