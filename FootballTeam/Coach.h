@@ -1,4 +1,6 @@
 #include "Human.h"
+#ifndef COACH_H
+#define COACH_H
 
 class Coach : public Human
 {
@@ -12,3 +14,5 @@ class Coach : public Human
         void setNameFootballTeam(string);
         string getNameFootballTeam();
 };
+
+#endif

@@ -1,7 +1,8 @@
 #include "node.h"
 #include <iostream>
 using namespace std;
-
+#ifndef LLDB_H
+#define LLDB_H
 template <typename T>
 class LLDB
 {
@@ -27,3 +28,5 @@ class LLDB
         // friend ostream& operator<<(ostream&, const node*);
         // friend istream& operator>>(istream&, node*);
 };
+
+#endif

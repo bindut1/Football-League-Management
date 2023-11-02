@@ -1,4 +1,6 @@
 #include "node.h"
+#ifndef A_H
+#define A_H
 template<typename T>
 node<T>::node(T t)
     :   data(t), next(NULL), prev(NULL)
@@ -10,3 +12,4 @@ node<T>::~node()
 {
     cout << "Destructor of Node" << endl;
 }
+#endif // A_H

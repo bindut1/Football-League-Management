@@ -1,5 +1,7 @@
 #include <iostream>
 using namespace std;
+#ifndef NODE_H
+#define NODE_H
 template<typename T>
 class node
 {
@@ -10,3 +12,4 @@ class node
         node(T);
         ~node();       
 };
+#endif

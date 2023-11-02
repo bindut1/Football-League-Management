@@ -2,20 +2,18 @@
 #include "Player.h"
 #include "Human.h"
 #include "Coach.h"
-#include "../CTDL/LLDB.h"
-#include "../CTDL/LLDB.cpp"
-#include "../CTDL/LLDB.cpp"
+#include "../CTDL/Vector.cpp"
 using namespace std;
 
-
+#ifndef Team_H
+#define Team_H
 
 class Team
 {
 private:
-    node<Player>* head = NULL;
     string nameFootballTeam;
-    LLDB<Player> mainTeam;
-    LLDB<Player> supportTeam;
+    Vector<Player> mainTeam;
+    Vector<Player> supportTeam;
     Coach coach;
     int rank;
     int numberGoal;
@@ -27,13 +25,29 @@ public:
     Team();
     Team(string,Coach,int,int,int,string,int,int);
     ~Team();
-    void showMainTeam();
-    void showSupportTeam();
-    void showAllMemberOfTeam();
-    void findPlayerByName(string);
-    void showRankOfTeam();
-    void showInforOfCoach();
-    void showListMatch();
-    void showHistoryMatch();
+    // void showMainTeam();
+    // void showSupportTeam();
+    // void showAllMemberOfTeam();
+    // void findPlayerByName(string);
+    // void showRankOfTeam();
+    // void showInforOfCoach();
+    // void showListMatch();
+    // void showHistoryMatch();
+    string getNameFootballTeam();
+    // int getRank();
+    // int getNumberGoal();
+    // int getNumberLoseGoal();
+    // int getPoint();
+    // int getDifference();
+    // Coach getCoach();
+    void setNameFootballTeam(string);
+    // void setRank(int);
+    // void setNumberGoal(int);
+    // void setNumberLoseGoal(int);
+    // void setPoint(int);
+    // void changePoint(int);
+    // void setDifference(int);
+    // Coach getCoach(int);
 };
 
+#endif 

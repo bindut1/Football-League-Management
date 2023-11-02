@@ -2,15 +2,17 @@
 #include <iomanip>
 #include <iostream>
 using namespace std;
+
+
 Coach::Coach(string m, string t, string ns, string ad, int a, string nameTeam)
     : Human(m, t, ns, ad, a), nameFootballTeam(nameTeam)
 {
-    cout << "Call Constructor of Coach" << endl;
+    // cout << "Call Constructor of Coach" << endl;
 }
 
 Coach::~Coach()
 {
-    cout << "Call Destructor of Coach" << endl;
+    // cout << "Call Destructor of Coach" << endl;
 }
 
 void Coach::show()

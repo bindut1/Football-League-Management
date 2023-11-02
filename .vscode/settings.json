@@ -59,6 +59,7 @@
   "files.associations": {
     "*.html": "html",
     "iostream": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "fstream": "cpp"
   }
 }

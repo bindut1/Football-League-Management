@@ -1,4 +1,8 @@
 #include "Human.h"
+#include <fstream>
+#ifndef PLAYER_H
+#define PLAYER_H
+
 class Player : public Human
 {
 private:
@@ -15,4 +19,8 @@ public:
     int getNumberClothes();
     void setNumberClothes(int);
     void updateGoal(int);
+    // Luu cau thu vao file
+    void savePlayerToFile(ofstream&);
+    void getAllPlayerFromFile(ifstream&);
 };
+#endif
