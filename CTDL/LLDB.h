@@ -1,8 +1,11 @@
 #include "node.h"
 #include <iostream>
 using namespace std;
+<<<<<<< HEAD
 #ifndef LLDB_H
 #define LLDB_H
+=======
+>>>>>>> 4541cde14458c342589ef0acc6baf366fcb5c36e
 template <typename T>
 class LLDB
 {
