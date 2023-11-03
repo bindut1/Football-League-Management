@@ -1,4 +1,5 @@
 #include "Human.h"
+#include <fstream>
 #ifndef COACH_H
 #define COACH_H
 
@@ -13,6 +14,8 @@ class Coach : public Human
         void show();
         void setNameFootballTeam(string);
         string getNameFootballTeam();
+        void enterInforCoach();
+        void saveInforIntoFile(ofstream&);
 };
 
 #endif

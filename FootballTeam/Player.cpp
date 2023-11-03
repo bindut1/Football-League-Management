@@ -5,12 +5,16 @@
 #include <limits>
 using namespace std;
 
+
+
+
 Player::Player(string id,string name,string date,string address,string nameTeam,int age, int numberClothes,int goal,int yellowCard,int redCard)
     :Human(id,name,date,address,age)
 {
+    
     this->goal = goal;
     this-> numberClothes = numberClothes;
-    this->nameFootballTeam = nameTeam;
+    this->nameFootballTeam = this->standardizeName(nameTeam);
     this->redCard = redCard;
     this->yellowCard = yellowCard;
 }
@@ -77,4 +81,56 @@ void Player::getAllPlayerFromFile(ifstream& i) {
         }
         
     } 
+}
+void Player::setYellowCard(int ylcard) {
+    this->yellowCard = ylcard;
+}
+
+void Player::setRedCard(int rcard) {
+    this->redCard = rcard;
+}
+
+int Player::getYellowCard() {
+    return this->yellowCard;
+}
+int Player::getRedCard() {
+    return this->redCard;
+}
+
+void Player::enterInforPlayer() {
+    string id, name, date,address,nameTeam;
+    int age, numberClothes, goal, yellowCard, redCard;
+    cout << "Nhap CCCD cua cau thu: ";
+    getline(cin,id);
+    cout << "Nhap ho va ten cua cau thu: ";
+    getline(cin,name);
+    cout << "Nhap ngay thang nam sinh (dd/mm/yyyy): ";
+    getline(cin,date);
+    if(date[1] == '/') date = '0' + date;
+    if(date[4]  == '/') date.insert(3,"0");
+    cout << "Nhap dia chi cua cau thu: ";
+    getline(cin,address);
+    cout << "Nhap tuoi cua cau thu: ";
+    cin >> age;
+    cout << "Nhap so ao: ";
+    cin >> numberClothes;
+    cin.ignore();
+    // Cap nhat thong tin cau thu
+    this->setId(id);
+    this->setName(name);
+    this->setDateOfBirth(date);
+    this->setAddress(address);
+    this->setAge(age);
+    this->setNumberClothes(numberClothes);
+    this->setGoal(0);
+    this->setYellowCard(0);
+    this->setRedCard(0);
+}
+
+void Player::setNameFootballTeam(string nameFB) {
+    this->nameFootballTeam = nameFB;
+}
+
+string Player::getNameFootballTeam() {
+    return this->nameFootballTeam;
 }

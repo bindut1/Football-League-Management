@@ -60,6 +60,9 @@
     "*.html": "html",
     "iostream": "cpp",
     "iomanip": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "iosfwd": "cpp",
+    "string": "cpp",
+    "*.tcc": "cpp"
   }
 }

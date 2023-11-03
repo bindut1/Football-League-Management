@@ -28,3 +28,34 @@ void Coach::setNameFootballTeam(string name) {
 string Coach::getNameFootballTeam() {
     return this->nameFootballTeam;
 }
+
+void Coach::enterInforCoach() {
+    string id, name, date,address;
+    int age;
+    cout << "Nhap CCCD cua HLV: ";
+    getline(cin,id);
+    cout << "Nhap ho va ten cua HLV: ";
+    getline(cin,name);
+    cout << "Nhap ngay thang nam sinh (dd/mm/yyyy): ";
+    getline(cin,date);
+    if(date[1] == '/') date = '0' + date;
+    if(date[4]  == '/') date.insert(3,"0");
+    cout << "Nhap dia chi cua hlv: ";
+    getline(cin,address);
+    cout << "Nhap tuoi cua HLV: ";
+    cin >> age;
+    cin.ignore();
+    // Cap nhat thong tin HLV
+    this->setId(id);
+    this->setName(name);
+    this->setDateOfBirth(date);
+    this->setAddress(address);
+    this->setAge(age);
+    this->setNameFootballTeam("ABC");
+}
+
+void Coach::saveInforIntoFile(ofstream& f) {
+    if(f.is_open()) {
+        f << this->id << endl << this->name << endl << this->dateOfBirth << endl << this->address << endl << this->age << endl << this->nameFootballTeam << endl;
+    } 
+}

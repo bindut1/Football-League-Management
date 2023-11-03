@@ -1,9 +1,20 @@
 #include "Human.h"
+string Human::standardizeName(string s) {
+    string tmp = "";
+    for(int i=0;i<s.size();i++) {
+        if(i==0) tmp += toupper(s[0]);
+        else {
+            if(s[i-1]== ' ') tmp += toupper(s[i]);
+            else tmp += tolower(s[i]);
+        }
+    }
+    return tmp;
+}
 
 Human::Human(string m, string t, string ns, string ad, int a)
-    : id(m), name(t), dateOfBirth(ns), address(ad), age(a)
+    : id(m), dateOfBirth(ns), address(ad), age(a)
 {
-   
+    this->name = this->standardizeName(t);
 }
 
 Human::~Human()

@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "Human.h"
 #include "Coach.h"
-#include "../CTDL/Vector.cpp"
+#include "../CTDL/Vector.h"
 using namespace std;
 
 #ifndef Team_H
@@ -11,9 +11,9 @@ using namespace std;
 class Team
 {
 private:
+    string idTeamFootball;
     string nameFootballTeam;
-    Vector<Player> mainTeam;
-    Vector<Player> supportTeam;
+    Vector<Player> listMember;
     Coach coach;
     int rank;
     int numberGoal;
@@ -21,16 +21,26 @@ private:
     string homeYard;
     int point;
     int difference;
-public:
+public: 
     Team();
     Team(string,Coach,int,int,int,string,int,int);
     ~Team();
-    // void showMainTeam();
-    // void showSupportTeam();
-    // void showAllMemberOfTeam();
-    // void findPlayerByName(string);
-    // void showRankOfTeam();
-    // void showInforOfCoach();
+    void createNewFootballTeam();
+    string getIdTeam();
+    void setIdTeam(int);
+    void showAllMemberOfTeam();
+    void showALLInforOfTeam();
+    void addPlayer(Player&);
+    void addCoach(Coach&);
+    void findPlayerByName(ifstream&);
+    void findPlayerByNameFootballTeam(ifstream&);
+    void findPlayerById();
+    void deletePlayerById(ifstream&,ofstream&);
+    // Chuan hoa ten -> ngUyen van a -> Nguyen Van A
+    string standardizeName(string);
+    void showRankOfTeam();
+    void showInforOfCoach();
+    void testFile();
     // void showListMatch();
     // void showHistoryMatch();
     string getNameFootballTeam();

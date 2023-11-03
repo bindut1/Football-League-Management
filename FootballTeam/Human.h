@@ -22,5 +22,6 @@ class Human
         void setAddress(string);
         int getAge();
         void setAge(int);
+         string standardizeName(string);
 };
 #endif // A_H

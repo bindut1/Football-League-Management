@@ -1,5 +1,5 @@
 #include "../FootballTeam/Team.h"
-#include "../CTDL/Vector.cpp"
+#include "../CTDL/Vector.h"
 class Match
 {
 private:
@@ -9,7 +9,7 @@ private:
     string date;
 public:
     Match();
-    Match(Team,Team,string,string,string);
+    Match(const Team&,const Team&,string,string,string);
     ~Match();
     void addTeam(Team);
     void showMatch();

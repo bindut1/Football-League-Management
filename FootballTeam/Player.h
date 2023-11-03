@@ -7,7 +7,7 @@ class Player : public Human
 {
 private:
     int goal, numberClothes, yellowCard , redCard;
-    string nameFootballTeam;  
+    string nameFootballTeam;
 public:
     Player();
     Player(string,string,string,string,string,int,int,int = 0,int  = 0,int  = 0);
@@ -19,8 +19,16 @@ public:
     int getNumberClothes();
     void setNumberClothes(int);
     void updateGoal(int);
+    int getYellowCard();
+    void setYellowCard(int);
+    int getRedCard();
+    void setRedCard(int);
+    void setNameFootballTeam(string);
+    string getNameFootballTeam();
     // Luu cau thu vao file
     void savePlayerToFile(ofstream&);
     void getAllPlayerFromFile(ifstream&);
+    //nhap cau thu
+    void enterInforPlayer();
 };
 #endif
