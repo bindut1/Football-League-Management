@@ -1,31 +1,3 @@
-125
-Ngo Van A
-01/01/2004
-VN
-
-19
-9
-0
-0
-0
-124
-Ngo Van A
-01/01/2004
-VN
-
-19
-9
-0
-0
-0
-123
-Ngo Van A
-01/01/2004
-VN
-
-19
-9
-0
-0
-0
-
+ID,       Ten,           DateOfBirth,   Address,            Age,      NumberClothes, yellowCard,    redCard,  Goal,     NameFootballTeam    
+123,      Ngo Van A,     13/10/2004,    QN,                 19,       9,             0,             0,        0,        Mc                  
+125,      Ngo Van C,     13/10/2004,    QN,                 19,       9,             0,             0,        0,        Mc                  

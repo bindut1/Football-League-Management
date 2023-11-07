@@ -1,4 +1,7 @@
 #include <iostream>
+#include <string>
+#include <stdlib.h>
+
 using namespace std;
 #ifndef A_H
 #define A_H
@@ -23,5 +26,6 @@ class Human
         int getAge();
         void setAge(int);
          string standardizeName(string);
+         int string_to_int(string);
 };
 #endif // A_H

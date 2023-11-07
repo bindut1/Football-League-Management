@@ -32,8 +32,8 @@ public:
     void showALLInforOfTeam();
     void addPlayer(Player&);
     void addCoach(Coach&);
-    void findPlayerByName(ifstream&);
-    void findPlayerByNameFootballTeam(ifstream&);
+    void findPlayerByName();
+    void findPlayerByNameFootballTeam();
     void findPlayerById();
     void deletePlayerById(ifstream&,ofstream&);
     // Chuan hoa ten -> ngUyen van a -> Nguyen Van A
@@ -41,6 +41,7 @@ public:
     void showRankOfTeam();
     void showInforOfCoach();
     void testFile();
+    int string_to_int(string);
     // void showListMatch();
     // void showHistoryMatch();
     string getNameFootballTeam();

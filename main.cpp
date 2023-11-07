@@ -8,12 +8,18 @@
 using namespace std;
 
 int main() {
+    // Player p("123","Ngo Van A","13/10/2004","QN","MC",19,9);
+    // Player p1("123","Ngo Van A","13/10/2004","QN","MC",19,9);
+    // Player p2("123","Ngo Van A","13/10/2004","QN","MC",19,9);
+    // ofstream f("Player.txt",ios::app);
+    // p.savePlayerToFile(f);
+    // p1.savePlayerToFile(f);
+    // p2.savePlayerToFile(f);
     Team t;
-    // ifstream f("Player.txt");
-    // ofstream tmp("Tmp.txt");
-    // t.deletePlayerById(f,tmp);
-    // t.testFile();
     // t.findPlayerById();
-    // const char* f("Tmp.txt");
-    // rename(f,"Player.txt");
-} 
+    // t.findPlayerByName();
+    // t.findPlayerByNameFootballTeam();
+    ifstream i("Player.txt"); ofstream o("Tmp.txt",ios::app);
+    t.deletePlayerById(i,o);
+    t.findPlayerById();
+}

@@ -80,100 +80,138 @@ string Team::standardizeName(string s) {
 
 
 
-void Team::findPlayerByName(ifstream& i) {
-    cout << "Nhap ten muon tim kiem: ";
+void Team::findPlayerByName() {
+    cout << "Nhap ten can tim: ";
     string nameFind; getline(cin,nameFind);
-    nameFind = this->standardizeName(nameFind);
-    bool check = true;
+    ifstream i("Player.txt");
+    bool val = true;
     if(i.is_open()) {
         while (!i.eof())
         {
-            string id, name, date,address,nameTeam;
-            int age, numberClothes, goal, yellowCard, redCard;
-            getline(i,id);
-            getline(i,name);
-            getline(i,date);
-            getline(i,address);
-            getline(i,nameTeam);
-            i >> age;
-            i >> numberClothes;
-            i >> goal;
-            i >> yellowCard;
-            i >> redCard;
-            i.ignore(numeric_limits<streamsize>::max(), '\n');
-            Player p(id,name,date,address,nameTeam,age,numberClothes,goal,yellowCard,redCard);
-            if(i.eof()) break;
-            if(name == nameFind)  {
-                check = false;
+            string tmp; getline(i,tmp);
+            while(getline(i,tmp)) {
+                int check = 1;
+                bool status = false;
+                string id,name,date,address,age,numberClo,yellowCard,redCard,goal,nameTeam;
+                for(int i = 0; i < tmp.size() ; i++ ) {
+                    if(tmp[i] != ' ') status = true;
+                    if(tmp[i] == ',') {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if(check == 1 &&  status) id += tmp[i];
+                    else if(check == 2 && status) name += tmp[i];
+                    else if(check == 3 && status) date += tmp[i];
+                    else if(check == 4 && status) address += tmp[i];
+                    else if(check == 5 && status) age += tmp[i];
+                    else if(check == 6 && status) numberClo += tmp[i];
+                    else if(check == 7 && status) yellowCard += tmp[i];
+                    else if(check == 8 && status) redCard += tmp[i];
+                    else if(check == 9 && status) goal += tmp[i];
+                    else if(check == 10 && status && tmp[i] != '\n') nameTeam += tmp[i];
+                    if(check > 2 && name != nameFind) break;
+                }
+                if(name == nameFind) {
+                Player p(id,name,date,address,nameFootballTeam,string_to_int(age),string_to_int(numberClo),string_to_int(goal),string_to_int(yellowCard),string_to_int(redCard));
                 p.show();
+                val = false;
+                }
+                // cout << id << " " << name << " " << date << " " << address << " " <<  age << " " << numberClo << " " << yellowCard << " " << redCard << " " << goal <<  " " << nameTeam << endl;
             }
         }
         
     } 
-    i.close();
-    if(check) cout << "Khong tim thay ket qua!" << endl;
+    if(val) cout << "Khong tim thay ket qua tuong ung" << endl;
 }
 
-void Team::findPlayerByNameFootballTeam(ifstream& i) {
+void Team::findPlayerByNameFootballTeam() {
     cout << "Nhap ten doi bong can tim: ";
     string nameFB; getline(cin,nameFB);
     nameFB = this->standardizeName(nameFB);
-    bool check = true;
-    if(i.is_open()) {
-        while (!i.eof())
-        {
-            string id, name, date,address,nameTeam;
-            int age, numberClothes, goal, yellowCard, redCard;
-            getline(i,id);
-            getline(i,name);
-            getline(i,date);
-            getline(i,address);
-            getline(i,nameTeam);
-            i >> age;
-            i >> numberClothes;
-            i >> goal;
-            i >> yellowCard;
-            i >> redCard;
-            i.ignore(numeric_limits<streamsize>::max(), '\n');
-            Player p(id,name,date,address,nameTeam,age,numberClothes,goal,yellowCard,redCard);
-            if(i.eof()) break;
-            if(nameTeam == nameFB)  {
-                check = false;
-                p.show();
-            }
-        }
-        
-    } 
-    i.close();
-    if(check) cout << "Khong tim thay ket qua!" << endl;
-}
-
-void Team::findPlayerById() {
-    cout << "Nhap ID cua cau thu: ";
-    string nameFB; getline(cin,nameFB);
-    bool check = true;
+    bool val = true;
     ifstream i("Player.txt");
     if(i.is_open()) {
         while (!i.eof())
         {
-            string id, name, date,address,nameTeam;
-            int age, numberClothes, goal, yellowCard, redCard;
-            getline(i,id);
-            getline(i,name);
-            getline(i,date);
-            getline(i,address);
-            getline(i,nameTeam);
-            i >> age;
-            i >> numberClothes;
-            i >> goal;
-            i >> yellowCard;
-            i >> redCard;
-            i.ignore(numeric_limits<streamsize>::max(), '\n');
-            Player p(id,name,date,address,nameTeam,age,numberClothes,goal,yellowCard,redCard);
-            if(i.eof()) break;
-            if(id == nameFB)  {
-                check = false;
+            string tmp; getline(i,tmp);
+            while(getline(i,tmp)) {
+                int check = 1;
+                bool status = false;
+                string id,name,date,address,age,numberClo,yellowCard,redCard,goal,nameTeam;
+                for(int i = 0; i < tmp.size() ; i++ ) {
+                    if(tmp[i] != ' ') status = true;
+                    if(tmp[i] == ',') {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if(check == 1 &&  status) id += tmp[i];
+                    else if(check == 2 && status) name += tmp[i];
+                    else if(check == 3 && status) date += tmp[i];
+                    else if(check == 4 && status) address += tmp[i];
+                    else if(check == 5 && status) age += tmp[i];
+                    else if(check == 6 && status) numberClo += tmp[i];
+                    else if(check == 7 && status) yellowCard += tmp[i];
+                    else if(check == 8 && status) redCard += tmp[i];
+                    else if(check == 9 && status) goal += tmp[i];
+                    else if(check == 10 && status) {
+                        nameTeam += tmp[i];
+                        if((tmp[i+1] == ' ' &&  tmp[i+2] == ' ') || (tmp[i+1] == ' ' && i+1 == tmp.size()-1)) break;
+                    }
+                }
+                if(nameTeam == nameFB) {
+                Player p(id,name,date,address,nameTeam,string_to_int(age),string_to_int(numberClo),string_to_int(goal),string_to_int(yellowCard),string_to_int(redCard));
                 p.show();
+                val = false;
+                }
+                // cout << id << " " << name << " " << date << " " << address << " " <<  age << " " << numberClo << " " << yellowCard << " " << redCard << " " << goal <<  " " << nameTeam << endl;
+            }
+        }
+        
+    } 
+    i.close();
+    if(val) cout << "Khong tim thay ket qua!" << endl;
+}
+
+void Team::findPlayerById() {
+    cout << "Nhap ID cua cau thu: ";
+    string idPlayer; getline(cin,idPlayer);
+    bool val = true;
+    ifstream i("Player.txt");
+    if(i.is_open()) {
+        while (!i.eof())
+        {
+            string tmp; getline(i,tmp);
+            while(getline(i,tmp)) {
+                int check = 1;
+                bool status = false;
+                string id,name,date,address,age,numberClo,yellowCard,redCard,goal,nameTeam;
+                for(int i = 0; i < tmp.size() ; i++ ) {
+                    if(tmp[i] != ' ') status = true;
+                    if(tmp[i] == ',') {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if(check == 1 &&  status) id += tmp[i];
+                    else if(check == 2 && status) name += tmp[i];
+                    else if(check == 3 && status) date += tmp[i];
+                    else if(check == 4 && status) address += tmp[i];
+                    else if(check == 5 && status) age += tmp[i];
+                    else if(check == 6 && status) numberClo += tmp[i];
+                    else if(check == 7 && status) yellowCard += tmp[i];
+                    else if(check == 8 && status) redCard += tmp[i];
+                    else if(check == 9 && status) goal += tmp[i];
+                    else if(check == 10 && status && tmp[i] != '\n') nameTeam += tmp[i];
+                    
+                }
+                if(id == idPlayer) {
+                    val = false;
+                    Player p(id,name,date,address,nameTeam,string_to_int(age),string_to_int(numberClo),string_to_int(goal),string_to_int(yellowCard),string_to_int(redCard));
+                    p.show();
+                }
+                // cout << id << " " << name << " " << date << " " << address << " " <<  age << " " << numberClo << " " << yellowCard << " " << redCard << " " << goal <<  " " << nameTeam << endl;
             }
         }
         
@@ -182,7 +220,7 @@ void Team::findPlayerById() {
         cout << "Khong mo duoc" << endl;
     }
     i.close();
-    if(check) cout << "Khong tim thay ket qua!" << endl;
+    if(val) cout << "Khong tim thay ket qua!" << endl;
 }
 void Team::createNewFootballTeam() {
     string nameFootballTeam;
@@ -216,39 +254,48 @@ void Team::createNewFootballTeam() {
     while(true);
 }
 
-void Team::deletePlayerById(ifstream& i,ofstream& tmp) {
+void Team::deletePlayerById(ifstream& i,ofstream& tmp2) {
+    
     cout << "Nhap ID cua cau thu: ";
-    string nameFB; getline(cin,nameFB);
+    string idPlayer; getline(cin,idPlayer);
     bool check = true;
     if(i.is_open()) {
         while (!i.eof())
         {
-            string id, name, date,address,nameTeam;
-            int age, numberClothes, goal, yellowCard, redCard;
-            getline(i,id);
-            getline(i,name);
-            getline(i,date);
-            getline(i,address);
-            getline(i,nameTeam);
-            i >> age;
-            i >> numberClothes;
-            i >> goal;
-            i >> yellowCard;
-            i >> redCard;
-            i.ignore(numeric_limits<streamsize>::max(), '\n'); // Bo ki tu \n du thua
-            Player p(id,name,date,address,nameTeam,age,numberClothes,goal,yellowCard,redCard);
-            if(i.eof()) break;
-            if(id == nameFB)  {
-                check = false;
-            }
-            else {
-                // Luu cau thu khong trung ID sang file khac -> doi ten file nay thanh file ban dau
-                p.savePlayerToFile(tmp);
+            string tmp; getline(i,tmp);
+            while(getline(i,tmp)) {
+                int check = 1;
+                bool status = false;
+                string id,name,date,address,age,numberClo,yellowCard,redCard,goal,nameTeam;
+                for(int i = 0; i < tmp.size() ; i++ ) {
+                    if(tmp[i] != ' ') status = true;
+                    if(tmp[i] == ',') {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if(check == 1 &&  status) id += tmp[i];
+                    else if(check == 2 && status) name += tmp[i];
+                    else if(check == 3 && status) date += tmp[i];
+                    else if(check == 4 && status) address += tmp[i];
+                    else if(check == 5 && status) age += tmp[i];
+                    else if(check == 6 && status) numberClo += tmp[i];
+                    else if(check == 7 && status) yellowCard += tmp[i];
+                    else if(check == 8 && status) redCard += tmp[i];
+                    else if(check == 9 && status) goal += tmp[i];
+                    else if(check == 10 && status && tmp[i] != '\n') nameTeam += tmp[i];
+                }
+                if(id != idPlayer) {
+                    Player p(id,name,date,address,nameTeam,string_to_int(age),string_to_int(numberClo),string_to_int(goal),string_to_int(yellowCard),string_to_int(redCard));
+                    p.savePlayerToFile(tmp2);
+
+                }
+                // cout << id << " " << name << " " << date << " " << address << " " <<  age << " " << numberClo << " " << yellowCard << " " << redCard << " " << goal <<  " " << nameTeam << endl;
             }
         }     
     }
     i.close();
-    tmp.close();
+    tmp2.close();
     const char* i1("Player.txt");
     const char* tmp1("Tmp.txt");
     // Xoa file Player.txt chứa dữ liệu cũ
@@ -274,4 +321,12 @@ void Team::testFile() {
     //     cout << "Ko mo duoc" << endl;
     // }
     this->findPlayerById();
+}
+
+int Team::string_to_int(string x) {
+    char a[x.size()];
+    for(int i=0;i<x.size();i++) {
+        a[i] = x[i];
+    }
+    return atoi(a);
 }

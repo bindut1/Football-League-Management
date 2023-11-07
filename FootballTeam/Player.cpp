@@ -27,8 +27,19 @@ Player::~Player() {
 }
 
 void Player::show() {
-    cout << left << setw(10) << "ID" << setw(15) << "Ten" << setw(15) << "DateOfBirth" << setw(20) << "Address" << setw(10) << "Age" << setw(15) << "NumberClothes" << setw(15) << "yellowCard"<< setw(10) << "redCard"<< setw(10) << "Goal" << setw(20) << "NameFootballTeam" <<endl; 
-    cout << left << setw(10) << this->id << setw(15) << this->name << setw(15) << this->dateOfBirth << setw(20) << this->address << setw(10) << this->age << setw(15) << this->numberClothes<< setw(15) << this->yellowCard << setw(10) << this->redCard<< setw(10) << this->goal << setw(20) << this->nameFootballTeam << endl; 
+    char arrAge[10],numberClo[10],ylCard[10],rCard[10],goal[10];
+    sprintf(arrAge,"%d",this->age);
+    sprintf(numberClo,"%d",this->numberClothes);
+    sprintf(ylCard,"%d",this->yellowCard);
+    sprintf(rCard,"%d",this->redCard);
+    sprintf(goal,"%d",this->goal);
+    string myage(arrAge);
+    string myNumberClo(numberClo);
+    string myYlCard(ylCard);
+    string myRCard(rCard);
+    string myGoal(goal);
+    cout << left << setw(10) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(15) << "NumberClothes," << setw(15) << "yellowCard,"<< setw(10) << "redCard,"<< setw(10) << "Goal," << setw(20) << "NameFootballTeam" <<endl; 
+    cout << left << setw(10) << this->id  + "," << setw(15) << this->name + "," << setw(15) << this->dateOfBirth + "," << setw(20) << this->address + "," << setw(10) << myage +","<< setw(15) << myNumberClo + "," << setw(15) << myYlCard + "," << setw(10) << myRCard + ","<< setw(10) << myGoal + "," << setw(20) << this->nameFootballTeam << endl; 
 }
 
 int Player::getGoal() {
@@ -52,32 +63,57 @@ void Player::updateGoal(int newGoal) {
 }
 
 void Player::savePlayerToFile(ofstream& o) {
+    char arrAge[10],numberClo[10],ylCard[10],rCard[10],goal[10];
+    sprintf(arrAge,"%d",this->age);
+    sprintf(numberClo,"%d",this->numberClothes);
+    sprintf(ylCard,"%d",this->yellowCard);
+    sprintf(rCard,"%d",this->redCard);
+    sprintf(goal,"%d",this->goal);
+    string myage(arrAge);
+    string myNumberClo(numberClo);
+    string myYlCard(ylCard);
+    string myRCard(rCard);
+    string myGoal(goal);
+    if(o.tellp() == 0) {
+        o << left << setw(10) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(15) << "NumberClothes," << setw(15) << "yellowCard,"<< setw(10) << "redCard,"<< setw(10) << "Goal," << setw(20) << "NameFootballTeam" <<endl; 
+    }
     if(o.is_open()) {
-        o << this->id << endl << this->name << endl << this->dateOfBirth << endl << this->address << endl << this->nameFootballTeam << endl << this->age << endl << this->numberClothes << endl << this->goal << endl << this->yellowCard << endl << this->redCard << endl;
-        // o.close();
+        o << left << setw(10) << this->id  + "," << setw(15) << this->name + "," << setw(15) << this->dateOfBirth + "," << setw(20) << this->address + "," << setw(10) << myage +","<< setw(15) << myNumberClo + "," << setw(15) << myYlCard + "," << setw(10) << myRCard + ","<< setw(10) << myGoal + "," << setw(20) << this->nameFootballTeam << endl; 
     }
 }
 
-void Player::getAllPlayerFromFile(ifstream& i) {
+void Player::getAllPlayerFromFile() {
+    ifstream i("Player.txt");
     if(i.is_open()) {
         while (!i.eof())
         {
-            string id, name, date,address,nameTeam;
-            int age, numberClothes, goal, yellowCard, redCard;
-            getline(i,id);
-            getline(i,name);
-            getline(i,date);
-            getline(i,address);
-            getline(i,nameTeam);
-            i >> age;
-            i >> numberClothes;
-            i >> goal;
-            i >> yellowCard;
-            i >> redCard;
-            i.ignore(numeric_limits<streamsize>::max(), '\n');
-            Player p(id,name,date,address,nameTeam,age,numberClothes,goal,yellowCard,redCard);
-            if(i.eof()) break;
-            p.show();
+            string tmp; getline(i,tmp);
+            while(getline(i,tmp)) {
+                int check = 1;
+                bool status = false;
+                string id,name,date,address,age,numberClo,yellowCard,redCard,goal,nameTeam;
+                for(int i = 0; i < tmp.size() ; i++ ) {
+                    if(tmp[i] != ' ') status = true;
+                    if(tmp[i] == ',') {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if(check == 1 &&  status) id += tmp[i];
+                    else if(check == 2 && status) name += tmp[i];
+                    else if(check == 3 && status) date += tmp[i];
+                    else if(check == 4 && status) address += tmp[i];
+                    else if(check == 5 && status) age += tmp[i];
+                    else if(check == 6 && status) numberClo += tmp[i];
+                    else if(check == 7 && status) yellowCard += tmp[i];
+                    else if(check == 8 && status) redCard += tmp[i];
+                    else if(check == 9 && status) goal += tmp[i];
+                    else if(check == 10 && status && tmp[i] != '\n') nameTeam += tmp[i];
+                }
+                Player p(id,name,date,address,nameTeam,string_to_int(age),string_to_int(numberClo),string_to_int(goal),string_to_int(yellowCard),string_to_int(redCard));
+                p.show();
+                // cout << id << " " << name << " " << date << " " << address << " " <<  age << " " << numberClo << " " << yellowCard << " " << redCard << " " << goal <<  " " << nameTeam << endl;
+            }
         }
         
     } 

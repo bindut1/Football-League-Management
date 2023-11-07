@@ -27,8 +27,9 @@ public:
     string getNameFootballTeam();
     // Luu cau thu vao file
     void savePlayerToFile(ofstream&);
-    void getAllPlayerFromFile(ifstream&);
+    void getAllPlayerFromFile();
     //nhap cau thu
     void enterInforPlayer();
+    
 };
 #endif

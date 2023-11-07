@@ -66,3 +66,11 @@ int Human::getAge() {
 void Human::setAge(int age) {
     this->age = age;
 }
+
+int Human::string_to_int(string x) {
+    char a[x.size()];
+    for(int i=0;i<x.size();i++) {
+        a[i] = x[i];
+    }
+    return atoi(a);
+}

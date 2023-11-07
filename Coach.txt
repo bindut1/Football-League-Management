@@ -1,12 +1,2 @@
-
-
-
-
-0
-
-Nguyen Van D
-Day La Ten HLV
-
-TT
-30
-ABC
+ID,            Ten,           DateOfBirth,   Address,            Age,      NameFootball Team   
+123456789,     Ngo Van Danh,  13/10/2004,    QN,                 19,       ABC                 

@@ -54,8 +54,22 @@ void Coach::enterInforCoach() {
     this->setNameFootballTeam("ABC");
 }
 
-void Coach::saveInforIntoFile(ofstream& f) {
-    if(f.is_open()) {
-        f << this->id << endl << this->name << endl << this->dateOfBirth << endl << this->address << endl << this->age << endl << this->nameFootballTeam << endl;
-    } 
+void Coach::saveInforIntoFile(ofstream& o) {
+    char arrAge[10],numberClo[10],ylCard[10],rCard[10],goal[10];
+    sprintf(arrAge,"%d",this->age);
+    string myage(arrAge);
+    ifstream f("Coach.txt");
+    if(f) {
+        f.seekg(0,ios::end);
+        if(f.tellg() == 0) {
+            o << left << setw(15) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(20) << "NameFootball Team" << endl; 
+        }
+        f.close();
+    }
+    else {
+        cout << "K mo tep duoc";
+    }
+    if(o.is_open()) {
+        o << left << setw(15) << this->id  + "," << setw(15) << this->name + "," << setw(15) << this->dateOfBirth + "," << setw(20) << this->address + "," << setw(10) << myage +","<< setw(20) << this->nameFootballTeam << endl;
+    }
 }
