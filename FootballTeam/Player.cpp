@@ -62,7 +62,7 @@ void Player::updateGoal(int newGoal) {
     this->setGoal(newGoal);
 }
 
-void Player::savePlayerToFile(ofstream& o) {
+void Player::savePlayerToFile(ofstream& o,int check ) {
     char arrAge[10],numberClo[10],ylCard[10],rCard[10],goal[10];
     sprintf(arrAge,"%d",this->age);
     sprintf(numberClo,"%d",this->numberClothes);
@@ -74,9 +74,17 @@ void Player::savePlayerToFile(ofstream& o) {
     string myYlCard(ylCard);
     string myRCard(rCard);
     string myGoal(goal);
-    if(o.tellp() == 0) {
-        o << left << setw(10) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(15) << "NumberClothes," << setw(15) << "yellowCard,"<< setw(10) << "redCard,"<< setw(10) << "Goal," << setw(20) << "NameFootballTeam" <<endl; 
+    ifstream f("Player.txt");
+    if(check == 0) {
+        f.seekg(0,ios::end);
+        if(f.tellg() == 0) {
+            o << left << setw(10) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(15) << "NumberClothes," << setw(15) << "yellowCard,"<< setw(10) << "redCard,"<< setw(10) << "Goal," << setw(20) << "NameFootballTeam" <<endl;         }
+        f.close();
     }
+    if(check == 1) {
+             o << left << setw(10) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(15) << "NumberClothes," << setw(15) << "yellowCard,"<< setw(10) << "redCard,"<< setw(10) << "Goal," << setw(20) << "NameFootballTeam" <<endl;
+    }
+
     if(o.is_open()) {
         o << left << setw(10) << this->id  + "," << setw(15) << this->name + "," << setw(15) << this->dateOfBirth + "," << setw(20) << this->address + "," << setw(10) << myage +","<< setw(15) << myNumberClo + "," << setw(15) << myYlCard + "," << setw(10) << myRCard + ","<< setw(10) << myGoal + "," << setw(20) << this->nameFootballTeam << endl; 
     }
@@ -170,3 +178,5 @@ void Player::setNameFootballTeam(string nameFB) {
 string Player::getNameFootballTeam() {
     return this->nameFootballTeam;
 }
+
+

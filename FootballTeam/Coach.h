@@ -16,6 +16,7 @@ class Coach : public Human
         string getNameFootballTeam();
         void enterInforCoach();
         void saveInforIntoFile(ofstream&);
+        Coach getCoachByNameFootballTeam(string);
 };
 
 #endif

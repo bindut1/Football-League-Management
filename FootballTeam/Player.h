@@ -26,7 +26,7 @@ public:
     void setNameFootballTeam(string);
     string getNameFootballTeam();
     // Luu cau thu vao file
-    void savePlayerToFile(ofstream&);
+    void savePlayerToFile(ofstream&,int  = 0);
     void getAllPlayerFromFile();
     //nhap cau thu
     void enterInforPlayer();

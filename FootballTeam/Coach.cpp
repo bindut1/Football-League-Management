@@ -73,3 +73,35 @@ void Coach::saveInforIntoFile(ofstream& o) {
         o << left << setw(15) << this->id  + "," << setw(15) << this->name + "," << setw(15) << this->dateOfBirth + "," << setw(20) << this->address + "," << setw(10) << myage +","<< setw(20) << this->nameFootballTeam << endl;
     }
 }
+
+Coach Coach::getCoachByNameFootballTeam(string nameFB) {
+    ifstream i("Coach.txt");
+    if(i.is_open()) {
+        string tmp; getline(i,tmp);
+            while(getline(i,tmp)) {
+                int check = 1;
+                bool status = false;
+                string id,name,date,address,age,nameTeam;
+                for(int i = 0; i < tmp.size() ; i++ ) {
+                    if(tmp[i] != ' ') status = true;
+                    if(tmp[i] == ',') {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if(check == 1 &&  status) id += tmp[i];
+                    else if(check == 2 && status) name += tmp[i];
+                    else if(check == 3 && status) date += tmp[i];
+                    else if(check == 4 && status) address += tmp[i];
+                    else if(check == 5 && status) age += tmp[i];
+                    else if(check == 6 && status) {
+                        nameTeam += tmp[i];
+                        if((tmp[i+1] == ' ' &&  tmp[i+2] == ' ') || (tmp[i+1] == ' ' && i+1 == tmp.size()-1)) break;
+                    } 
+                }
+                if(nameFB == nameTeam) {
+                    Coach c(id,name,date,address,string_to_int(age),nameTeam);
+                }
+            }
+    }
+} 

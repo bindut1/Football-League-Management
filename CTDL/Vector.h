@@ -10,6 +10,7 @@ public:
     static int n;
     Vector();
     Vector(const Vector&);
+    void operator=(const Vector&);
     ~Vector();
     int size();
     bool empty();
@@ -103,6 +104,14 @@ void Vector<T>::erase(int index) {
         this->p[i] = this->p[i + 1];
     }
     this->n--;
+}
+template <typename T>
+void Vector<T>::operator=(const Vector& v) {
+    this->n = v.n;
+    this->p = new T[this->n];
+    for(int i = 0; i < this->n; i++) {
+        this->p[i] = v.p[i];
+    }
 }
 
 

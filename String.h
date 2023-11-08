@@ -70,22 +70,10 @@ public:
         return o;
     }
 
-    static void getline(istream &i, String &str, char delim)
+    static void getline(istream &i, String &str, char delim )
     {
         char buffer[256];
         i.getline(buffer, 256, delim);
         str = buffer;
     }
 };
-
-main()
-{
-    String s1("Lam");
-    String s2("Dep trai");
-    String s3 = s1 + s2;
-//    String input;
-//    String::getline(cin, input, '.');
-//    cout << input << endl;
-	cout << s1 << " " << s2 << " " << s3 << endl;
-    cout << s1[2] << s3[5];
-}
