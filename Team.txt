@@ -1,2 +1,2 @@
 ID,       Ten Doi Bong,       So Thanh Vien,      Ten HLV        Ban Thang,     Ban Thua,      Hieu So,       Diem,          Rank           
-1,        Arsenal,            2,                  Dang Hoai Phuong,0,             0,             0,             0,             1              
+1,        Mc,                 2,                  Park Hang Seo, 0,             0,             0,             0,             1              

@@ -6,17 +6,18 @@
 class Coach : public Human
 {
     private:
-        string nameFootballTeam;
+        String nameFootballTeam;
 
     public:
-        Coach(string = "", string = "", string = "", string = "", int = 0, string = "");
+        Coach(String = "", String = "", String = "", String = "", int = 0, String = "");
         ~Coach();
         void show();
-        void setNameFootballTeam(string);
-        string getNameFootballTeam();
+        void setNameFootballTeam(String);
+        String getNameFootballTeam();
         void enterInforCoach();
         void saveInforIntoFile(ofstream&);
-        Coach getCoachByNameFootballTeam(string);
+        Coach getCoachByNameFootballTeam(String);
+        void updateCoach();
 };
 
 #endif

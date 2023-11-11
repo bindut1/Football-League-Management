@@ -7,13 +7,13 @@ class Player : public Human
 {
 private:
     int goal, numberClothes, yellowCard , redCard;
-    string nameFootballTeam;
+    String nameFootballTeam;
 public:
     Player();
-    Player(string,string,string,string,string,int,int,int = 0,int  = 0,int  = 0);
+    Player(String,String,String,String,String,int,int,int = 0,int  = 0,int  = 0);
     ~Player();
     void show();
-    void updateInfor(string,string,string,string,int,int,int,string);
+    void updateInfor(String,String,String,String,int,int,int,String);
     int getGoal();
     void setGoal(int);
     int getNumberClothes();
@@ -23,13 +23,13 @@ public:
     void setYellowCard(int);
     int getRedCard();
     void setRedCard(int);
-    void setNameFootballTeam(string);
-    string getNameFootballTeam();
+    void setNameFootballTeam(String);
+    String getNameFootballTeam();
     // Luu cau thu vao file
     void savePlayerToFile(ofstream&,int  = 0);
     void getAllPlayerFromFile();
     //nhap cau thu
     void enterInforPlayer();
-    
+    void updatePlayer();
 };
 #endif

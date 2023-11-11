@@ -66,6 +66,7 @@
     "*.tcc": "cpp",
     "ostream": "cpp",
     "new": "cpp",
-    "thread": "cpp"
+    "thread": "cpp",
+    "random": "cpp"
   }
 }

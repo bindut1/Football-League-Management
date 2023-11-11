@@ -1,16 +1,17 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <fstream>
+#include "../CTDL/String.h"
 using namespace std;
 
 class Date_Time
 {
     int minute, hour, day, month, year;
-    string place;
-
+    String place;
 public:
     Date_Time() {}
-    Date_Time(int mi, int h, int d, int m, int y, string place)
+    Date_Time(int mi, int h, int d, int m, int y, String place)
     {
         this->minute = mi;
         this->hour = h;
@@ -21,13 +22,14 @@ public:
     }
     friend ostream &operator<<(ostream &o, const Date_Time &dt)
     {
-        string minute = to_string(dt.minute);
-        if (minute.size() == 1)
-            minute = "0" + minute;
-        o << endl
-          << dt.hour << "h" << minute << endl
-          << dt.day << "/" << dt.month << "/" << dt.year << endl
-          << dt.place << endl;
+        String minute = String::tostring(dt.minute);
+        if (minute.size() == 1) {
+            String tmp('0');
+            minute = tmp + minute;
+        }
+        if(dt.hour == 15 || dt.hour == 17) o << left <<dt.hour << "h" << setw(17) << minute + ",";
+        else o << left <<dt.hour << "h" << setw(18) << minute + ",";
+        o << left << dt.day << "/" << dt.month << "/" << setw(19) << String::tostring(dt.year) + "," << dt.place;
         return o;
     }
     void setHour(int h)
@@ -133,11 +135,9 @@ void Doi_Chan(int a[], int size)
             j = 1;
         for (j; j < size / 2; j++)
         {
-            cout << i << endl
-                 << a[j] << endl
-                 << a[size - 1 - j] << d << endl;
+            cout << left << setw(15) << String::tostring(i) + "," << setw(20) << String::tostring(a[j]) + "," << setw(20) <<String::tostring(a[size - 1 - j]) + "," << d << endl;
             d.increaseTime();
-        //    this_thread::sleep_for(chrono::milliseconds(100));
+            //    this_thread::sleep_for(chrono::milliseconds(100));
         }
         cout << endl;
         if (d.getHour() != 7)
@@ -161,33 +161,53 @@ void Doi_Le(int a[], int size)
     Doi_Chan(b, size + 1);
 }
 
-int main()
+void writetofile(ofstream &o, int check)
 {
-    ofstream outFile("Match.txt"); 
-    streambuf *coutbuf = cout.rdbuf();  
-    cout.rdbuf(outFile.rdbuf());    
-    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int day, m, y;
-    // cout << "Nhap thoi gian bat dau \n";
-    // cout << "Nhap ngay: ";
-    cin >> day;
-    // cout << "Nhap thang: ";
-    cin >> m;
-    // cout << "Nhap nam: ";
-    cin >> y;
-    if ((!((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && day == 29) || m > 12 || day > 31)
+    ifstream f("Schedule.txt");
+    if (check == 0)
     {
-        cout << "=> default";
-        return 0;
+        f.seekg(0, ios::end);
+        if (f.tellg() == 0)
+        {
+            o << left << setw(15) << "Vong" << setw(20) << "ID Doi thu nhat" << setw(20) << "ID Doi thu hai" << setw(20) << "Thoi gian" << setw(25) << "Ngay thang nam" << setw(20) << "Dia diem" << endl;
+        }
+        f.close();
     }
-    Date_Time d1(0, 7, day, m, y, "Dai hoc Bach Khoa Da Nang");
-    d = d1;
-    int size = sizeof(a) / sizeof(int);
-
-    if (size % 2 == 0)
-        Doi_Chan(a, size);
-    else
-        Doi_Le(a, size);
-    cout.rdbuf(coutbuf);    
-    outFile.close();
+    if (check == 1)
+    {
+        o << left << setw(15) << "Vong" << setw(20) << "ID Doi thu nhat" << setw(20) << "ID Doi thu hai" << setw(20) << "Thoi gian" << setw(25) << "Ngay thang nam" << setw(20) << "Dia diem" << endl;
+    }
 }
+
+// int main()
+// {
+//     ofstream outFile("../Schedule.txt");
+//     int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//        // 1 10 2 3 4 5 6 7 8 9
+//     int day, m, y;
+//     cout << "Nhap thoi gian bat dau \n";
+//     cout << "Nhap ngay: ";
+//     cin >> day;
+//     cout << "Nhap thang: ";
+//     cin >> m;
+//     cout << "Nhap nam: ";
+//     cin >> y;
+//     streambuf *coutbuf = cout.rdbuf();
+//     cout.rdbuf(outFile.rdbuf());
+//     writetofile(outFile, 1);
+//     if ((!((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && day == 29 && m == 2) || m > 12 || day > 31)
+//     {
+//         cout << "=> default";
+//         return 0;
+//     }
+//     Date_Time d1(0, 7, day, m, y, "Dai hoc Bach Khoa Da Nang");
+//     d = d1;
+//     int size = sizeof(a) / sizeof(int);
+
+//     if (size % 2 == 0)
+//         Doi_Chan(a, size);
+//     else
+//         Doi_Le(a, size);
+//     cout.rdbuf(coutbuf);
+//     outFile.close();
+// }

@@ -3,6 +3,7 @@
 #include "Human.h"
 #include "Coach.h"
 #include "../CTDL/Vector.h"
+#include <String.h>
 using namespace std;
 
 #ifndef Team_H
@@ -11,8 +12,8 @@ using namespace std;
 class Team
 {
 private:
-    string idTeamFootball;
-    string nameFootballTeam;
+    String idTeamFootball;
+    String nameFootballTeam;
     Vector<Player> listMember;
     Coach coach;
     int rank;
@@ -22,30 +23,35 @@ private:
     int difference;
 public: 
     Team();
-    Team(string,Coach,int,int,int,int);
+    Team(String,Coach,int,int,int,int);
     ~Team();
     void createNewFootballTeam();
-    string getIdTeam();
-    void setIdTeam(string);
+    String getIdTeam();
+    void setIdTeam(String);
     void showAllMemberOfTeam();
     void showALLInforOfTeam();
     void addPlayer(Player&);
     void addCoach(Coach&);
     void findPlayerByName();
     void findPlayerByNameFootballTeam();
-    Vector<Player> getListPlayerByNameFootballTeam(string);
+    Vector<Player> getListPlayerByNameFootballTeam(String);
     void findPlayerById();
     void deletePlayerById(ifstream&,ofstream&);
     void saveTeamToFile(ofstream&,int = 0);
-    string getSizeTeamFromFile();
-    Coach getCoachByNameFootballTeam(string);
+    String getSizeTeamFromFile();
+    Coach getCoachByNameFootballTeam(String);
+    void findCoachByNameFootballTeam();
+    void findCoachByID();
+    void findCoachByName();
+    void updateTeam();
+    
     // Chuan hoa ten -> ngUyen van a -> Nguyen Van A
-    string standardizeName(string);
+    String standardizeName(String);
     void showRankOfTeam();
     void showInforOfCoach();
     void testFile();
-    int string_to_int(string);
-    string getNameFootballTeam();
+    int String_to_int(String);
+    String getNameFootballTeam();
     Team findTeamByName();
     void setListMember(Vector<Player>);
     // void showListMatch();
@@ -56,7 +62,7 @@ public:
     // int getPoint();
     // int getDifference();
     // Coach getCoach();
-    void setNameFootballTeam(string);
+    void setNameFootballTeam(String);
     // void setRank(int);
     // void setNumberGoal(int);
     // void setNumberLoseGoal(int);

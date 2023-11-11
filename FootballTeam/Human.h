@@ -1,6 +1,7 @@
 #include <iostream>
-#include <string>
+// #include <string>
 #include <stdlib.h>
+#include "../CTDL/String.h"
 
 using namespace std;
 #ifndef A_H
@@ -8,24 +9,24 @@ using namespace std;
 class Human
 {
     protected:
-        string id, name, dateOfBirth, address;
+        String id, name, dateOfBirth, address;
         int age;
 
     public:
-        Human(string = "", string = "", string = "", string = "", int = 0);
+        Human(String = "", String = "", String = "", String = "", int = 0);
         ~Human();
         virtual void show();
-        string getId();
-        void setId(string);
-        string getName();
-        void setName(string);
-        string getDateOfBirth();
-        void setDateOfBirth(string);
-        string getAddress();
-        void setAddress(string);
+        String getId();
+        void setId(String);
+        String getName();
+        void setName(String);
+        String getDateOfBirth();
+        void setDateOfBirth(String);
+        String getAddress();
+        void setAddress(String);
         int getAge();
         void setAge(int);
-         string standardizeName(string);
-         int string_to_int(string);
+         String standardizeName(String);
+         int string_to_int(String);
 };
 #endif // A_H
