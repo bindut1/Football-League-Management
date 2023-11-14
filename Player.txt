@@ -1,3 +1,7 @@
 ID,       Ten,           DateOfBirth,   Address,            Age,      NumberClothes, yellowCard,    redCard,  Goal,     NameFootballTeam    
-123,      Ngo Van Danh,  1 1 2004,      QN,                 19,       9,             0,             0,        0,        Mc                  
-124,      Tran Vu Lam,   1 1 2004,      QN,                 19,       10,            0,             0,        0,        Mc                  
+123,      Ngo Van Danh,  13/10/2004,    QN,                 19,       9,             0,             0,        2,        Mc                  
+128,      Kai Havert,    01/01/1998,    Germany,            25,       12,            0,             0,        0,        Chease              
+127,      Enzo Fenades,  01/01/1988,    Algentina,          35,       11,            0,             0,        0,        Chease              
+126,      Bruno Fenades, 02/01/2001,    Potugal,            22,       8,             0,             0,        0,        Mu                  
+124,      Tran Vu Lam,   01/01/2004,    QN,                 19,       10,            0,             0,        0,        Mc                  
+125,      Ronaldo,       01/01/2000,    Portugal,           23,       7,             1,             0,        0,        Mu                  

@@ -4,8 +4,8 @@
 using namespace std;
 
 
-Coach::Coach(String m, String t, String ns, String ad, int a, String nameTeam)
-    : Human(m, t, ns, ad, a), nameFootballTeam(nameTeam)
+Coach::Coach(String m, String t, String ns, String ad, String nameTeam)
+    : Human(m, t, ns, ad), nameFootballTeam(nameTeam)
 {
     // cout << "Call Constructor of Coach" << endl;
 }
@@ -31,26 +31,26 @@ String Coach::getNameFootballTeam() {
 
 void Coach::enterInforCoach() {
     String id, name, date,address;
-    int age;
     cout << "Nhap CCCD cua HLV: ";
     String::getline(cin,id);
     cout << "Nhap ho va ten cua HLV: ";
     String::getline(cin,name);
     cout << "Nhap ngay thang nam sinh (dd/mm/yyyy): ";
     String::getline(cin,date);
-    if(date[1] == '/') date = date + '0' ;
- //   if(date[4]  == '/') date.insert(3,"0");
+    if(date[1] == '/') {
+        String tmp("0");
+        date = tmp + date;
+    }
+    if(date[4]  == '/') date.insert(3,"0");
     cout << "Nhap dia chi cua hlv: ";
     String::getline(cin,address);
-    cout << "Nhap tuoi cua HLV: ";
-    cin >> age;
-    cin.ignore();
+    // cin.ignore();
     // Cap nhat thong tin HLV
     this->setId(id);
-    this->setName(name);
+    this->setName(String::standadizeString(name));
     this->setDateOfBirth(date);
     this->setAddress(address);
-    this->setAge(age);
+    this->setAgeByDateOfBirth(date);
     this->setNameFootballTeam("ABC");
 }
 
@@ -62,7 +62,7 @@ void Coach::saveInforIntoFile(ofstream& o) {
     if(f) {
         f.seekg(0,ios::end);
         if(f.tellg() == 0) {
-            o << left << setw(15) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(20) << "NameFootball Team" << endl; 
+            o << left << setw(15) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(20) << "NameFootball Team" ;
         }
         f.close();
     }
@@ -70,7 +70,7 @@ void Coach::saveInforIntoFile(ofstream& o) {
         cout << "K mo tep duoc";
     }
     if(o.is_open()) {
-        o << left << setw(15) << this->id  + "," << setw(15) << this->name + "," << setw(15) << this->dateOfBirth + "," << setw(20) << this->address + "," << setw(10) << myage +","<< setw(20) << this->nameFootballTeam << endl;
+        o <<endl<< left << setw(15) << this->id  + "," << setw(15) << this->name + "," << setw(15) << this->dateOfBirth + "," << setw(20) << this->address + "," << setw(10) << myage +","<< setw(20) << this->nameFootballTeam;
     }
 }
 
@@ -100,7 +100,7 @@ Coach Coach::getCoachByNameFootballTeam(String nameFB) {
                     } 
                 }
                 if(nameFB == nameTeam) {
-                    Coach c(id,name,date,address,String::toint(age),nameTeam);
+                    Coach c(id,name,date,address,nameTeam);
                 }
     }
     return Coach();

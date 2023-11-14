@@ -11,10 +11,11 @@ String Human::standardizeName(String s) {
     return tmp;
 }
 
-Human::Human(String m, String t, String ns, String ad, int a)
-    : id(m), dateOfBirth(ns), address(ad), age(a)
+Human::Human(String m, String t, String ns, String ad)
+    : id(m), dateOfBirth(ns), address(ad)
 {
     this->name = this->standardizeName(t);
+    this->setAgeByDateOfBirth(ns);
 }
 
 Human::~Human()
@@ -73,4 +74,34 @@ int Human::string_to_int(String x) {
         a[i] = x[i];
     }
     return atoi(a);
+}
+// 13/10/2004
+
+void Human::setAgeByDateOfBirth(String date) {
+    int d = 0,m = 0, y = 0;
+    for(int i=0;i<date.size();i++) {
+        if(date[i] == '/') continue;
+        if( i<=2) d = d*10 + String::toint(date[i]);
+        else if(i<=4) m = m*10 + String::toint(date[i]);
+        else if(i<=9) y = y*10 + String::toint(date[i]);
+    } 
+    time_t t = time(0);
+    tm* now = localtime(&t);
+    int year = now->tm_year + 1900;
+    int month = now->tm_mon + 1;     
+    int day = now->tm_mday;  
+    if(month > m) {
+        this->age = year - y;
+    }  
+    else if(month < m) {
+        this->age = year - y - 1;
+    }
+    else {
+        if(day >= d) {
+            this->age = year - y;
+        }
+        else {
+            this->age = year - y - 1;
+        }
+    }
 }

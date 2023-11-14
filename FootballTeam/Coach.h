@@ -9,7 +9,7 @@ class Coach : public Human
         String nameFootballTeam;
 
     public:
-        Coach(String = "", String = "", String = "", String = "", int = 0, String = "");
+        Coach(String = "", String = "", String = "", String = "", String = "");
         ~Coach();
         void show();
         void setNameFootballTeam(String);

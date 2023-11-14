@@ -53,23 +53,21 @@ public:
     int String_to_int(String);
     String getNameFootballTeam();
     Team findTeamByName();
+    Team getTeamById(String);
     void setListMember(Vector<Player>);
-    // void showListMatch();
-    // void showHistoryMatch();
-    // int getRank();
-    // int getNumberGoal();
-    // int getNumberLoseGoal();
-    // int getPoint();
-    // int getDifference();
-    // Coach getCoach();
     void setNameFootballTeam(String);
-    // void setRank(int);
-    // void setNumberGoal(int);
-    // void setNumberLoseGoal(int);
-    // void setPoint(int);
-    // void changePoint(int);
-    // void setDifference(int);
-    // Coach getCoach(int);
+    static bool cmp( Team, Team);
+    int getPoint();
+    void setPoint(int);
+    int getDifference();
+    void setDifference(int);
+    void sortRankAllTeam();
+    void setRank(int);
+    void setGoal(int);
+    void setLoseGoal(int);
+    int getGoal();
+    int getLoseGoal();
+    void updateTeamAfterMatch(String,int,int,int);
 };
 
 #endif 

@@ -18,10 +18,11 @@ public:
     {
         *m = '\0';
     }
-    String(char c) {
+    String(char c)
+    {
         m = new char[1];
-        char* p = &c;
-        strcpy(m,p);
+        char *p = &c;
+        strcpy(m, p);
         this->s = 1;
         this->max = 1;
     }
@@ -108,20 +109,30 @@ public:
         o << str.m;
         return o;
     }
-    bool operator==(const String& other) {
-        if(this->s != other.s) return false;
-        else {
-            for(int i=0;i<this->s;i++) {
-                if(this->m[i] != other[i]) return false;
+    bool operator==(const String &other)
+    {
+        if (this->s != other.s)
+            return false;
+        else
+        {
+            for (int i = 0; i < this->s; i++)
+            {
+                if (this->m[i] != other[i])
+                    return false;
             }
         }
         return true;
     }
-    bool operator!=(const String& other) {
-        if(this->s != other.s) return true;
-        else {
-            for(int i=0;i<this->s;i++) {
-                if(this->m[i] != other[i]) return true;
+    bool operator!=(const String &other)
+    {
+        if (this->s != other.s)
+            return true;
+        else
+        {
+            for (int i = 0; i < this->s; i++)
+            {
+                if (this->m[i] != other[i])
+                    return true;
             }
         }
         return false;
@@ -136,21 +147,23 @@ public:
     static String tostring(int num)
     {
         String result;
-        bool isNegative = false; //check so am
+        bool isNegative = false; // check so am
         if (num < 0)
         {
             isNegative = true;
             num = -num;
         }
-        if (num == 0)   return "0";
+        if (num == 0)
+            return "0";
         while (num > 0)
         {
             char digit = '0' + (num % 10); // chuyen so thanh ky tu tuong ung
-            result.push_back(digit);       
+            result.push_back(digit);
             num /= 10;
         }
-        if (isNegative) result.push_back('-'); //them dau am vao cuoi chuoi neu la so am
-        reverse(result.m, result.m + result.size()); //dao nguoc chuoi de dung thu tu
+        if (isNegative)
+            result.push_back('-');                   // them dau am vao cuoi chuoi neu la so am
+        reverse(result.m, result.m + result.size()); // dao nguoc chuoi de dung thu tu
         return result;
     }
 
@@ -175,6 +188,32 @@ public:
         }
         return result * sign;
     }
+    static String standadizeDay(String d)
+    {
+        String tmp("0");
+        if (d[1] == '/')
+            d = tmp + d;
+        if (d[4] == '/')
+            d.insert(3, "0");
+        return d;
+    }
+    static String standadizeString(String s)
+    {
+        String tmp = "";
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (i == 0)
+                tmp = tmp + toupper(s[0]);
+            else
+            {
+                if (s[i - 1] == ' ')
+                    tmp = tmp + toupper(s[i]);
+                else
+                    tmp = tmp + tolower(s[i]);
+            }
+        }
+        return tmp;
+    }
 };
-    
+
 #endif

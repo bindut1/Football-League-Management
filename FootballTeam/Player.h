@@ -10,7 +10,7 @@ private:
     String nameFootballTeam;
 public:
     Player();
-    Player(String,String,String,String,String,int,int,int = 0,int  = 0,int  = 0);
+    Player(String,String,String,String,String,int,int = 0,int  = 0,int  = 0);
     ~Player();
     void show();
     void updateInfor(String,String,String,String,int,int,int,String);
@@ -25,11 +25,12 @@ public:
     void setRedCard(int);
     void setNameFootballTeam(String);
     String getNameFootballTeam();
-    // Luu cau thu vao file
     void savePlayerToFile(ofstream&,int  = 0);
     void getAllPlayerFromFile();
-    //nhap cau thu
     void enterInforPlayer();
     void updatePlayer();
+    static bool cmp(Player,Player);
+    static void sortAllPlayer();
+    static void updatePlayerAfterMatch(String,int,int,int);
 };
 #endif

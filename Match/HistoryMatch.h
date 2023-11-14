@@ -1,14 +1,14 @@
 #include "Match.h"
-#include "VectorPair.h"
+
 class HistoryMatch : public Match
 {
 private:
-        VectorPair v[2];
-        Vector<VectorPair> cauThuDoiA;
-        Vector<VectorPair> cauThuDoiB;
+    int numGoalTeam1,numGoalTeam2;
 public:
     HistoryMatch();
+    HistoryMatch(Match,int,int);
     ~HistoryMatch();
     void showHistoryMatch();
+    void saveHistoryMatchToFile(ofstream&);
 };
 

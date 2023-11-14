@@ -21,6 +21,16 @@ public:
     bool contains(const T&);
     int find(const T&);
     void erase(int);
+    template <typename U>
+    static void sort(Vector& v,bool (*pFunc)(U t1,U t2)) {
+        for(int i=0;i<v.size();i++) {
+        for(int j=i+1;j<v.size();j++) {
+            if(!pFunc(v[i],v[j])) {
+                swap(v[i],v[j]);
+            }
+        }
+    }
+    }
 };
 
 
@@ -114,5 +124,8 @@ void Vector<T>::operator=(const Vector& v) {
     }
 }
 
-
+// template <typename T>
+// void Vector<T>::sort(const Vector& v,bool (*pFunc)(T t1,T t2)) {
+    
+// }
 #endif

@@ -1,2 +1,4 @@
 ID,            Ten,           DateOfBirth,   Address,            Age,      NameFootball Team   
-111,           Park Hang Seo, 1 1 2000,      Korean ,            23,       Mc                  
+111,           Park Hang Seo, 1 10 1999,     Korean,             43,       Mc                  
+Zidane,        Zidane,        01/10/1999,    France,             24,       Mu                  
+112,           Nguyen Duc Chung,01/02/1992,    VN,                 31,       Chease              

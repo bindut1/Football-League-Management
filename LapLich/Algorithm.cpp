@@ -135,6 +135,7 @@ void Doi_Chan(int a[], int size)
             j = 1;
         for (j; j < size / 2; j++)
         {
+            
             cout << left << setw(15) << String::tostring(i) + "," << setw(20) << String::tostring(a[j]) + "," << setw(20) <<String::tostring(a[size - 1 - j]) + "," << d << endl;
             d.increaseTime();
             //    this_thread::sleep_for(chrono::milliseconds(100));
@@ -179,35 +180,35 @@ void writetofile(ofstream &o, int check)
     }
 }
 
-// int main()
-// {
-//     ofstream outFile("../Schedule.txt");
-//     int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-//        // 1 10 2 3 4 5 6 7 8 9
-//     int day, m, y;
-//     cout << "Nhap thoi gian bat dau \n";
-//     cout << "Nhap ngay: ";
-//     cin >> day;
-//     cout << "Nhap thang: ";
-//     cin >> m;
-//     cout << "Nhap nam: ";
-//     cin >> y;
-//     streambuf *coutbuf = cout.rdbuf();
-//     cout.rdbuf(outFile.rdbuf());
-//     writetofile(outFile, 1);
-//     if ((!((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && day == 29 && m == 2) || m > 12 || day > 31)
-//     {
-//         cout << "=> default";
-//         return 0;
-//     }
-//     Date_Time d1(0, 7, day, m, y, "Dai hoc Bach Khoa Da Nang");
-//     d = d1;
-//     int size = sizeof(a) / sizeof(int);
+int main()
+{
+    ofstream outFile("../Schedule.txt");
+    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+       // 1 10 2 3 4 5 6 7 8 9
+    int day, m, y;
+    cout << "Nhap thoi gian bat dau \n";
+    cout << "Nhap ngay: ";
+    cin >> day;
+    cout << "Nhap thang: ";
+    cin >> m;
+    cout << "Nhap nam: ";
+    cin >> y;
+    streambuf *coutbuf = cout.rdbuf();
+    cout.rdbuf(outFile.rdbuf());
+    writetofile(outFile, 1);
+    if ((!((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && day == 29 && m == 2) || m > 12 || day > 31)
+    {
+        cout << "=> default";
+        return 0;
+    }
+    Date_Time d1(0, 7, day, m, y, "Dai hoc Bach Khoa Da Nang");
+    d = d1;
+    int size = sizeof(a) / sizeof(int);
 
-//     if (size % 2 == 0)
-//         Doi_Chan(a, size);
-//     else
-//         Doi_Le(a, size);
-//     cout.rdbuf(coutbuf);
-//     outFile.close();
-// }
+    if (size % 2 == 0)
+        Doi_Chan(a, size);
+    else
+        Doi_Le(a, size);
+    cout.rdbuf(coutbuf);
+    outFile.close();
+}

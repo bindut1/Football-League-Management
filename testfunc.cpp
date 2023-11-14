@@ -2,9 +2,13 @@
 #include "FootballTeam/Coach.h"
 #include "FootballTeam/Team.h"
 #include "FootballTeam/Human.h"
-#include "LapLich/Algorithm.cpp"
+// #include "LapLich/Algorithm.cpp"
+#include "Match/Match.h"
+#include "Match/HistoryMatch.h"
 
+ 
 int main() {
-    Team t;
-    t.updateTeam();
+   Match m ;
+   // m.deleteMatchByIdRoundAndTwoTeam(m);
+   m.enterResultMatch();
 }
