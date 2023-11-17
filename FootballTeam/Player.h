@@ -6,14 +6,16 @@
 class Player : public Human
 {
 private:
-    int goal, numberClothes, yellowCard , redCard;
+    int goal, numberClothes, yellowCard, redCard;
     String nameFootballTeam;
+
 public:
     Player();
-    Player(String,String,String,String,String,int,int = 0,int  = 0,int  = 0);
+    Player(String, String, String, String, String, int, int = 0, int = 0, int = 0);
     ~Player();
-    void show();
-    void updateInfor(String,String,String,String,int,int,int,String);
+    void show1();
+    void show2();
+    void updateInfor(String, String, String, String, int, int, int, String);
     int getGoal();
     void setGoal(int);
     int getNumberClothes();
@@ -25,12 +27,15 @@ public:
     void setRedCard(int);
     void setNameFootballTeam(String);
     String getNameFootballTeam();
-    void savePlayerToFile(ofstream&,int  = 0);
+    void savePlayerToFile(ofstream &, int = 0);
     void getAllPlayerFromFile();
     void enterInforPlayer();
     void updatePlayer();
-    static bool cmp(Player,Player);
+    static bool cmp(Player, Player);
     static void sortAllPlayer();
-    static void updatePlayerAfterMatch(String,int,int,int);
+    static void updatePlayerAfterMatch(String, int, int, int);
+    //void dkcDeleteTeam(String);
+    void deletePlayerById();
+    void dkcdeletePlayer(String);
 };
 #endif

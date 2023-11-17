@@ -32,16 +32,16 @@ public:
     Vector<Match> getAllMatchFromFile();
     void findMatchByIdTeam();
     Vector<Match> getListMatchByIdTeam();
-    static Match getMatchByIdRoundAndIdTwoTeam(String,String,String);
-    void deleteMatchByIdRoundAndTwoTeam(Match&);
+    static Match getMatchByIdRoundAndIdTwoTeam(String, String, String);
+    void deleteMatchByIdRoundAndTwoTeam(Match &);
     void findMatchByNameTeam();
     void findMatchByTwoNameTeam();
     void findMatchByDay();
     void updateInforOfMatch();
-    void updateMatch(String,Match,int,String ="");
+    void updateMatch(String, Match, int, String = "");
     String getIdTeam1();
     String getIdTeam2();
     void enterResultMatch();
-    void saveToHistoryMatch(String,String,int,int);
+    void saveToHistoryMatch(String, String, int, int);
 };
 #endif

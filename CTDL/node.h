@@ -2,7 +2,7 @@
 using namespace std;
 #ifndef NODE_H
 #define NODE_H
-template<typename T>
+template <typename T>
 class node
 {
 
@@ -15,6 +15,5 @@ public:
     node<T>(T value) : data(value), next(NULL), prev(NULL) {}
     ~node<T>() {}
 };
-
 
 #endif

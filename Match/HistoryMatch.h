@@ -3,12 +3,13 @@
 class HistoryMatch : public Match
 {
 private:
-    int numGoalTeam1,numGoalTeam2;
+    int numGoalTeam1, numGoalTeam2;
+
 public:
     HistoryMatch();
-    HistoryMatch(Match,int,int);
+    HistoryMatch(Match, int, int);
     ~HistoryMatch();
     void showHistoryMatch();
-    void saveHistoryMatchToFile(ofstream&);
+    void saveHistoryMatchToFile(ofstream &);
+    void updateHistoryMatch();
 };
-

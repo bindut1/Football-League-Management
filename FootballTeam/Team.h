@@ -21,30 +21,35 @@ private:
     int numberLoseGoal;
     int point;
     int difference;
-public: 
+
+public:
     Team();
-    Team(String,Coach,int,int,int,int);
+    Team(String, Coach, int, int, int, int);
     ~Team();
     void createNewFootballTeam();
     String getIdTeam();
     void setIdTeam(String);
     void showAllMemberOfTeam();
     void showALLInforOfTeam();
-    void addPlayer(Player&);
-    void addCoach(Coach&);
+    void addPlayer(Player &);
+    void addCoach(Coach &);
     void findPlayerByName();
     void findPlayerByNameFootballTeam();
     Vector<Player> getListPlayerByNameFootballTeam(String);
     void findPlayerById();
-    void deletePlayerById(ifstream&,ofstream&);
-    void saveTeamToFile(ofstream&,int = 0);
+    void dkcDeleteTeamwithPlayer(String);
+    void dkcDeleteTeamwithCoach(String);
+//    void deletePlayerById(ifstream &, ofstream &);
+//    void deleteCoachById(ifstream &, ofstream &);
+    void deleteTeamById();
+    void saveTeamToFile(ofstream &, int = 0);
     String getSizeTeamFromFile();
     Coach getCoachByNameFootballTeam(String);
     void findCoachByNameFootballTeam();
     void findCoachByID();
     void findCoachByName();
     void updateTeam();
-    
+
     // Chuan hoa ten -> ngUyen van a -> Nguyen Van A
     String standardizeName(String);
     void showRankOfTeam();
@@ -56,7 +61,7 @@ public:
     Team getTeamById(String);
     void setListMember(Vector<Player>);
     void setNameFootballTeam(String);
-    static bool cmp( Team, Team);
+    static bool cmp(Team, Team);
     int getPoint();
     void setPoint(int);
     int getDifference();
@@ -67,7 +72,7 @@ public:
     void setLoseGoal(int);
     int getGoal();
     int getLoseGoal();
-    void updateTeamAfterMatch(String,int,int,int);
+    void updateTeamAfterMatch(String, int, int, int);
 };
 
-#endif 
+#endif

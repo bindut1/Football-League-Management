@@ -6,9 +6,9 @@
 #include "Match/Match.h"
 #include "Match/HistoryMatch.h"
 
- 
-int main() {
-   Match m ;
-   // m.deleteMatchByIdRoundAndTwoTeam(m);
-   m.enterResultMatch();
+
+int main()
+{
+   Coach c;
+   c.deleteCoachById();
 }

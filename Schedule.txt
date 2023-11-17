@@ -1,7 +1,67 @@
 Vong           ID Doi thu nhat     ID Doi thu hai      Thoi gian           Ngay thang nam           Dia diem            
-                                
-2,             3,                  1,                  7h00,               16/11/2023,              Dai hoc Bach Khoa Da Nang
-                                
-3,             2,                  3,                  7h00,               18/11/2023,              Dai hoc Bach Khoa Da Nang
-                                
-                                
+1,             1,                  0,                  7h00,               21/12/2004,              Dai hoc Bach Khoa Da Nang
+1,             2,                  0,                  9h00,               21/12/2004,              Dai hoc Bach Khoa Da Nang
+1,             3,                  0,                  15h00,              21/12/2004,              Dai hoc Bach Khoa Da Nang
+1,             4,                  0,                  17h00,              21/12/2004,              Dai hoc Bach Khoa Da Nang
+1,             5,                  0,                  7h00,               22/12/2004,              Dai hoc Bach Khoa Da Nang
+
+2,             0,                  0,                  7h00,               24/12/2004,              Dai hoc Bach Khoa Da Nang
+2,             1,                  0,                  9h00,               24/12/2004,              Dai hoc Bach Khoa Da Nang
+2,             2,                  0,                  15h00,              24/12/2004,              Dai hoc Bach Khoa Da Nang
+2,             3,                  0,                  17h00,              24/12/2004,              Dai hoc Bach Khoa Da Nang
+2,             4,                  5,                  7h00,               25/12/2004,              Dai hoc Bach Khoa Da Nang
+
+3,             0,                  0,                  7h00,               27/12/2004,              Dai hoc Bach Khoa Da Nang
+3,             0,                  0,                  9h00,               27/12/2004,              Dai hoc Bach Khoa Da Nang
+3,             1,                  0,                  15h00,              27/12/2004,              Dai hoc Bach Khoa Da Nang
+3,             2,                  5,                  17h00,              27/12/2004,              Dai hoc Bach Khoa Da Nang
+3,             3,                  4,                  7h00,               28/12/2004,              Dai hoc Bach Khoa Da Nang
+
+4,             0,                  0,                  7h00,               30/12/2004,              Dai hoc Bach Khoa Da Nang
+4,             0,                  0,                  9h00,               30/12/2004,              Dai hoc Bach Khoa Da Nang
+4,             0,                  5,                  15h00,              30/12/2004,              Dai hoc Bach Khoa Da Nang
+4,             1,                  4,                  17h00,              30/12/2004,              Dai hoc Bach Khoa Da Nang
+4,             2,                  3,                  7h00,               31/12/2004,              Dai hoc Bach Khoa Da Nang
+
+5,             0,                  0,                  7h00,               2/1/2005,              Dai hoc Bach Khoa Da Nang
+5,             0,                  5,                  9h00,               2/1/2005,              Dai hoc Bach Khoa Da Nang
+5,             0,                  4,                  15h00,              2/1/2005,              Dai hoc Bach Khoa Da Nang
+5,             0,                  3,                  17h00,              2/1/2005,              Dai hoc Bach Khoa Da Nang
+5,             1,                  2,                  7h00,               3/1/2005,              Dai hoc Bach Khoa Da Nang
+
+6,             0,                  5,                  7h00,               5/1/2005,              Dai hoc Bach Khoa Da Nang
+6,             0,                  4,                  9h00,               5/1/2005,              Dai hoc Bach Khoa Da Nang
+6,             0,                  3,                  15h00,              5/1/2005,              Dai hoc Bach Khoa Da Nang
+6,             0,                  2,                  17h00,              5/1/2005,              Dai hoc Bach Khoa Da Nang
+6,             0,                  1,                  7h00,               6/1/2005,              Dai hoc Bach Khoa Da Nang
+
+7,             0,                  4,                  7h00,               8/1/2005,              Dai hoc Bach Khoa Da Nang
+7,             0,                  3,                  9h00,               8/1/2005,              Dai hoc Bach Khoa Da Nang
+7,             0,                  2,                  15h00,              8/1/2005,              Dai hoc Bach Khoa Da Nang
+7,             0,                  1,                  17h00,              8/1/2005,              Dai hoc Bach Khoa Da Nang
+7,             0,                  0,                  7h00,               9/1/2005,              Dai hoc Bach Khoa Da Nang
+
+8,             5,                  3,                  7h00,               11/1/2005,              Dai hoc Bach Khoa Da Nang
+8,             0,                  2,                  9h00,               11/1/2005,              Dai hoc Bach Khoa Da Nang
+8,             0,                  1,                  15h00,              11/1/2005,              Dai hoc Bach Khoa Da Nang
+8,             0,                  0,                  17h00,              11/1/2005,              Dai hoc Bach Khoa Da Nang
+8,             0,                  0,                  7h00,               12/1/2005,              Dai hoc Bach Khoa Da Nang
+
+9,             4,                  2,                  7h00,               14/1/2005,              Dai hoc Bach Khoa Da Nang
+9,             5,                  1,                  9h00,               14/1/2005,              Dai hoc Bach Khoa Da Nang
+9,             0,                  0,                  15h00,              14/1/2005,              Dai hoc Bach Khoa Da Nang
+9,             0,                  0,                  17h00,              14/1/2005,              Dai hoc Bach Khoa Da Nang
+9,             0,                  0,                  7h00,               15/1/2005,              Dai hoc Bach Khoa Da Nang
+
+10,            3,                  1,                  7h00,               17/1/2005,              Dai hoc Bach Khoa Da Nang
+10,            4,                  0,                  9h00,               17/1/2005,              Dai hoc Bach Khoa Da Nang
+10,            5,                  0,                  15h00,              17/1/2005,              Dai hoc Bach Khoa Da Nang
+10,            0,                  0,                  17h00,              17/1/2005,              Dai hoc Bach Khoa Da Nang
+10,            0,                  0,                  7h00,               18/1/2005,              Dai hoc Bach Khoa Da Nang
+
+11,            2,                  0,                  7h00,               20/1/2005,              Dai hoc Bach Khoa Da Nang
+11,            3,                  0,                  9h00,               20/1/2005,              Dai hoc Bach Khoa Da Nang
+11,            4,                  0,                  15h00,              20/1/2005,              Dai hoc Bach Khoa Da Nang
+11,            5,                  0,                  17h00,              20/1/2005,              Dai hoc Bach Khoa Da Nang
+11,            0,                  0,                  7h00,               21/1/2005,              Dai hoc Bach Khoa Da Nang
+

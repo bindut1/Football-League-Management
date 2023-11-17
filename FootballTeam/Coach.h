@@ -18,6 +18,8 @@ class Coach : public Human
         void saveInforIntoFile(ofstream&);
         Coach getCoachByNameFootballTeam(String);
         void updateCoach();
+        void deleteCoachById();
+        void dkcDeleteCoach(String);
 };
 
 #endif

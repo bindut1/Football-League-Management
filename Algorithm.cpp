@@ -1,14 +1,18 @@
+#include "CTDL/String.h"
+#include "CTDL/Vector.h"
 #include <iostream>
-#include <iomanip>
-#include <string>
 #include <fstream>
-#include "../CTDL/String.h"
+#include "Algorithm.h"
+#include <iomanip>
+//#include "main.cpp"
+// #include "LapLich/Algorithm.cpp"
 using namespace std;
 
 class Date_Time
 {
     int minute, hour, day, month, year;
     String place;
+
 public:
     Date_Time() {}
     Date_Time(int mi, int h, int d, int m, int y, String place)
@@ -23,12 +27,15 @@ public:
     friend ostream &operator<<(ostream &o, const Date_Time &dt)
     {
         String minute = String::tostring(dt.minute);
-        if (minute.size() == 1) {
+        if (minute.size() == 1)
+        {
             String tmp('0');
             minute = tmp + minute;
         }
-        if(dt.hour == 15 || dt.hour == 17) o << left <<dt.hour << "h" << setw(17) << minute + ",";
-        else o << left <<dt.hour << "h" << setw(18) << minute + ",";
+        if (dt.hour == 15 || dt.hour == 17)
+            o << left << dt.hour << "h" << setw(17) << minute + ",";
+        else
+            o << left << dt.hour << "h" << setw(18) << minute + ",";
         o << left << dt.day << "/" << dt.month << "/" << setw(19) << String::tostring(dt.year) + "," << dt.place;
         return o;
     }
@@ -126,6 +133,7 @@ void push_val(int a[], int n)
         }
     }
 }
+
 void Doi_Chan(int a[], int size)
 {
     for (int i = 1; i <= size - 1; i++)
@@ -135,8 +143,8 @@ void Doi_Chan(int a[], int size)
             j = 1;
         for (j; j < size / 2; j++)
         {
-            
-            cout << left << setw(15) << String::tostring(i) + "," << setw(20) << String::tostring(a[j]) + "," << setw(20) <<String::tostring(a[size - 1 - j]) + "," << d << endl;
+
+            cout << left << setw(15) << String::tostring(i) + "," << setw(20) << String::tostring(a[j]) + "," << setw(20) << String::tostring(a[size - 1 - j]) + "," << d << endl;
             d.increaseTime();
             //    this_thread::sleep_for(chrono::milliseconds(100));
         }
@@ -180,11 +188,35 @@ void writetofile(ofstream &o, int check)
     }
 }
 
-int main()
+void func()
 {
-    ofstream outFile("../Schedule.txt");
-    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-       // 1 10 2 3 4 5 6 7 8 9
+    //cout << "Lap lich thanh cong!" << endl;
+    ofstream outFile("Schedule.txt");
+    int size = 0;
+    Vector<int> v;
+    ifstream inf("Team.txt");
+    if (inf.is_open())
+    {
+        String tmp;
+        String::getline(inf, tmp);
+        while (!inf.eof())
+        {
+            String::getline(inf, tmp);
+            size++;
+            String myId;
+            for (int i = 0; i < tmp.size(); i++)
+            {
+                if (tmp[i] == ',')
+                    break;
+                myId = myId + tmp[i];
+            }
+            v.push_back(String::toint(myId));
+        }
+    }
+    int a[size];
+    for (int i = 0; i < size; i++)
+        a[i] = v[i];
+    // 1 10 2 3 4 5 6 7 8 9
     int day, m, y;
     cout << "Nhap thoi gian bat dau \n";
     cout << "Nhap ngay: ";
@@ -199,16 +231,16 @@ int main()
     if ((!((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && day == 29 && m == 2) || m > 12 || day > 31)
     {
         cout << "=> default";
-        return 0;
+        return;
     }
     Date_Time d1(0, 7, day, m, y, "Dai hoc Bach Khoa Da Nang");
     d = d1;
-    int size = sizeof(a) / sizeof(int);
-
+    // int size = sizeof(a) / sizeof(int);
     if (size % 2 == 0)
         Doi_Chan(a, size);
     else
         Doi_Le(a, size);
     cout.rdbuf(coutbuf);
     outFile.close();
+    //cout << "Lap lich thanh cong!" << endl;
 }
