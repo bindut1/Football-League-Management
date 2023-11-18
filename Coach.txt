@@ -1,10 +1,2 @@
 ID,            Ten,           DateOfBirth,   Address,            Age,      NameFootball Team   
-10,            ALOALO,        01/02/2001,    Phu Ning,           22,       Viet Nam 1          
-11,            Ngo Van Danh 2,12/04/2008,    Duy Xuyen,          15,       Viet Nam            
-12,            Ngo Van Danh 3,13/02/2009,    Tam Ky,             14,       Campuchia           
-13,            Ngo Van Danh 4,07/08/2003,    Da Nang,            20,       Lao                 
-14,            Ngo Van Danh 5,01/02/2007,    Que Phu,            16,       Japan               
-
-
-
-
+12,            Dhp,           13/07/2009,    DN,                 14,       Viet Nam            

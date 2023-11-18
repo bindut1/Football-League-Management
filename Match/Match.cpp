@@ -150,6 +150,7 @@ Vector<Match> Match::getAllMatchFromFile()
 
 void Match::findMatchByIdTeam()
 {
+    bool kt = true;
     cout << "Nhap ID doi can tim: ";
     String idFind;
     String::getline(cin, idFind);
@@ -196,6 +197,7 @@ void Match::findMatchByIdTeam()
                 }
                 if (idTeam1 == idFind || idTeam2 == idFind)
                 {
+                    kt = false;
                     Match m;
                     m.setAddress(address);
                     m.setTime(time);
@@ -211,6 +213,7 @@ void Match::findMatchByIdTeam()
             }
         }
     }
+    if(kt) cout << "Khong tim thay tran dau nao" << endl;
     cout << "Nhan phim bat ki de tiep tuc ..";
     getchar();
 }
@@ -837,10 +840,10 @@ void Match::enterResultMatch()
     do
     {
         system("cls");
-        cout << "1.Nhap ban thang cho cau thu" << endl;
-        cout << "2.Nhap the vang cho cau thu" << endl;
-        cout << "3.Nhap the do cho cau thu" << endl;
-        cout << "0.Quay lai" << endl;
+        cout << "1. Nhap ban thang cho cau thu" << endl;
+        cout << "2. Nhap the vang cho cau thu" << endl;
+        cout << "3. Nhap the do cho cau thu" << endl;
+        cout << "0. Quay lai" << endl;
         cout << "Nhap lua chon: ";
         cin >> lc;
         cin.ignore();

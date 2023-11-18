@@ -308,6 +308,7 @@ void Player::updatePlayer()
             }
             if (ma == id)
             {
+                kt = false;
                 int u;
                 do
                 {
@@ -324,6 +325,7 @@ void Player::updatePlayer()
                     cout << "5. Chinh sua The vang cua cau thu" << endl;
                     cout << "6. Chinh sua The do cua cau thu" << endl;
                     cout << "7. Chinh sua so ban thang cua cau thu" << endl;
+                    cout << "0. Thoat" << endl;
                     // cout << "8. Chinh sua ten doi bong cua cau thu" << endl; // chinh sua o day thi ben team cung phai update theo va nguoc lai
                     cout << "Moi nhap lua chon: ";
                     int t;
@@ -416,6 +418,8 @@ void Player::updatePlayer()
                     //     String::getline(cin, newnamefb);
                     //     nameTeam = newnamefb;
                     //     break;
+                    case 0: 
+                        return;
                     default:
                         break;
                     }
@@ -427,7 +431,7 @@ void Player::updatePlayer()
             }
             else
             {
-                kt = false;
+                //kt = false;
                 tempFile << tmp << endl;
             }
         }
@@ -439,7 +443,7 @@ void Player::updatePlayer()
     }
     else
         cout << "Khong mo dc file";
-    if(kt == false) cout << "Cau thu co ID " << ma << " khong ton tai" << endl << endl;
+    if(kt) cout << "Cau thu co CCCD " << ma << " khong ton tai" << endl << endl;
 }
 
 void Player::sortAllPlayer()
@@ -639,7 +643,8 @@ void Player::dkcdeletePlayer(String tt)
 
 void Player::deletePlayerById()
 {
-    bool kt = false;
+    bool kt = true;
+    system("cls");
     String ma, thaythe;
     cout << "Nhap CCCD cua cau thu can xoa: ";
     String::getline(cin, ma);
@@ -692,11 +697,15 @@ void Player::deletePlayerById()
                 }
             }
             if (ma == id)
+            {
+                kt = false;
                 thaythe = nameTeam;
+            }
+                
             else
             {
                 tempFile << tmp << endl;
-                kt = true;
+                //kt = true;
             }
                
         }
@@ -708,7 +717,7 @@ void Player::deletePlayerById()
     }
     else
         cout << "Khong mo dc file";
-    dkcdeletePlayer(thaythe);
     if(kt) cout << "Cau thu co ID " << ma << " khong ton tai" << endl << endl;
+    dkcdeletePlayer(thaythe);
 }
 

@@ -1,9 +1,8 @@
-void Coach::dkcDeleteCoach(String tt)
+void Team::deleteTeamById()
 {
-
     fstream file("Team.txt", ios::in);
     fstream tempFile("tempTeam.txt", ios::out | ios::app);
-    tempFile << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV" << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Rank" << endl;
+    tempFile << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Rank" << endl;
     if (file.is_open() && tempFile.is_open())
     {
         String tmp;
@@ -47,13 +46,19 @@ void Coach::dkcDeleteCoach(String tt)
                         break;
                 }
             }
-            if (tt == nameTeam)
+
+            if (ma == id)
             {
-                
-                tempFile << left << setw(10) << id + "," << setw(20) << nameTeam + "," << setw(20) << numMember + "," << setw(15) << nameCoach + "," << setw(15) << numberGoal + "," << setw(15) << numberLoseGoal + "," << setw(15) << difference + "," << setw(15) << point + "," << setw(15) << rank << endl;
+                thaythe = nameTeam;
+                ck = false;
             }
+                
             else
+            {
                 tempFile << tmp << endl;
+                //ck = true;
+            }
+               
         }
         file.close();
         tempFile.close();
@@ -62,4 +67,7 @@ void Coach::dkcDeleteCoach(String tt)
     }
     else
         cout << "Khong mo dc file";
+    dkcDeleteTeamwithPlayer(thaythe);
+    dkcDeleteTeamwithCoach(thaythe);
+    
 }

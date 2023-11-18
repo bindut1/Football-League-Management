@@ -182,6 +182,7 @@ void Coach::updateCoach()
 
             if (ma == id)
             {
+                kt = false;
                 int k, u;
                 do
                 {
@@ -189,6 +190,7 @@ void Coach::updateCoach()
                     cout << "1. Chinh sua Ten cua HLV" << endl;
                     cout << "2. Chinh sua Ngay sinh cua HLV" << endl;
                     cout << "3. Chinh sua Dia chi cua HLV" << endl;
+                    cout << "0. Thoat" << endl;
                     // cout << "4. Chinh sua Tuoi cua HLV" << endl;
                     // cout << "4. Chinh sua doi bong HLV quan ly" << endl;
                     cout << "Moi nhap lua chon: ";
@@ -323,7 +325,7 @@ void Coach::updateCoach()
                         age = String::tostring(newage);
                         break;
                     case 3:
-                        "Nhap dia chi cua HLV: ";
+                        cout << "Nhap dia chi cua HLV: ";
                         String::getline(cin, newAddress);
                         address = newAddress;
                         break;
@@ -332,6 +334,8 @@ void Coach::updateCoach()
                     //     String::getline(cin, newNameTeam);
                     //     nameTeam = newNameTeam;
                     //     break;
+                    case 0:
+                        return;
                     default:
                         break;
                     }
@@ -345,7 +349,7 @@ void Coach::updateCoach()
             else
             {
                 // Ghi du lieu cua may thang ko cap nhat
-                kt = false;
+                //kt = false;
                 tempFile << tmp << endl;
             }
         }
@@ -358,7 +362,7 @@ void Coach::updateCoach()
     {
         cout << "Khong mo dc file";
     }
-    if(kt == false) cout << "HLV co ID " << ma << " khong ton tai" << endl << endl;
+    if(kt) cout << "HLV co CCCD " << ma << " khong ton tai" << endl << endl;
 }
 
 void Coach::dkcDeleteCoach(String tt)
@@ -430,7 +434,8 @@ void Coach::dkcDeleteCoach(String tt)
 
 void Coach::deleteCoachById()
 {
-    bool kt = false;
+    bool kt = true;
+    system("cls");
     String ma, thaythe;
     cout << "Nhap CCCD cua HLV can xoa: ";
     String::getline(cin, ma);
@@ -479,12 +484,13 @@ void Coach::deleteCoachById()
 
             if (ma == id)
             {
+                kt = false;
                 thaythe = nameTeam;
             }
             else
             {
                 // Ghi du lieu cua may thang ko cap nhat
-                kt = true;
+                //kt = true;
                 tempFile << tmp << endl;
             }
         }
@@ -497,7 +503,7 @@ void Coach::deleteCoachById()
     {
         cout << "Khong mo dc file";
     }
-    dkcDeleteCoach(thaythe);
     if(kt) cout << "HLV co ID " << ma << " khong ton tai" << endl << endl;
+    dkcDeleteCoach(thaythe);   
 }
 

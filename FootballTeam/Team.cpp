@@ -240,14 +240,14 @@ void Team::findPlayerByName()
         }
     }
     if (val)
-        cout << "Khong tim thay ket qua tuong ung" << endl;
+        cout << "Cau thu co ten " << nameFind << " khong ton tai!" << endl;
     cout << "Nhan Enter de tiep tuc ...";
     getchar();
 }
 
 void Team::findPlayerByNameFootballTeam()
 {
-    bool kt = true;
+    int k = 1;
     cout << "Nhap ten doi bong can tim: ";
     String nameFB;
     String::getline(cin, nameFB);
@@ -299,59 +299,13 @@ void Team::findPlayerByNameFootballTeam()
                         break;
                 }
             }
-            if (nameTeam != nameFB)
-            
-                kt = false;
-                cout << "Doi bong " << nameFB << " khong ton tai" << endl;
-                break;
-            
-            // cout << id << " " << name << " " << date << " " << address << " " <<  age << " " << numberClo << " " << yellowCard << " " << redCard << " " << goal <<  " " << nameTeam << endl;
-        }
-        if(kt)
-            cout << left << setw(10) << "ID" << setw(15) << "Ten" << setw(15) << "DateOfBirth" << setw(20) << "Address" << setw(10) << "Age" << setw(15) << "NumberClothes" << setw(15) << "yellowCard" << setw(10) << "redCard" << setw(10) << "Goal" << setw(20) << "NameFootballTeam" << endl;
-        while (!i.eof())
-        {
-            String::getline(i, tmp);
-            int check = 1;
-            bool status = false;
-            String id, name, date, address, age, numberClo, yellowCard, redCard, goal, nameTeam;
-            for (int i = 0; i < tmp.size(); i++)
-            {
-                if (tmp[i] != ' ')
-                    status = true;
-                if (tmp[i] == ',')
-                {
-                    status = false;
-                    check++;
-                    continue;
-                }
-                if (check == 1 && status)
-                    id = id + tmp[i];
-                else if (check == 2 && status)
-                    name = name + tmp[i];
-                else if (check == 3 && status)
-                    date = date + tmp[i];
-                else if (check == 4 && status)
-                    address = address + tmp[i];
-                else if (check == 5 && status)
-                    age = age + tmp[i];
-                else if (check == 6 && status)
-                    numberClo = numberClo + tmp[i];
-                else if (check == 7 && status)
-                    yellowCard = yellowCard + tmp[i];
-                else if (check == 8 && status)
-                    redCard = redCard + tmp[i];
-                else if (check == 9 && status)
-                    goal = goal + tmp[i];
-                else if (check == 10 && status)
-                {
-                    nameTeam = nameTeam + tmp[i];
-                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
-                        break;
-                }
-            }
             if (nameTeam == nameFB)
             {
+                if(k == 1)
+                {
+                    cout << left << setw(10) << "ID" << setw(15) << "Ten" << setw(15) << "DateOfBirth" << setw(20) << "Address" << setw(10) << "Age" << setw(15) << "NumberClothes" << setw(15) << "yellowCard" << setw(10) << "redCard" << setw(10) << "Goal" << setw(20) << "NameFootballTeam" << endl;
+                    k++;
+                }
                 Player p(id, name, date, address, nameTeam, String_to_int(numberClo), String_to_int(goal), String_to_int(yellowCard), String_to_int(redCard));
                 p.show2();
                 val = false;
@@ -360,10 +314,10 @@ void Team::findPlayerByNameFootballTeam()
         }
     }
     i.close();
+    if (val)
+        cout << "Doi bong co ten " << nameFB << " khong ton tai!" << endl;
     cout << "Nhan Enter de tiep tuc ...";
     getchar();
-    //if (val)
-        //cout << "Khong tim thay ket qua!" << endl;
 }
 
 Vector<Player> Team::getListPlayerByNameFootballTeam(String nameFB)
@@ -499,13 +453,13 @@ void Team::findPlayerById()
     }
     i.close();
     if (val)
-        cout << "Khong tim thay ket qua!" << endl;
-    cout << endl
-         << "Nhan Enter de tiep tuc...";
+        cout << "Cau thu co CCCD la " << idPlayer << " khong ton tai!" << endl;
+    cout << "Nhan Enter de tiep tuc...";
     getchar();
 }
 void Team::createNewFootballTeam()
 {
+    // cout << "Khoi tao doi bong thanh cong!" << endl;
     system("cls");
     // cout << "Mo";
     String nameFootballTeam;
@@ -752,7 +706,8 @@ void Team::dkcDeleteTeamwithCoach(String tt)
 
 void Team::deleteTeamById()
 {
-    bool ck = false;
+    bool ck = true;
+    system("cls");
     String ma, thaythe;
     cout << "Nhap ID doi bong can xoa: ";
     String::getline(cin, ma);
@@ -804,13 +759,16 @@ void Team::deleteTeamById()
             }
 
             if (ma == id)
+            {
                 thaythe = nameTeam;
+                ck = false;
+            }
+
             else
             {
                 tempFile << tmp << endl;
-                ck = true;
+                // ck = true;
             }
-               
         }
         file.close();
         tempFile.close();
@@ -819,9 +777,11 @@ void Team::deleteTeamById()
     }
     else
         cout << "Khong mo dc file";
+    if (ck)
+        cout << "Doi bong co ID " << ma << " khong ton tai" << endl
+             << endl;
     dkcDeleteTeamwithPlayer(thaythe);
     dkcDeleteTeamwithCoach(thaythe);
-    if(ck) cout << "Doi bong co ID " << ma << " khong ton tai" << endl << endl;
 }
 
 void Team::saveTeamToFile(ofstream &o, int check)
@@ -979,15 +939,13 @@ Team Team::findTeamByName()
                 // return t;
                 // cout << id << " " << name << " " << date << " " << address << " " <<  age << " " << numberClo << " " << yellowCard << " " << redCard << " " << goal <<  " " << nameTeam << endl;
             }
-
         }
     }
-    if(kt) cout << "Doi bong " << tenDb << " khong ton tai!" << endl;
+    if (kt)
+        cout << "Doi bong " << tenDb << " khong ton tai!" << endl;
     cout << "Nhan Enter de tiep tuc ...";
     getchar();
-    
     return Team();
-    
 }
 
 Team Team::getTeamById(String idF)
@@ -1072,6 +1030,7 @@ void Team::testFile()
 }
 void Team::findCoachByNameFootballTeam()
 {
+    bool kt = true;
     cout << "Nhap ten doi bong can tim: ";
     String nameFB;
     String::getline(cin, nameFB);
@@ -1117,77 +1076,78 @@ void Team::findCoachByNameFootballTeam()
             // cout << nameTeam << " " << nameFB << endl;
             if (nameFB == nameTeam)
             {
+                kt = false;
                 Coach c(id, name, date, address, nameTeam);
                 c.show();
             }
-            else
-            {
-                cout << "Doi bong " << nameFB << " khong ton tai" << endl;
-                break;
-            }
         }
     }
-    cout << "Nhan Enter de tiep tuc";
+    if (kt)
+        cout << "Doi bong co ten " << nameFB << " khong ton tai!" << endl;
+    cout << "Nhan Enter de tiep tuc . .";
     getchar();
 }
 void Team::findCoachByID()
 {
+    bool kt = true;
     cout << "Nhap ID HLV can tim: ";
     String idHLV;
     String::getline(cin, idHLV);
     ifstream i("Coach.txt");
     String tmp;
-    String::getline(i, tmp);
     if (i.is_open())
     {
         String::getline(i, tmp);
-        int check = 1;
-        bool status = false;
-        String id, name, date, address, age, nameTeam;
-        for (int i = 0; i < tmp.size(); i++)
+        while (!i.eof())
         {
-            if (tmp[i] != ' ')
-                status = true;
-            if (tmp[i] == ',')
+            String::getline(i, tmp);
+            int check = 1;
+            bool status = false;
+            String id, name, date, address, age, nameTeam;
+            for (int i = 0; i < tmp.size(); i++)
             {
-                status = false;
-                check++;
-                continue;
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    name = name + tmp[i];
+                else if (check == 3 && status)
+                    date = date + tmp[i];
+                else if (check == 4 && status)
+                    address = address + tmp[i];
+                else if (check == 5 && status)
+                    age = age + tmp[i];
+                else if (check == 6 && status)
+                {
+                    nameTeam = nameTeam + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
             }
-            if (check == 1 && status)
-                id = id + tmp[i];
-            else if (check == 2 && status)
-                name = name + tmp[i];
-            else if (check == 3 && status)
-                date = date + tmp[i];
-            else if (check == 4 && status)
-                address = address + tmp[i];
-            else if (check == 5 && status)
-                age = age + tmp[i];
-            else if (check == 6 && status)
+            if (idHLV == id)
             {
-                nameTeam = nameTeam + tmp[i];
-                if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
-                    break;
+                kt = false;
+                Coach c(id, name, date, address, nameTeam);
+                c.show();
             }
-        }
-        if (idHLV == id)
-        {
-            Coach c(id, name, date, address, nameTeam);
-            c.show();
-        }
-        else
-        {
-            cout << "HVL co ID " << idHLV << " khong ton tai" << endl;
-            
         }
     }
+    if (kt)
+        cout << "HVL co ID " << idHLV << " khong ton tai" << endl;
     cout << "Nhan Enter de tiep tuc ...";
     getchar();
 }
 
 void Team::findCoachByName()
 {
+    bool kt = true;
     cout << "Nhap ten HLV can tim: ";
     String tenHLV;
     String::getline(cin, tenHLV);
@@ -1232,22 +1192,20 @@ void Team::findCoachByName()
             }
             if (tenHLV == name)
             {
+                kt = false;
                 Coach c(id, name, date, address, nameTeam);
                 c.show();
             }
-            else
-            {
-                cout << "HLV co ten " << tenHLV << " khong ton tai" << endl;
-                break;
-            }
         }
     }
+    if (kt)
+        cout << "HLV co ten " << tenHLV << " khong ton tai" << endl;
     cout << "Nhan Enter de tiep tuc ...";
     getchar();
 }
 void Team::updateTeam()
 {
-    bool ktra = false;
+    bool ktra = true;
     system("cls");
     String ma;
     cout << "Nhap ID doi bong can chinh sua: ";
@@ -1300,6 +1258,7 @@ void Team::updateTeam()
             }
             if (ma == id)
             {
+                ktra = false;
                 int u;
                 do
                 {
@@ -1312,6 +1271,7 @@ void Team::updateTeam()
                     cout << "4. Chinh sua Hieu so" << endl;
                     cout << "5. Chinh sua Diem" << endl;
                     cout << "6. Chinh sua Thu hang" << endl;
+                    cout << "0. Thoat" << endl;
                     cout << "Moi nhap lua chon: ";
                     int t;
                     cin >> t;
@@ -1491,10 +1451,12 @@ void Team::updateTeam()
                         cin >> newrank;
                         rank = String::tostring(newrank);
                         break;
+                    case 0:
+                        return;
                     default:
                         break;
                     }
-                    cout << "Go 1 ban muon tiep tuc chinh sua, 0 neu muon thoat: ";
+                    cout << "Go 1 neu ban muon quay lai chinh sua, go 0 neu muon thoat: ";
                     cin >> u;
                 } while (u == 1);
                 tempFile << left << setw(10) << id + "," << setw(20) << nameTeam + "," << setw(20) << numMember + "," << setw(15) << nameCoach + "," << setw(15) << numberGoal + "," << setw(15) << numberLoseGoal + "," << setw(15) << difference + "," << setw(15) << point + "," << setw(15) << rank << endl;
@@ -1502,11 +1464,10 @@ void Team::updateTeam()
             else
             {
                 tempFile << tmp << endl;
-                ktra = true;
-                // cout << "Doi bong co ID " << ma << " khong ton tai" << endl;
-                // break;
+                // ktra = true;
+                //  cout << "Doi bong co ID " << ma << " khong ton tai" << endl;
+                //  break;
             }
-                 
         }
         file.close();
         tempFile.close();
@@ -1515,7 +1476,9 @@ void Team::updateTeam()
     }
     else
         cout << "Khong mo dc file";
-    if(ktra) cout << "Doi bong co ID " << ma << " khong ton tai" << endl << endl;
+    if (ktra)
+        cout << "Doi bong co ID " << ma << " khong ton tai" << endl
+             << endl;
 }
 void Team::sortRankAllTeam()
 {
