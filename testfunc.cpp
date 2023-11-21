@@ -5,10 +5,8 @@
 // #include "LapLich/Algorithm.cpp"
 #include "Match/Match.h"
 #include "Match/HistoryMatch.h"
+#include "Algorithm.h"
 
-
-int main()
-{
-   Coach c;
-   c.deleteCoachById();
+int main() {
+   func();
 }

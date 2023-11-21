@@ -202,7 +202,7 @@ void func()
         while (!inf.eof())
         {
             String::getline(inf, tmp);
-            size++;
+            if(tmp[0] != ' ') size++;
             String myId;
             for (int i = 0; i < tmp.size(); i++)
             {
@@ -225,6 +225,7 @@ void func()
     cin >> m;
     cout << "Nhap nam: ";
     cin >> y;
+    cin.ignore();
     streambuf *coutbuf = cout.rdbuf();
     cout.rdbuf(outFile.rdbuf());
     writetofile(outFile, 1);
@@ -242,5 +243,5 @@ void func()
         Doi_Le(a, size);
     cout.rdbuf(coutbuf);
     outFile.close();
-    //cout << "Lap lich thanh cong!" << endl;
+    // cout << "Lap lich thanh cong!" << endl;
 }

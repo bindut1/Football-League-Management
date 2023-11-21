@@ -1,37 +1,30 @@
 Vong           ID Doi thu nhat     ID Doi thu hai      Thoi gian           Ngay thang nam           Dia diem            
-1,             1,                  ,                   7h00,               12/2/2004,               Dai hoc Bach Khoa Da Nang
-1,             2,                  7,                  9h00,               12/2/2004,               Dai hoc Bach Khoa Da Nang
-1,             3,                  15,                 15h00,              12/2/2004,               Dai hoc Bach Khoa Da Nang
-1,             4,                  5,                  17h00,              12/2/2004,               Dai hoc Bach Khoa Da Nang
+1,             1,                  15,                 7h00,               18/11/2023,              DUT                 
+1,             2,                  5,                  9h00,               18/11/2023,              Dai hoc Bach Khoa Da Nang
+1,             3,                  4,                  15h00,              18/11/2023,              Dai hoc Bach Khoa Da Nang
                                 
-2,             1,                  7,                  18h00,              14/2/2004,               Dai hoc Bach Khoa Da Nang
-2,             ,                   15,                 9h00,               14/2/2004,               Dai hoc Bach Khoa Da Nang
-2,             2,                  5,                  15h00,              14/2/2004,               Dai hoc Bach Khoa Da Nang
-2,             3,                  4,                  17h00,              14/2/2004,               Dai hoc Bach Khoa Da Nang
+2,             7,                  5,                  7h00,               20/11/2023,              Dai hoc Bach Khoa Da Nang
+2,             1,                  4,                  9h00,               20/11/2023,              Dai hoc Bach Khoa Da Nang
+2,             2,                  3,                  15h00,              20/11/2023,              Dai hoc Bach Khoa Da Nang
                                 
-3,             1,                  15,                 7h00,               16/2/2004,               Dai hoc Bach Khoa Da Nang
-3,             7,                  5,                  9h00,               16/2/2004,               Dai hoc Bach Khoa Da Nang
-3,             ,                   4,                  15h00,              16/2/2004,               Dai hoc Bach Khoa Da Nang
-3,             2,                  3,                  17h00,              16/2/2004,               Dai hoc Bach Khoa Da Nang
+3,             15,                 4,                  7h00,               22/11/2023,              Dai hoc Bach Khoa Da Nang
+3,             7,                  3,                  9h00,               22/11/2023,              Dai hoc Bach Khoa Da Nang
+3,             1,                  2,                  15h00,              22/11/2023,              Dai hoc Bach Khoa Da Nang
                                 
-4,             1,                  5,                  7h00,               18/2/2004,               Dai hoc Bach Khoa Da Nang
-4,             15,                 4,                  9h00,               18/2/2004,               Dai hoc Bach Khoa Da Nang
-4,             7,                  3,                  15h00,              18/2/2004,               Dai hoc Bach Khoa Da Nang
-4,             ,                   2,                  17h00,              18/2/2004,               Dai hoc Bach Khoa Da Nang
+4,             5,                  3,                  7h00,               24/11/2023,              Dai hoc Bach Khoa Da Nang
+4,             15,                 2,                  9h00,               24/11/2023,              Dai hoc Bach Khoa Da Nang
+4,             7,                  1,                  15h00,              24/11/2023,              Dai hoc Bach Khoa Da Nang
                                 
-5,             1,                  4,                  7h00,               20/2/2004,               Dai hoc Bach Khoa Da Nang
-5,             5,                  3,                  9h00,               20/2/2004,               Dai hoc Bach Khoa Da Nang
-5,             15,                 2,                  15h00,              20/2/2004,               Dai hoc Bach Khoa Da Nang
-5,             7,                  ,                   17h00,              20/2/2004,               Dai hoc Bach Khoa Da Nang
+5,             4,                  2,                  7h00,               26/11/2023,              Dai hoc Bach Khoa Da Nang
+5,             5,                  1,                  9h00,               26/11/2023,              Dai hoc Bach Khoa Da Nang
+5,             15,                 7,                  15h00,              26/11/2023,              Dai hoc Bach Khoa Da Nang
                                 
-6,             1,                  3,                  7h00,               22/2/2004,               Dai hoc Bach Khoa Da Nang
-6,             4,                  2,                  9h00,               22/2/2004,               Dai hoc Bach Khoa Da Nang
-6,             5,                  ,                   15h00,              22/2/2004,               Dai hoc Bach Khoa Da Nang
-6,             15,                 7,                  17h00,              22/2/2004,               Dai hoc Bach Khoa Da Nang
+6,             3,                  1,                  7h00,               28/11/2023,              Dai hoc Bach Khoa Da Nang
+6,             4,                  7,                  9h00,               28/11/2023,              Dai hoc Bach Khoa Da Nang
+6,             5,                  15,                 15h00,              28/11/2023,              Dai hoc Bach Khoa Da Nang
                                 
-7,             1,                  2,                  7h00,               24/2/2004,               Dai hoc Bach Khoa Da Nang
-7,             3,                  ,                   9h00,               24/2/2004,               Dai hoc Bach Khoa Da Nang
-7,             4,                  7,                  15h00,              24/2/2004,               Dai hoc Bach Khoa Da Nang
-7,             5,                  15,                 17h00,              24/2/2004,               Dai hoc Bach Khoa Da Nang
+7,             2,                  7,                  7h00,               30/11/2023,              Dai hoc Bach Khoa Da Nang
+7,             3,                  15,                 9h00,               30/11/2023,              Dai hoc Bach Khoa Da Nang
+7,             4,                  5,                  15h00,              30/11/2023,              Dai hoc Bach Khoa Da Nang
                                 
                                 

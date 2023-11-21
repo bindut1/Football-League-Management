@@ -6,6 +6,26 @@
 #include "Algorithm.h"
 #include <iomanip>
 using namespace std;
+int countLines(const char *filename)
+{
+    ifstream file(filename);
+    if (!file.is_open())
+    {
+        cerr << "Khong the mo file!" << endl;
+        return -1; 
+    }
+
+    int lineCount = 0;
+    String line;
+    String::getline(file, line);
+    while (!file.eof())
+    {
+        String::getline(file, line);
+        lineCount++;
+    }
+    file.close();
+    return lineCount;
+}
 
 bool isFileEmpty(const char *filename)
 {
@@ -31,6 +51,7 @@ int main()
     do
     {
         const char *filename = "Team.txt";
+        system("cls");
         cout << "1. Them mot doi bong." << endl;
         cout << "2. Truy van thong tin doi bong, cau thu va HLV." << endl;
         cout << "3. Cap nhat thong tin doi bong, cau thu va HLV." << endl;
@@ -40,18 +61,22 @@ int main()
         cout << "Xin moi nhap lua chon: ";
         cin >> lc;
         cin.ignore();
-        // system("cls");
         if (lc == 1)
         {
             system("cls");
             Team t;
             t.createNewFootballTeam();
+            system("cls");
             cout << "Khoi tao doi bong thanh cong!" << endl;
+            cout << "Nhan Enter de tiep tuc .." ; getchar();
         }
         else if (lc >= 2 && lc <= 5)
         {
-            if (isFileEmpty(filename))
+            if (isFileEmpty(filename)) {
+                system("cls");
                 cout << "Nhap du lieu cho doi bong truoc khi thuc hien chuc nang nay" << endl;
+                cout << "Nhan Enter de tiep tuc .."; getchar();
+            }
             else
             {
                 if (lc == 2)
@@ -139,7 +164,7 @@ int main()
                     int lc3;
                     do
                     {
-                        // system("cls");
+                        system("cls");
                         cout << "1. Cap nhat thong tin doi bong." << endl;
                         cout << "2. Cap nhat thong tin HLV." << endl;
                         cout << "3. Cap nhat thong tin cau thu." << endl;
@@ -154,12 +179,14 @@ int main()
                         {
                             Team t;
                             t.updateTeam();
+                            system("cls");
                             cout << "Cap nhat thong tin doi bong thanh cong" << endl;
                         }
                         else if (lc3 == 2)
                         {
                             Coach c;
                             c.updateCoach();
+                             system("cls");
                             cout << "Cap nhat thong tin HLV thanh cong" << endl;
                         }
                         else if (lc3 == 3)
@@ -186,13 +213,24 @@ int main()
                             p.deletePlayerById();
                             cout << "Xoa cau thu thanh cong" << endl;
                         }
+                      if(lc3!= 0)  {
+                         cout << "Nhan Enter de tiep tuc .." ; getchar();
+                      }
                     } while (lc3 != 0);
                 }
                 else if (lc == 4)
                 {
-                    // system("cls");
+                    if(countLines(filename)  <= 1) {
+                        system("cls");
+                        cout << "Phai co it nhat 2 doi de lap lich" << endl;
+                    }
+                    else {
+                    system("cls");
                     func();
+                    system("cls");
                     cout << "Lap lich thi dau thanh cong!" << endl;
+                    }
+                    cout << "Nhan Enter de tiep tuc .." ; getchar();
                 }
                 else if (lc == 5)
                 {

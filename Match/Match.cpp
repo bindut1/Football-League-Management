@@ -677,11 +677,11 @@ void Match::updateInforOfMatch()
     String::getline(cin, idTeam1);
     cout << "Nhap id doi thu hai: ";
     String::getline(cin, idTeam2);
-    system("cls");
     Match m = Match::getMatchByIdRoundAndIdTwoTeam(idRound, idTeam1, idTeam2);
     int lc;
     do
     {
+        system("cls");
         cout << "1.Thay doi thoi gian thi dau" << endl;
         cout << "2.Thay doi ngay thi dau" << endl;
         cout << "3.Thay doi thoi gian va ngay thi dau" << endl;
@@ -690,6 +690,7 @@ void Match::updateInforOfMatch()
         cout << "Nhap lua chon: ";
         cin >> lc;
         cin.ignore();
+        system("cls");
         if (lc == 1)
         {
             cout << "Nhap thoi gian thi dau moi: ";
@@ -720,7 +721,9 @@ void Match::updateInforOfMatch()
             String::getline(cin, addressNew);
             this->updateMatch(addressNew, m, 3);
         }
-
+        if(lc!=0) {
+            cout << "Nhan Enter de tiep tuc .."; getchar();
+        }
     } while (lc != 0);
 }
 
