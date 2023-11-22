@@ -1622,6 +1622,151 @@ void Team::updateTeamAfterMatch(String idCheck, int goal, int loseGoal, int bonu
     rename(tmp1, "Team.txt");
 }
 
+void Team::addTeamFromFile() {
+    char filename[256];
+    cout << "Nhap ten file chua Team: ";
+    cin.getline(filename,256);
+    ifstream i(filename);
+    if (i.is_open())
+    {
+        String tmp;
+        String::getline(i, tmp);
+        while (!i.eof())
+        {
+            String::getline(i, tmp);
+            int check = 1;
+            bool status = false;
+            String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+            for (int i = 0; i < tmp.size(); i++)
+            {
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    nameTeam = nameTeam + tmp[i];
+                else if (check == 3 && status)
+                    numMember = numMember + tmp[i];
+                else if (check == 4 && status)
+                    nameCoach = nameCoach + tmp[i];
+                else if (check == 5 && status)
+                    numberGoal = numberGoal + tmp[i];
+                else if (check == 6 && status)
+                    numberLoseGoal = numberLoseGoal + tmp[i];
+                else if (check == 7 && status)
+                    difference = difference + tmp[i];
+                else if (check == 8 && status)
+                    point = point + tmp[i];
+                else if (check == 9 && status && tmp[i] != '\n')
+                {
+                    rank = rank + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
+            }
+                Coach c = this->getCoachByNameFootballTeam(nameTeam);
+                Team t(nameTeam, c, String::toint(rank), String::toint(numberGoal), String::toint(numberLoseGoal), String::toint(point));
+                
+                t.setIdTeam(id);
+                t.setListMember(this->getListPlayerByNameFootballTeam(nameTeam));
+                // t.showALLInforOfTeam();
+                cout << this->listMember.size() << endl;
+                ofstream o("Team.txt",ios::app);
+                t.saveTeamToFile(o);
+            }   
+        }
+}
+void Team::increaseNumberOfTeam(String tt,int ofset) {
+    int num;
+    ifstream file("Team.txt");
+    ofstream tempFile("tempTeam.txt");
+    tempFile << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Rank" << endl;
+    cout << "Dang o day" << endl;
+    if (file.is_open() && tempFile.is_open())
+    {
+        cout << "Vao roi ne" << endl;
+        String tmp; 
+        String::getline(file, tmp);
+        while (!file.eof())
+        {
+            String::getline(file, tmp);
+            int check = 1;
+            bool status = false;
+            String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+            for (int i = 0; i < tmp.size(); i++)
+            {
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    nameTeam = nameTeam + tmp[i];
+                else if (check == 3 && status)
+                    numMember = numMember + tmp[i];
+                else if (check == 4 && status)
+                    nameCoach = nameCoach + tmp[i];
+                else if (check == 5 && status)
+                    numberGoal = numberGoal + tmp[i];
+                else if (check == 6 && status)
+                    numberLoseGoal = numberLoseGoal + tmp[i];
+                else if (check == 7 && status)
+                    difference = difference + tmp[i];
+                else if (check == 8 && status)
+                    point = point + tmp[i];
+                else if (check == 9 && status && tmp[i] != '\n')
+                {
+                    rank = rank + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
+            }
+            if(tt == id)
+            {
+                num = String::toint(numMember) + ofset;
+                cout << nameTeam << " " << num << endl;
+                numMember = String::tostring(num);
+                tempFile << left << setw(10) << id + "," << setw(20) << nameTeam + "," << setw(20) << numMember + "," << setw(15) << nameCoach + "," << setw(15) << numberGoal + "," << setw(15) << numberLoseGoal + "," << setw(15) << difference + "," << setw(15) << point + "," << setw(15) << rank << endl;
+            }
+            else    
+                tempFile << tmp << endl;
+        
+        }
+        file.close();
+        tempFile.close();
+        remove("Team.txt");
+        rename("tempTeam.txt", "Team.txt");
+    }
+    else
+        cout << "Khong mo dc file";
+}
+void Team::addPlayerToTeam() {
+    String idTeam;
+    cout << "Nhap ID doi bong can them: ";
+    String::getline(cin,idTeam);
+    Player p;
+    p.enterInforPlayer();
+    Team t;
+    t = t.getTeamById(idTeam);
+    p.setNameFootballTeam(t.getNameFootballTeam());
+    t.increaseNumberOfTeam(idTeam);
+    ofstream o("Player.txt",ios::app);
+    p.savePlayerToFile(o);
+}
+
+
+
 int Team::String_to_int(String x)
 {
     char a[x.size()];

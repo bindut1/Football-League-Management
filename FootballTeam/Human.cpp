@@ -30,7 +30,7 @@ Human::~Human()
 
 void Human::show()
 {
-    cout << this->id << ", " << this->name << ", " << this->dateOfBirth << ", " << this->address << ", " << this->age;
+    cout << this->id << ", " << this->name << ", " << this->dateOfBirth << ", " << this->address << ", " << this->age << endl;
 }
 
 String Human::getId()

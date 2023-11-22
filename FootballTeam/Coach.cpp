@@ -88,9 +88,10 @@ Coach Coach::getCoachByNameFootballTeam(String nameFB)
 {
     ifstream i("Coach.txt");
     String tmp;
-    String::getline(i, tmp);
     if (i.is_open())
     {
+        String::getline(i, tmp);
+        while(!i.eof()) {
         String::getline(i, tmp);
         int check = 1;
         bool status = false;
@@ -125,6 +126,7 @@ Coach Coach::getCoachByNameFootballTeam(String nameFB)
         if (nameFB == nameTeam)
         {
             Coach c(id, name, date, address, nameTeam);
+        }
         }
     }
     return Coach();
@@ -506,4 +508,55 @@ void Coach::deleteCoachById()
     if(kt) cout << "HLV co ID " << ma << " khong ton tai" << endl << endl;
     dkcDeleteCoach(thaythe);   
 }
-
+void Coach::addCoachFromFile() {
+    char filename[256];
+    cout << "Nhap ten file chua Coach: ";
+    cin.getline(filename,256);
+    ifstream i(filename);
+    if (i.is_open())
+    {
+        String tmp;
+        String::getline(i, tmp);
+        while (!i.eof())
+        {
+            String::getline(i, tmp);
+            int check = 1;
+            bool status = false;
+            String id, name, date, address, age, nameTeam;
+            for (int i = 0; i < tmp.size(); i++)
+            {
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    name = name + tmp[i];
+                else if (check == 3 && status)
+                    date = date + tmp[i];
+                else if (check == 4 && status)
+                    address = address + tmp[i];
+                else if (check == 5 && status)
+                    age = age + tmp[i];
+                else if (check == 6 && status)
+                {
+                    nameTeam = nameTeam + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
+            }
+                Coach c(id, name, date, address, nameTeam);
+                ofstream o("Coach.txt",ios::app);
+                c.saveInforIntoFile(o);
+            
+        }
+    }
+    else {
+        cout << "Khong the mo file";
+    }
+}

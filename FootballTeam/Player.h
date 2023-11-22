@@ -37,5 +37,6 @@ public:
     //void dkcDeleteTeam(String);
     void deletePlayerById();
     void dkcdeletePlayer(String);
+    void addPlayerFromFile();
 };
 #endif

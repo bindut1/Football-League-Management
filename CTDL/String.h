@@ -214,6 +214,11 @@ public:
         }
         return tmp;
     }
+    void toCharArray(char a[]) {
+        for(int i=0;i<this->size();i++) {
+            a[i] = this->m[i];
+        }
+    }
 };
 
 #endif

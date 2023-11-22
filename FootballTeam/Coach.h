@@ -20,6 +20,7 @@ class Coach : public Human
         void updateCoach();
         void deleteCoachById();
         void dkcDeleteCoach(String);
+        void addCoachFromFile();
 };
 
 #endif

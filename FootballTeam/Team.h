@@ -73,6 +73,9 @@ public:
     int getGoal();
     int getLoseGoal();
     void updateTeamAfterMatch(String, int, int, int);
+    void addTeamFromFile();
+    void increaseNumberOfTeam(String,int = 1);
+    void addPlayerToTeam();
 };
 
 #endif

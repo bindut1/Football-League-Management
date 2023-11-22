@@ -8,5 +8,6 @@
 #include "Algorithm.h"
 
 int main() {
-   func();
+   Team t;
+   t.addPlayerToTeam();
 }

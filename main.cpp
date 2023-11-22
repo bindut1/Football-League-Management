@@ -63,12 +63,33 @@ int main()
         cin.ignore();
         if (lc == 1)
         {
-            system("cls");
-            Team t;
-            t.createNewFootballTeam();
-            system("cls");
-            cout << "Khoi tao doi bong thanh cong!" << endl;
-            cout << "Nhan Enter de tiep tuc .." ; getchar();
+            int lc1;
+            do {
+                system("cls");
+                cout << "1.Nhap du lieu doi bong tu ban phim" << endl;
+                cout << "2.Nhap du lieu doi bong tu file" << endl;
+                cout << "0.Quay lai"<< endl;
+                cout << "Nhap lua chon: "; cin >> lc1;
+                cin.ignore();
+                system("cls");
+                if(lc1 == 1) {
+                    Team t;
+                    t.createNewFootballTeam();
+                    system("cls");
+                    cout << "Them doi doi bong thanh cong!" << endl;
+                    cout << "Nhan Enter de tiep tuc .." ; getchar();
+                }
+                else if(lc1 == 2) {
+                    Team t;
+                    Player p;
+                    Coach c;
+                    t.addTeamFromFile();
+                    p.addPlayerFromFile();
+                    c.addCoachFromFile();
+                    cout << "Them doi bong thanh cong!" << endl;
+                    cout << "Nhan Enter de tiep tuc .." ; getchar();
+                }
+            }while(lc1!=0);
         }
         else if (lc >= 2 && lc <= 5)
         {
@@ -177,10 +198,27 @@ int main()
                         cin.ignore();
                         if (lc3 == 1)
                         {
-                            Team t;
-                            t.updateTeam();
-                            system("cls");
-                            cout << "Cap nhat thong tin doi bong thanh cong" << endl;
+                            int lc31;
+                            do {
+                                cout <<"1.Them cau thu vao doi bong" << endl;
+                                cout <<"2.Chinh sua thong tin doi bong" << endl;
+                                cout <<"0.Quay lai" << endl;
+                                cout <<"Nhap lua chon: "; cin >> lc31; cin.ignore();
+                                Team t;
+                                system("cls");
+                                if(lc31 == 1) {
+                                    t.addPlayerToTeam();
+                                }
+                                else if(lc31 == 2) {
+                                    t.updateTeam();
+
+                                }
+                                if(lc31!= 0) {
+                                    system("cls");
+                                    cout << "Cap nhat thong tin doi bong thanh cong" << endl;
+                                    cout << "Nhan phim bat ki de tiep tuc .."; getchar();
+                                }
+                            }while(lc31!=0);
                         }
                         else if (lc3 == 2)
                         {
