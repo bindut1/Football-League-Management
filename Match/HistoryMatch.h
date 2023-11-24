@@ -12,4 +12,5 @@ public:
     void showHistoryMatch();
     void saveHistoryMatchToFile(ofstream &);
     void updateHistoryMatch();
+    void updateGoalandLostGoalofTeam(String, String, String);
 };

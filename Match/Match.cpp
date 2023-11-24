@@ -1,5 +1,6 @@
 #include "Match.h"
 #include <iostream>
+#include <thread>
 #include <iomanip>
 using namespace std;
 
@@ -22,6 +23,7 @@ Match::Match(const Team &a, const Team &b, String address, String time, String d
 
 void Match::showMatch()
 {
+    this_thread::sleep_for(chrono::milliseconds(100));
     cout << "Vong dau so " << this->idRound << endl;
     cout << left << setw(50) << this->v[0].getNameFootballTeam() << this->v[1].getNameFootballTeam() << endl;
     cout << setw(20) << this->time << setw(20) << this->date << endl;
@@ -151,6 +153,7 @@ Vector<Match> Match::getAllMatchFromFile()
 void Match::findMatchByIdTeam()
 {
     bool kt = true;
+    cout << "QUAN LY GIAI DAU/Truy van thong tin tran dau/Truy van thong tin tran dau theo ID doi" << endl << endl;
     cout << "Nhap ID doi can tim: ";
     String idFind;
     String::getline(cin, idFind);
@@ -293,6 +296,7 @@ Vector<Match> Match::getListMatchByIdTeam()
 void Match::findMatchByDay()
 {
     bool val = true;
+    cout << "QUAN LY GIAI DAU/Truy van thong tin tran dau/Truy van thong tin tran dau theo ngay" << endl << endl;
     cout << "Nhap ngay can tim (dd/mm/yyyy): ";
     String dayFind;
     String::getline(cin, dayFind);
@@ -365,6 +369,7 @@ void Match::findMatchByDay()
 void Match::findMatchByNameTeam()
 {
     bool val = true;
+    cout << "QUAN LY GIAI DAU/Truy van thong tin tran dau/Truy van thong tin tran dau theo ten 1 doi" << endl << endl;
     cout << "Nhap ten doi bong can tim: ";
     String nameTeamFind;
     String::getline(cin, nameTeamFind);
@@ -437,6 +442,7 @@ void Match::findMatchByNameTeam()
 void Match::findMatchByTwoNameTeam()
 {
     bool val = true;
+    cout << "QUAN LY GIAI DAU/Truy van thong tin tran dau/Truy van thong tin tran dau theo ten 2 doi" << endl << endl;
     cout << "Nhap ten doi thu nhat: ";
     String nameTeam1;
     String::getline(cin, nameTeam1);
@@ -661,7 +667,6 @@ void Match::updateMatch(String t, Match m1, int checkCase, String td)
     }
     f.close();
     o.close();
-
     const char *i1("Schedule.txt");
     const char *tmp1("Tmp.txt");
     remove(i1);
@@ -670,29 +675,41 @@ void Match::updateMatch(String t, Match m1, int checkCase, String td)
 
 void Match::updateInforOfMatch()
 {
+    system("cls");
     String idRound, idTeam1, idTeam2;
+    cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Chinh sua thong tin tran dau" << endl << endl;
     cout << "Nhap so vong dau: ";
     String::getline(cin, idRound);
     cout << "Nhap id doi thu nhat: ";
     String::getline(cin, idTeam1);
     cout << "Nhap id doi thu hai: ";
     String::getline(cin, idTeam2);
+    if(checkMatch(idRound, idTeam1, idTeam2))
+    {
+        cout << "Khong tim thay tran dau nao" << endl;
+        cout << "Nhan Enter de tiep tuc . .";
+        getchar();
+        return;
+    }
     Match m = Match::getMatchByIdRoundAndIdTwoTeam(idRound, idTeam1, idTeam2);
     int lc;
     do
     {
         system("cls");
-        cout << "1.Thay doi thoi gian thi dau" << endl;
-        cout << "2.Thay doi ngay thi dau" << endl;
-        cout << "3.Thay doi thoi gian va ngay thi dau" << endl;
-        cout << "4.Thay doi dia diem thi dau" << endl;
-        cout << "0.Quay lai" << endl;
+        cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Chinh sua thong tin tran dau" << endl << endl;
+        cout << "1. Thay doi thoi gian thi dau" << endl;
+        cout << "2. Thay doi ngay thi dau" << endl;
+        cout << "3. Thay doi thoi gian va ngay thi dau" << endl;
+        cout << "4. Thay doi dia diem thi dau" << endl;
+        cout << "0. Quay lai" << endl;
         cout << "Nhap lua chon: ";
         cin >> lc;
         cin.ignore();
         system("cls");
         if (lc == 1)
         {
+            system("cls");
+            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Chinh sua thong tin tran dau/Thay doi thoi gian thi dau" << endl << endl;
             cout << "Nhap thoi gian thi dau moi: ";
             String timeNew;
             String::getline(cin, timeNew);
@@ -700,6 +717,8 @@ void Match::updateInforOfMatch()
         }
         else if (lc == 2)
         {
+            system("cls");
+            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Chinh sua thong tin tran dau/Thay doi ngay thi dau" << endl << endl;
             cout << "Nhap ngay thi dau moi (dd/mm/yyyy): ";
             String dateNew;
             String::getline(cin, dateNew);
@@ -707,6 +726,8 @@ void Match::updateInforOfMatch()
         }
         else if (lc == 3)
         {
+            system("cls");
+            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Chinh sua thong tin tran dau/Thay doi thoi gian va ngay thi dau" << endl << endl;
             String timeNew, dateNew;
             cout << "Nhap thoi gian thi dau moi: ";
             String::getline(cin, timeNew);
@@ -716,6 +737,8 @@ void Match::updateInforOfMatch()
         }
         else if (lc == 4)
         {
+            system("cls");
+            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Chinh sua thong tin tran dau/Thay doi dia diem thi dau" << endl << endl;
             String addressNew;
             cout << "Nhap dia chi thi dau moi: ";
             String::getline(cin, addressNew);
@@ -725,6 +748,8 @@ void Match::updateInforOfMatch()
             cout << "Nhan Enter de tiep tuc .."; getchar();
         }
     } while (lc != 0);
+    cout << "Cap nhat thong tin tran dau thanh cong" << endl;
+    cout << "Nhan phim bat ki de tiep tuc .." << endl;
 }
 
 void Match::deleteMatchByIdRoundAndTwoTeam(Match &m1)
@@ -802,16 +827,207 @@ void Match::deleteMatchByIdRoundAndTwoTeam(Match &m1)
     rename(tmp1, "Schedule.txt");
 }
 
+
+bool Match::checkMatch(String idvong, String id1, String id2)
+{
+    bool kt = true;
+    ifstream f("Schedule.txt");
+    if (f.is_open())
+    {
+        String tmp;
+        String::getline(f, tmp);
+        while (!f.eof())
+        {
+            String tmp;
+            String::getline(f, tmp);
+            if (String::toint(tmp[0]) != 0)
+            {
+                int check = 1;
+                bool status = false;
+                String idRound, idTeam1, idTeam2, time, date, address;
+                for (int i = 0; i < tmp.size(); i++)
+                {
+                    if (tmp[i] != ' ')
+                        status = true;
+                    if (tmp[i] == ',')
+                    {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if (check == 1 && status)
+                        idRound = idRound + tmp[i];
+                    else if (check == 2 && status)
+                        idTeam1 = idTeam1 + tmp[i];
+                    else if (check == 3 && status)
+                        idTeam2 = idTeam2 + tmp[i];
+                    else if (check == 4 && status)
+                        time = time + tmp[i];
+                    else if (check == 5 && status)
+                        date = date + tmp[i];
+                    else if (check == 6 && status)
+                    {
+                        address = address + tmp[i];
+                        if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                            break;
+                    }
+                }
+                if (idRound == idvong && idTeam1 == id1 && idTeam2 == id2)
+                {
+                    kt = false;
+                }
+            }
+        }
+    }
+    return kt;
+}
+
+bool Match::checkPlayer(String idcheck)
+{
+    bool kt = true;
+    ifstream file("Player.txt");
+    if (file.is_open())
+    {
+        String tmp;
+        String::getline(file, tmp);
+        while (!file.eof())
+        {
+            String::getline(file, tmp);
+            int check = 1;
+            bool status = false;
+            String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+            for (int i = 0; i < tmp.size(); i++)
+            {
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    nameTeam = nameTeam + tmp[i];
+                else if (check == 3 && status)
+                    numMember = numMember + tmp[i];
+                else if (check == 4 && status)
+                    nameCoach = nameCoach + tmp[i];
+                else if (check == 5 && status)
+                    numberGoal = numberGoal + tmp[i];
+                else if (check == 6 && status)
+                    numberLoseGoal = numberLoseGoal + tmp[i];
+                else if (check == 7 && status)
+                    difference = difference + tmp[i];
+                else if (check == 8 && status)
+                    point = point + tmp[i];
+                else if (check == 9 && status && tmp[i] != '\n')
+                {
+                    rank = rank + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
+            }
+            if (idcheck == id)
+            {
+                kt = false;
+            }
+        }
+    }
+    return kt;
+}
+
+void Match::showPlayerofTeam(String nameTeam)
+{
+    Team t;
+    t.setListMember(t.getListPlayerByNameFootballTeam(nameTeam));
+    cout << left << setw(10) << "ID" << setw(15) << "Ten cau thu" << setw(15) << "Ngay sinh" << setw(20) << "Dia chi" << setw(10) << "Tuoi" << setw(15) << "So ao" << setw(15) << "The vang" << setw(10) << "The do" << setw(10) << "Ban thang" << setw(20) << "Ten doi bong" << endl;
+    for (int i = 0; i < t.getlistMember().size() ; i++)
+    {
+        t.getlistMember()[i].show2();
+    }
+}
+
+String Match::returnNameTeamByID(String Id)
+{  
+    ifstream i("Team.txt");
+    String a = "Khong tim thay ID doi bong";
+    if (i.is_open())
+    {
+        String tmp;
+        String::getline(i, tmp);
+        while (!i.eof())
+        {
+            String::getline(i, tmp);
+            int check = 1;
+            bool status = false;
+            String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+            for (int i = 0; i < tmp.size(); i++)
+            {
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    nameTeam = nameTeam + tmp[i];
+                else if (check == 3 && status)
+                    numMember = numMember + tmp[i];
+                else if (check == 4 && status)
+                    nameCoach = nameCoach + tmp[i];
+                else if (check == 5 && status)
+                    numberGoal = numberGoal + tmp[i];
+                else if (check == 6 && status)
+                    numberLoseGoal = numberLoseGoal + tmp[i];
+                else if (check == 7 && status)
+                    difference = difference + tmp[i];
+                else if (check == 8 && status)
+                    point = point + tmp[i];
+                else if (check == 9 && status && tmp[i] != '\n')
+                {
+                    rank = rank + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
+            }
+            if (Id == id)
+            {
+                i.close();
+                return nameTeam;
+            }
+        }
+    }
+    return a;
+}
+
 void Match::enterResultMatch()
 {
-    String idRound, idTeam1, idTeam2;
+    system("cls");
+    String idvong, id1, id2;
+    cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Them ket qua cho tran dau" << endl << endl;
     cout << "Nhap ID vong dau: ";
-    String::getline(cin, idRound);
+    String::getline(cin, idvong);
     cout << "Nhap ID doi thu nhat: ";
-    String::getline(cin, idTeam1);
+    String::getline(cin, id1);
     cout << "Nhap ID doi thu hai: ";
-    String::getline(cin, idTeam2);
-    Match m = Match::getMatchByIdRoundAndIdTwoTeam(idRound, idTeam1, idTeam2);
+    String::getline(cin, id2);
+    if (checkMatch(idvong, id1, id2))
+    {
+        cout << "Khong tim thay tran dau nao!" << endl;
+        cout << "Nhan Enter de tiep tuc . .";
+        getchar();
+        return;
+    }
+    String name1 = returnNameTeamByID(id1);
+    String name2 = returnNameTeamByID(id2);
+    Match m = Match::getMatchByIdRoundAndIdTwoTeam(idvong, id1, id2);
+    // cin.ignore();
     int lc;
     int g1, g2;
     cout << "Nhap so ban thang cua doi thu nhat: ";
@@ -822,27 +1038,28 @@ void Match::enterResultMatch()
     Team t;
     if (g1 > g2)
     {
-        t.updateTeamAfterMatch(idTeam1, g1, g2, 3);
-        t.updateTeamAfterMatch(idTeam2, g2, g1, 0);
+        t.updateTeamAfterMatch(id1, g1, g2, 3);
+        t.updateTeamAfterMatch(id2, g2, g1, 0);
         t.sortRankAllTeam();
     }
     else if (g1 < g2)
     {
-        t.updateTeamAfterMatch(idTeam1, g1, g2, 0);
-        t.updateTeamAfterMatch(idTeam2, g2, g1, 3);
+        t.updateTeamAfterMatch(id1, g1, g2, 0);
+        t.updateTeamAfterMatch(id2, g2, g1, 3);
         t.sortRankAllTeam();
     }
     else
     {
-        t.updateTeamAfterMatch(idTeam1, g1, g2, 1);
-        t.updateTeamAfterMatch(idTeam2, g2, g1, 1);
+        t.updateTeamAfterMatch(id1, g1, g2, 1);
+        t.updateTeamAfterMatch(id2, g2, g1, 1);
         t.sortRankAllTeam();
     }
     m.deleteMatchByIdRoundAndTwoTeam(m);
-    m.saveToHistoryMatch(idTeam1, idTeam2, g1, g2);
+    m.saveToHistoryMatch(id1, id2, g1, g2);
     do
     {
         system("cls");
+        cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Them ket qua cho tran dau" << endl << endl;
         cout << "1. Nhap ban thang cho cau thu" << endl;
         cout << "2. Nhap the vang cho cau thu" << endl;
         cout << "3. Nhap the do cho cau thu" << endl;
@@ -852,28 +1069,80 @@ void Match::enterResultMatch()
         cin.ignore();
         if (lc == 1)
         {
+            system("cls");
             String id, goal;
+            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Them ket qua cho tran dau/Nhap ban thang cho cau thu" << endl << endl;
+            cout << "Danh sach cau thu cua doi bong co ID la " << id1 << " (" << name1 << ")" << endl;
+            showPlayerofTeam(name1);
+            cout << endl;
+            cout << "Danh sach cau thu cua doi bong co ID la " << id2 << " (" << name2 << ")" << endl;
+            showPlayerofTeam(name2);
+            //getchar();
             cout << "Nhap ID cau thu ghi ban: ";
             String::getline(cin, id);
-            cout << "Nhap so bang thang: ";
-            String::getline(cin, goal);
-            Player::updatePlayerAfterMatch(id, 0, 0, String::toint(goal));
+            if (checkPlayer(id) == false)
+            {
+                cout << "Nhap so ban thang: ";
+                String::getline(cin, goal);
+                Player::updatePlayerAfterMatch(id, 0, 0, String::toint(goal));
+            }
+            else
+            {
+                cout << "Cau thu co id " << id << " khong ton tai" << endl;
+                cout << "Nhan Enter de tiep tuc . .";
+                getchar();      
+            }
         }
         else if (lc == 2)
         {
+            system("cls");
             String id, numYlCard;
+            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Them ket qua cho tran dau/Nhap the vang cho cau thu" << endl << endl;
+            cout << "Danh sach cau thu cua doi bong co ID la " << id1 << " (" << name1 << ")" << endl;
+            showPlayerofTeam(name1);
+            cout << endl;
+            cout << "Danh sach cau thu cua doi bong co ID la " << id2 << " (" << name2 << ")" << endl;
+            showPlayerofTeam(name2);
             cout << "Nhap ID cau thu bi the vang: ";
             String::getline(cin, id);
-            cout << "Nhap so the vang: ";
-            String::getline(cin, numYlCard);
-            Player::updatePlayerAfterMatch(id, String::toint(numYlCard), 0, 0);
+            if (checkPlayer(id) == false)
+            {
+
+                cout << "Nhap so the vang: ";
+                String::getline(cin, numYlCard);
+                Player::updatePlayerAfterMatch(id, String::toint(numYlCard), 0, 0);
+            }
+            else
+            {
+                cout << "Cau thu co ID " << id << " khong ton tai" << endl;
+                cout << "Nhan Enter de tiep tuc . .";
+                getchar();
+            }
+                
         }
         else if (lc == 3)
         {
+            system("cls");
             String id;
+            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau/Them ket qua cho tran dau/Nhap the do cho cau thu" << endl << endl;
+            cout << "Danh sach cau thu cua doi bong co ID la " << id1 << " (" << name1 << ")" << endl;
+            showPlayerofTeam(name1);
+            cout << endl;
+            cout << "Danh sach cau thu cua doi bong co ID la " << id2 << " (" << name2 << ")" << endl;
+            showPlayerofTeam(name2);
             cout << "Nhap ID cau thu bi the do: ";
             String::getline(cin, id);
-            Player::updatePlayerAfterMatch(id, 0, 1, 0);
+            if (checkPlayer(id) == false)
+            {
+                Player::updatePlayerAfterMatch(id, 0, 1, 0);
+            }
+            else
+            {
+                cout << "Cau thu co ID " << id << " khong ton tai" << endl;
+                cout << "Nhan Enter de tiep tuc . .";
+                getchar();
+            }
+                
         }
 
     } while (lc != 0);

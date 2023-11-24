@@ -146,7 +146,7 @@ void Doi_Chan(int a[], int size)
 
             cout << left << setw(15) << String::tostring(i) + "," << setw(20) << String::tostring(a[j]) + "," << setw(20) << String::tostring(a[size - 1 - j]) + "," << d << endl;
             d.increaseTime();
-            //    this_thread::sleep_for(chrono::milliseconds(100));
+            // this_thread::sleep_for(chrono::milliseconds(100));
         }
         cout << endl;
         if (d.getHour() != 7)
@@ -202,6 +202,9 @@ void func()
         while (!inf.eof())
         {
             String::getline(inf, tmp);
+            if(tmp[0] == ' ' || tmp.size() <=1 || tmp[0] == '\n') {
+                break;
+            }
             if(tmp[0] != ' ') size++;
             String myId;
             for (int i = 0; i < tmp.size(); i++)
@@ -218,6 +221,7 @@ void func()
         a[i] = v[i];
     // 1 10 2 3 4 5 6 7 8 9
     int day, m, y;
+    cout << "KHOI TAO GIAI DAU/Lap lich thi dau" << endl << endl;
     cout << "Nhap thoi gian bat dau \n";
     cout << "Nhap ngay: ";
     cin >> day;

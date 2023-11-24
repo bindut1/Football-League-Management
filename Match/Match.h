@@ -43,5 +43,9 @@ public:
     String getIdTeam2();
     void enterResultMatch();
     void saveToHistoryMatch(String, String, int, int);
+    bool checkMatch(String, String, String);
+    bool checkPlayer(String);
+    void showPlayerofTeam(String);
+    String returnNameTeamByID(String);
 };
 #endif

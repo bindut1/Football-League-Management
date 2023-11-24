@@ -26,6 +26,7 @@ public:
     Team();
     Team(String, Coach, int, int, int, int);
     ~Team();
+    Vector<Player> getlistMember();
     void createNewFootballTeam();
     String getIdTeam();
     void setIdTeam(String);

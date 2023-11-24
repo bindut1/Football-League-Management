@@ -8,6 +8,6 @@
 #include "Algorithm.h"
 
 int main() {
-   Team t;
-   t.addPlayerToTeam();
+   HistoryMatch h;
+   h.updateHistoryMatch();
 }

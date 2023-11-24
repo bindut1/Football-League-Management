@@ -16,7 +16,7 @@ Coach::~Coach()
 
 void Coach::show()
 {
-    cout << left << setw(10) << "ID" << setw(20) << "Name" << setw(20) << "DateOfBirth" << setw(30) << "Address" << setw(20) << "Age" << setw(20) << "NameFootballTeam" << endl;
+    cout << left << setw(10) << "ID" << setw(20) << "Ten HLV" << setw(20) << "Ngay sinh" << setw(30) << "Dia chi" << setw(20) << "Tuoi" << setw(20) << "Ten doi bong" << endl;
     cout << left << setw(10) << this->id << setw(20) << this->name << setw(20) << this->dateOfBirth << setw(30) << this->address << setw(20) << this->age << setw(20) << this->nameFootballTeam << endl;
 }
 
@@ -32,7 +32,9 @@ String Coach::getNameFootballTeam()
 
 void Coach::enterInforCoach()
 {
+    system("cls");
     String id, name, date, address;
+    cout << "KHOI TAO GIAI DAU/Them mot doi bong/Them doi bong thu cong/Them HLV cho doi bong" << endl << endl;
     cout << "Nhap CCCD cua HLV: ";
     String::getline(cin, id);
     cout << "Nhap ho va ten cua HLV: ";
@@ -69,7 +71,7 @@ void Coach::saveInforIntoFile(ofstream &o)
         f.seekg(0, ios::end);
         if (f.tellg() == 0)
         {
-            o << left << setw(15) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(20) << "NameFootball Team";
+            o << left << setw(10) << "ID" << setw(20) << "Ten HLV" << setw(20) << "Ngay sinh" << setw(30) << "Dia chi" << setw(20) << "Tuoi" << setw(20) << "Ten doi bong";
         }
         f.close();
     }
@@ -91,42 +93,43 @@ Coach Coach::getCoachByNameFootballTeam(String nameFB)
     if (i.is_open())
     {
         String::getline(i, tmp);
-        while(!i.eof()) {
-        String::getline(i, tmp);
-        int check = 1;
-        bool status = false;
-        String id, name, date, address, age, nameTeam;
-        for (int i = 0; i < tmp.size(); i++)
+        while (!i.eof())
         {
-            if (tmp[i] != ' ')
-                status = true;
-            if (tmp[i] == ',')
+            String::getline(i, tmp);
+            int check = 1;
+            bool status = false;
+            String id, name, date, address, age, nameTeam;
+            for (int i = 0; i < tmp.size(); i++)
             {
-                status = false;
-                check++;
-                continue;
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    name = name + tmp[i];
+                else if (check == 3 && status)
+                    date = date + tmp[i];
+                else if (check == 4 && status)
+                    address = address + tmp[i];
+                else if (check == 5 && status)
+                    age = age + tmp[i];
+                else if (check == 6 && status)
+                {
+                    nameTeam = nameTeam + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
             }
-            if (check == 1 && status)
-                id = id + tmp[i];
-            else if (check == 2 && status)
-                name = name + tmp[i];
-            else if (check == 3 && status)
-                date = date + tmp[i];
-            else if (check == 4 && status)
-                address = address + tmp[i];
-            else if (check == 5 && status)
-                age = age + tmp[i];
-            else if (check == 6 && status)
+            if (nameFB == nameTeam)
             {
-                nameTeam = nameTeam + tmp[i];
-                if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
-                    break;
+                Coach c(id, name, date, address, nameTeam);
             }
-        }
-        if (nameFB == nameTeam)
-        {
-            Coach c(id, name, date, address, nameTeam);
-        }
         }
     }
     return Coach();
@@ -137,12 +140,13 @@ void Coach::updateCoach()
     bool kt = true;
     system("cls");
     String ma;
+    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin HLV" << endl << endl;
     cout << "Nhap CCCD cua HLV can chinh sua: ";
     String::getline(cin, ma);
 
     fstream file("Coach.txt", ios::in);
     fstream tempFile("tempCoach.txt", ios::out | ios::app);
-    tempFile << left << setw(15) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(20) << "NameFootball Team" << endl;
+    tempFile << left << setw(10) << "ID" << setw(20) << "Ten HLV" << setw(20) << "Ngay sinh" << setw(30) << "Dia chi" << setw(20) << "Tuoi" << setw(20) << "Ten doi bong" << endl;
 
     if (file.is_open() && tempFile.is_open())
     {
@@ -189,6 +193,7 @@ void Coach::updateCoach()
                 do
                 {
                     system("cls");
+                    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin HLV" << endl << endl;
                     cout << "1. Chinh sua Ten cua HLV" << endl;
                     cout << "2. Chinh sua Ngay sinh cua HLV" << endl;
                     cout << "3. Chinh sua Dia chi cua HLV" << endl;
@@ -210,12 +215,14 @@ void Coach::updateCoach()
                     switch (k)
                     {
                     case 1:
+                        system("cls");
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin HLV/Chinh sua Ten cua HLV" << endl << endl;
                         thaythe = name;
                         cout << "Nhap ten HLV: ";
                         String::getline(cin, newName);
                         name = newName;
 
-                        tempFileT << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Rank" << endl;
+                        tempFileT << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Thu hang" << endl;
                         if (fileT.is_open() && tempFileT.is_open())
                         {
                             String temp;
@@ -277,6 +284,8 @@ void Coach::updateCoach()
 
                         break;
                     case 2:
+                        system("cls");
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin HLV/Chinh sua ngay sinh cua HLV" << endl << endl;
                         cout << "Nhap ngay sinh cua HLV: ";
                         String::getline(cin, newDate);
                         if (newDate[1] == '/')
@@ -327,6 +336,8 @@ void Coach::updateCoach()
                         age = String::tostring(newage);
                         break;
                     case 3:
+                        system("cls");
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin HLV/Chinh sua dia chi cua HLV" << endl << endl;
                         cout << "Nhap dia chi cua HLV: ";
                         String::getline(cin, newAddress);
                         address = newAddress;
@@ -351,7 +362,7 @@ void Coach::updateCoach()
             else
             {
                 // Ghi du lieu cua may thang ko cap nhat
-                //kt = false;
+                // kt = false;
                 tempFile << tmp << endl;
             }
         }
@@ -364,7 +375,9 @@ void Coach::updateCoach()
     {
         cout << "Khong mo dc file";
     }
-    if(kt) cout << "HLV co CCCD " << ma << " khong ton tai" << endl << endl;
+    if (kt)
+        cout << "HLV co CCCD " << ma << " khong ton tai" << endl
+             << endl;
 }
 
 void Coach::dkcDeleteCoach(String tt)
@@ -372,7 +385,7 @@ void Coach::dkcDeleteCoach(String tt)
 
     fstream file("Team.txt", ios::in);
     fstream tempFile("tempTeam.txt", ios::out | ios::app);
-    tempFile << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Rank" << endl;
+    tempFile << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Thu hang" << endl;
     if (file.is_open() && tempFile.is_open())
     {
         String tmp;
@@ -439,12 +452,13 @@ void Coach::deleteCoachById()
     bool kt = true;
     system("cls");
     String ma, thaythe;
+    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Xoa HLV" << endl << endl;
     cout << "Nhap CCCD cua HLV can xoa: ";
     String::getline(cin, ma);
 
     fstream file("Coach.txt", ios::in);
     fstream tempFile("tempCoach.txt", ios::out | ios::app);
-    tempFile << left << setw(15) << "ID," << setw(15) << "Ten," << setw(15) << "DateOfBirth," << setw(20) << "Address," << setw(10) << "Age," << setw(20) << "NameFootball Team" << endl;
+    tempFile << left << setw(10) << "ID" << setw(20) << "Ten HLV" << setw(20) << "Ngay sinh" << setw(30) << "Dia chi" << setw(20) << "Tuoi" << setw(20) << "Ten doi bong" << endl;
 
     if (file.is_open() && tempFile.is_open())
     {
@@ -492,7 +506,7 @@ void Coach::deleteCoachById()
             else
             {
                 // Ghi du lieu cua may thang ko cap nhat
-                //kt = true;
+                // kt = true;
                 tempFile << tmp << endl;
             }
         }
@@ -505,13 +519,16 @@ void Coach::deleteCoachById()
     {
         cout << "Khong mo dc file";
     }
-    if(kt) cout << "HLV co ID " << ma << " khong ton tai" << endl << endl;
-    dkcDeleteCoach(thaythe);   
+    if (kt)
+        cout << "HLV co ID " << ma << " khong ton tai" << endl
+             << endl;
+    dkcDeleteCoach(thaythe);
 }
-void Coach::addCoachFromFile() {
+void Coach::addCoachFromFile()
+{
     char filename[256];
     cout << "Nhap ten file chua Coach: ";
-    cin.getline(filename,256);
+    cin.getline(filename, 256);
     ifstream i(filename);
     if (i.is_open())
     {
@@ -550,13 +567,13 @@ void Coach::addCoachFromFile() {
                         break;
                 }
             }
-                Coach c(id, name, date, address, nameTeam);
-                ofstream o("Coach.txt",ios::app);
-                c.saveInforIntoFile(o);
-            
+            Coach c(id, name, date, address, nameTeam);
+            ofstream o("Coach.txt", ios::app);
+            c.saveInforIntoFile(o);
         }
     }
-    else {
+    else
+    {
         cout << "Khong the mo file";
     }
 }
