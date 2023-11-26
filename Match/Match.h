@@ -1,12 +1,15 @@
 #include "../FootballTeam/Team.h"
 #include "../CTDL/Vector.h"
 #include "../CTDL/String.h"
+#include "../CTDL/DBLL.h"
+#include <thread>
+#include <chrono>
 #ifndef MA_H
 #define MA_H
 class Match
 {
 private:
-    Vector<Team> v;
+    DBLL<Team> v;
     String idRound;
     String address;
     String time;
@@ -20,7 +23,7 @@ public:
     void showMatch();
     void changeAddress(String);
     void changeTime(String);
-    Vector<Team> getTwoTeam();
+    DBLL<Team> getTwoTeam();
     String getAddress();
     void setAddress(String);
     String getTime();
@@ -29,9 +32,9 @@ public:
     String getDate();
     void setIdRound(String);
     String getIdRound();
-    Vector<Match> getAllMatchFromFile();
+    DBLL<Match> getAllMatchFromFile();
     void findMatchByIdTeam();
-    Vector<Match> getListMatchByIdTeam();
+    DBLL<Match> getListMatchByIdTeam();
     static Match getMatchByIdRoundAndIdTwoTeam(String, String, String);
     void deleteMatchByIdRoundAndTwoTeam(Match &);
     void findMatchByNameTeam();

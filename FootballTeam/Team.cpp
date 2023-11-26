@@ -108,15 +108,10 @@ String Team::getIdTeam()
 
 void Team::showAllMemberOfTeam()
 {
-    cout << endl
-         << "Danh Sach Cau Thu" << endl;
-    for (int i = 0; i < this->listMember.size(); i++)
-    {
-        this->listMember[i].show();
-    }
+    cout << endl << "Danh Sach Cau Thu" << endl;
+    this->listMember.duyetxuoi();
 }
-
-Vector<Player> Team::getlistMember()
+DBLL<Player> Team::getlistMember()
 {
     return listMember;
 }
@@ -130,10 +125,7 @@ void Team::showALLInforOfTeam()
     cout << endl
          << "Danh Sach Cau Thu" << endl;
     cout << left << setw(10) << "ID" << setw(15) << "Ten cau thu" << setw(15) << "Ngay sinh" << setw(20) << "Dia chi" << setw(10) << "Tuoi" << setw(15) << "So ao" << setw(15) << "The vang" << setw(10) << "The do" << setw(10) << "Ban thang" << setw(20) << "Ten doi bong" << endl;
-    for (int i = 0; i < this->listMember.size(); i++)
-    {
-        this->listMember[i].show2();
-    }
+    this->listMember.duyetxuoi();
 
     cout << "Rank: " << this->rank << endl;
     cout << "Point: " << this->point << endl;
@@ -329,10 +321,10 @@ void Team::findPlayerByNameFootballTeam()
     getchar();
 }
 
-Vector<Player> Team::getListPlayerByNameFootballTeam(String nameFB)
+DBLL<Player> Team::getListPlayerByNameFootballTeam(String nameFB)
 {
     nameFB = this->standardizeName(nameFB);
-    Vector<Player> v;
+    DBLL<Player> v;
     bool val = true;
     ifstream i("Player.txt");
     if (i.is_open())
@@ -886,7 +878,7 @@ Coach Team::getCoachByNameFootballTeam(String nameFB)
     }
     return Coach();
 }
-void Team::setListMember(Vector<Player> v)
+void Team::setListMember(DBLL<Player> v)
 {
     this->listMember = v;
 }

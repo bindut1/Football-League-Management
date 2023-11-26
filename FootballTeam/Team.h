@@ -3,6 +3,7 @@
 #include "Human.h"
 #include "Coach.h"
 #include "../CTDL/Vector.h"
+#include "../CTDL/DBLL.h"
 #include <String.h>
 using namespace std;
 
@@ -14,7 +15,7 @@ class Team
 private:
     String idTeamFootball;
     String nameFootballTeam;
-    Vector<Player> listMember;
+    DBLL<Player> listMember;
     Coach coach;
     int rank;
     int numberGoal;
@@ -26,7 +27,7 @@ public:
     Team();
     Team(String, Coach, int, int, int, int);
     ~Team();
-    Vector<Player> getlistMember();
+    DBLL<Player> getlistMember();
     void createNewFootballTeam();
     String getIdTeam();
     void setIdTeam(String);
@@ -36,7 +37,7 @@ public:
     void addCoach(Coach &);
     void findPlayerByName();
     void findPlayerByNameFootballTeam();
-    Vector<Player> getListPlayerByNameFootballTeam(String);
+    DBLL<Player> getListPlayerByNameFootballTeam(String);
     void findPlayerById();
     void dkcDeleteTeamwithPlayer(String);
     void dkcDeleteTeamwithCoach(String);
@@ -60,7 +61,7 @@ public:
     String getNameFootballTeam();
     Team findTeamByName();
     Team getTeamById(String);
-    void setListMember(Vector<Player>);
+    void setListMember(DBLL<Player>);
     void setNameFootballTeam(String);
     static bool cmp(Team, Team);
     int getPoint();

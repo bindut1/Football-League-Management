@@ -1,6 +1,5 @@
 #include "Match.h"
 #include <iostream>
-#include <thread>
 #include <iomanip>
 using namespace std;
 
@@ -40,7 +39,7 @@ void Match::changeTime(String newTime)
     this->setTime(newTime);
 }
 
-Vector<Team> Match::getTwoTeam()
+DBLL<Team> Match::getTwoTeam()
 {
     return this->v;
 }
@@ -85,10 +84,10 @@ String Match::getIdRound()
     return this->idRound;
 }
 
-Vector<Match> Match::getAllMatchFromFile()
+DBLL<Match> Match::getAllMatchFromFile()
 {
     ifstream f("Schedule.txt");
-    Vector<Match> v;
+    DBLL<Match> v;
     if (f.is_open())
     {
         String tmp;
@@ -221,13 +220,13 @@ void Match::findMatchByIdTeam()
     getchar();
 }
 
-Vector<Match> Match::getListMatchByIdTeam()
+DBLL<Match> Match::getListMatchByIdTeam()
 {
     bool val = true;
     cout << "Nhap ID doi can tim: ";
     String idFind;
     String::getline(cin, idFind);
-    Vector<Match> v;
+    DBLL<Match> v;
     ifstream f("Schedule.txt");
     if (f.is_open())
     {

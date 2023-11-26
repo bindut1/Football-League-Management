@@ -806,3 +806,7 @@ void Player::addPlayerFromFile()
         cout << "Ko mo duoc";
     }
 }
+ostream& operator<<(ostream& o, const Player& p) {
+    o << endl << left << setw(10) << p.id << setw(15) << p.name << setw(15) << p.dateOfBirth << setw(20) << p.address + "," << setw(10) << p.age << setw(15) << p.numberClothes << setw(15) << p.yellowCard << setw(10) << p.redCard << setw(10) << p.goal << setw(20) << p.nameFootballTeam << endl;
+    return o;
+}
