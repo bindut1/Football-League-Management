@@ -26,17 +26,22 @@ public:
     }
     friend ostream &operator<<(ostream &o, const Date_Time &dt)
     {
+        String newday, newmonth;
         String minute = String::tostring(dt.minute);
         if (minute.size() == 1)
         {
             String tmp('0');
             minute = tmp + minute;
         }
+        if(dt.day < 10) newday = String("0") + String::tostring(dt.day);
+        else newday = String::tostring(dt.day);
+        if(dt.month < 10) newmonth = String("0") + String::tostring(dt.month);
+        else newmonth = String::tostring(dt.month);
         if (dt.hour == 15 || dt.hour == 17)
             o << left << dt.hour << "h" << setw(17) << minute + ",";
         else
             o << left << dt.hour << "h" << setw(18) << minute + ",";
-        o << left << dt.day << "/" << dt.month << "/" << setw(19) << String::tostring(dt.year) + "," << dt.place;
+        o << left << newday << "/" << newmonth << "/" << setw(19) << String::tostring(dt.year) + "," << dt.place;
         return o;
     }
     void setHour(int h)

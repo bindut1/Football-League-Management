@@ -1,29 +1,35 @@
 Vong           ID Doi thu nhat     ID Doi thu hai      Thoi gian           Ngay thang nam           Dia diem            
-1,             2,                  5,                  9h00,               1/1/2001,                Dai hoc Bach Khoa Da Nang
-1,             3,                  4,                  15h00,              1/1/2001,                Dai hoc Bach Khoa Da Nang
+1,             1,                  15,                 7h00,               01/05/2001,              Dai hoc Bach Khoa Da Nang
+1,             7,                  11,                 9h00,               01/05/2001,              Dai hoc Bach Khoa Da Nang
+1,             5,                  2,                  15h00,              01/05/2001,              Dai hoc Bach Khoa Da Nang
+1,             4,                  3,                  17h00,              01/05/2001,              Dai hoc Bach Khoa Da Nang
                                 
-2,             7,                  5,                  7h00,               3/1/2001,                Dai hoc Bach Khoa Da Nang
-2,             1,                  4,                  9h00,               3/1/2001,                Dai hoc Bach Khoa Da Nang
-2,             2,                  3,                  15h00,              3/1/2001,                Dai hoc Bach Khoa Da Nang
+2,             1,                  11,                 7h00,               03/05/2001,              Dai hoc Bach Khoa Da Nang
+2,             15,                 2,                  9h00,               03/05/2001,              Dai hoc Bach Khoa Da Nang
+2,             7,                  3,                  15h00,              03/05/2001,              Dai hoc Bach Khoa Da Nang
+2,             5,                  4,                  17h00,              03/05/2001,              Dai hoc Bach Khoa Da Nang
                                 
-3,             15,                 4,                  7h00,               5/1/2001,                Dai hoc Bach Khoa Da Nang
-3,             1,                  2,                  15h00,              5/1/2001,                Dai hoc Bach Khoa Da Nang
+3,             1,                  2,                  7h00,               05/05/2001,              Dai hoc Bach Khoa Da Nang
+3,             11,                 3,                  9h00,               05/05/2001,              Dai hoc Bach Khoa Da Nang
+3,             15,                 4,                  15h00,              05/05/2001,              Dai hoc Bach Khoa Da Nang
+3,             7,                  5,                  17h00,              05/05/2001,              Dai hoc Bach Khoa Da Nang
                                 
-4,             15,                 2,                  9h00,               7/1/2001,                Dai hoc Bach Khoa Da Nang
-4,             7,                  1,                  15h00,              7/1/2001,                Dai hoc Bach Khoa Da Nang
+4,             2,                  4,                  9h00,               07/05/2001,              Dai hoc Bach Khoa Da Nang
+4,             11,                 5,                  15h00,              07/05/2001,              Dai hoc Bach Khoa Da Nang
                                 
-5,             4,                  2,                  7h00,               9/1/2001,                Dai hoc Bach Khoa Da Nang
-5,             5,                  1,                  9h00,               9/1/2001,                Dai hoc Bach Khoa Da Nang
-5,             15,                 7,                  15h00,              9/1/2001,                Dai hoc Bach Khoa Da Nang
+5,             1,                  4,                  7h00,               09/05/2001,              Dai hoc Bach Khoa Da Nang
+5,             3,                  5,                  9h00,               09/05/2001,              Dai hoc Bach Khoa Da Nang
+5,             2,                  7,                  15h00,              09/05/2001,              Dai hoc Bach Khoa Da Nang
+5,             11,                 15,                 17h00,              09/05/2001,              Dai hoc Bach Khoa Da Nang
                                 
-6,             3,                  1,                  7h00,               11/1/2001,               Dai hoc Bach Khoa Da Nang
-6,             4,                  7,                  9h00,               11/1/2001,               Dai hoc Bach Khoa Da Nang
-6,             5,                  15,                 15h00,              11/1/2001,               Dai hoc Bach Khoa Da Nang
+6,             4,                  7,                  9h00,               11/05/2001,              Dai hoc Bach Khoa Da Nang
+6,             3,                  15,                 15h00,              11/05/2001,              Dai hoc Bach Khoa Da Nang
+6,             2,                  11,                 17h00,              11/05/2001,              Dai hoc Bach Khoa Da Nang
                                 
-7,             2,                  7,                  7h00,               13/1/2001,               Dai hoc Bach Khoa Da Nang
-7,             3,                  15,                 9h00,               13/1/2001,               Dai hoc Bach Khoa Da Nang
-7,             4,                  5,                  15h00,              13/1/2001,               Dai hoc Bach Khoa Da Nang
-                                
+7,             1,                  7,                  7h00,               13/05/2001,              Dai hoc Bach Khoa Da Nang
+7,             5,                  15,                 9h00,               13/05/2001,              Dai hoc Bach Khoa Da Nang
+7,             4,                  11,                 15h00,              13/05/2001,              Dai hoc Bach Khoa Da Nang
+7,             3,                  2,                  17h00,              13/05/2001,              Dai hoc Bach Khoa Da Nang
                                 
                                 
                                 

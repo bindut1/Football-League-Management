@@ -39,5 +39,6 @@ public:
     void dkcdeletePlayer(String);
     void addPlayerFromFile();
     friend ostream& operator<<(ostream&, const Player&);
+    void showPlayer();
 };
 #endif

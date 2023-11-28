@@ -103,7 +103,7 @@ int maxgoal()
     return m;
 }
 
-//IN THEM CAU "CAP NHAT HLV/DOIBONG/CAU THU CHI DO BLA BLA ... THANH CONG O MAY CHUC NANG CAP NHAT", QUA MET KHONG CHINH NUA
+// IN THEM CAU "CAP NHAT HLV/DOIBONG/CAU THU CHI DO BLA BLA ... THANH CONG O MAY CHUC NANG CAP NHAT", QUA MET KHONG CHINH NUA
 
 main()
 {
@@ -114,6 +114,7 @@ main()
         const char *filename1 = "Team.txt";
         const char *filename2 = "Coach.txt";
         const char *filename3 = "Player.txt";
+        const char *filename4 = "HistoryMatch.txt";
         cout << "1. KHOI TAO GIAI DAU." << endl;
         cout << "2. QUAN LY GIAI DAU." << endl;
         cout << "0. Thoat." << endl;
@@ -126,7 +127,8 @@ main()
             do
             {
                 system("cls");
-                cout << "KHOI TAO GIAI DAU" << endl << endl;
+                cout << "KHOI TAO GIAI DAU" << endl
+                     << endl;
                 cout << "1. Them mot doi bong." << endl;
                 cout << "2. Lap lich thi dau." << endl;
                 cout << "0. Thoat." << endl;
@@ -139,7 +141,8 @@ main()
                     do
                     {
                         system("cls");
-                        cout << "KHOI TAO GIAI DAU/Them mot doi bong" << endl << endl;
+                        cout << "KHOI TAO GIAI DAU/Them mot doi bong" << endl
+                             << endl;
                         cout << "1. Them doi bong thu cong." << endl;
                         cout << "2. Them doi bong voi du lieu tu file." << endl;
                         cout << "0. Thoat." << endl;
@@ -173,7 +176,8 @@ main()
                     system("cls");
                     if (countLines(filename1) <= 1)
                     {
-                        cout << "KHOI TAO GIAI DAU/Lap lich thi dau" << endl << endl;
+                        cout << "KHOI TAO GIAI DAU/Lap lich thi dau" << endl
+                             << endl;
                         cout << "Phai co it nhat 2 doi bong de lap lich!" << endl;
                         cout << "Nhan Enter de tiep tuc . . .";
                         getchar();
@@ -181,7 +185,8 @@ main()
                     else
                     {
                         func();
-                        cout << endl << "Lap lich thi dau thanh cong!" << endl;
+                        cout << endl
+                             << "Lap lich thi dau thanh cong!" << endl;
                         Match m;
                         m.getAllMatchFromFile();
                         cout << "Nhan Enter de tiep tuc . . .";
@@ -206,7 +211,8 @@ main()
                 do
                 {
                     system("cls");
-                    cout << "QUAN LY GIAI DAU" << endl << endl;
+                    cout << "QUAN LY GIAI DAU" << endl
+                         << endl;
                     cout << "1. Truy van thong tin doi bong, cau thu va HLV." << endl;
                     cout << "2. Cap nhat thong tin doi bong, cau thu va HLV." << endl;
                     cout << "3. Truy van thong tin tran dau." << endl;
@@ -224,7 +230,8 @@ main()
                         do
                         {
                             system("cls");
-                            cout << "QUAN LY GIAI DAU/Truy van thong tin doi bong, cau thu va HLV" << endl << endl;
+                            cout << "QUAN LY GIAI DAU/Truy van thong tin doi bong, cau thu va HLV" << endl
+                                 << endl;
                             cout << "1. Truy van thong tin cua mot doi bong." << endl;
                             cout << "2. Truy van thong tin cua HLV." << endl;
                             cout << "3. Truy van thong tin cua cau thu." << endl;
@@ -243,7 +250,8 @@ main()
                                 do
                                 {
                                     system("cls");
-                                    cout << "QUAN LY GIAI DAU/Truy van thong tin doi bong, cau thu va HLV/Truy van thong tin cua HLV" << endl << endl;
+                                    cout << "QUAN LY GIAI DAU/Truy van thong tin doi bong, cau thu va HLV/Truy van thong tin cua HLV" << endl
+                                         << endl;
                                     cout << "1. Truy van thong tin HLV theo ten doi bong." << endl;
                                     cout << "2. Truy van HLV theo CCCD." << endl;
                                     cout << "3. Truy van HLV theo ten HLV." << endl;
@@ -272,7 +280,8 @@ main()
                                 do
                                 {
                                     system("cls");
-                                    cout << "QUAN LY GIAI DAU/Truy van thong tin doi bong, cau thu va HLV/Truy van thong tin cua cau thu" << endl << endl;
+                                    cout << "QUAN LY GIAI DAU/Truy van thong tin doi bong, cau thu va HLV/Truy van thong tin cua cau thu" << endl
+                                         << endl;
                                     cout << "1. Truy van thong tin cau thu theo ten doi bong." << endl;
                                     cout << "2. Truy van cau thu theo ten cau thu." << endl;
                                     cout << "3. Truy van cau thu theo CCCD cau thu." << endl;
@@ -303,7 +312,8 @@ main()
                         do
                         {
                             system("cls");
-                            cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV" << endl << endl;
+                            cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV" << endl
+                                 << endl;
                             cout << "1. Cap nhat thong tin doi bong." << endl;
                             cout << "2. Cap nhat thong tin HLV." << endl;
                             cout << "3. Cap nhat thong tin cau thu." << endl;
@@ -320,7 +330,8 @@ main()
                                 do
                                 {
                                     system("cls");
-                                    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin doi bong" << endl << endl;
+                                    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin doi bong" << endl
+                                         << endl;
                                     cout << "1. Them cau thu vao doi bong." << endl;
                                     cout << "2. Chinh sua thong tin doi bong." << endl;
                                     cout << "0. Thoat." << endl;
@@ -372,7 +383,8 @@ main()
                         do
                         {
                             system("cls");
-                            cout << "QUAN LY GIAI DAU/Truy van thong tin tran dau" << endl << endl;
+                            cout << "QUAN LY GIAI DAU/Truy van thong tin tran dau" << endl
+                                 << endl;
                             cout << "1. Truy van thong tin tran dau theo ID doi." << endl;
                             cout << "2. Truy van thong tin tran dau theo ngay." << endl;
                             cout << "3. Truy van thong tin tran dau theo ten 1 doi." << endl;
@@ -406,7 +418,8 @@ main()
                         do
                         {
                             system("cls");
-                            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau" << endl << endl;
+                            cout << "QUAN LY GIAI DAU/Cap nhat thong tin tran dau" << endl
+                                 << endl;
                             cout << "1. Chinh sua thong tin tran dau." << endl;
                             cout << "2. Them ket qua cho tran dau." << endl;
                             cout << "0. Thoat" << endl;
@@ -427,190 +440,128 @@ main()
                     }
                     else if (lc2 == 5)
                     {
-                        //XEM LAI
-                        HistoryMatch h;
-                        h.showHistoryMatch();
+                        int lc25;
+                        do
+                        {
+                            system("cls");
+                            cout << "QUAN LY GIAI DAU/Truy van thong tin lich su tran dau" << endl << endl;
+                            cout << "1. Truy van thong tin lich su tran dau theo ngay, thang, nam." << endl;
+                            cout << "2. Truy van thong tin lich su tran dau theo id mot doi." << endl;
+                            cout << "3. Truy van thong tin lich su tran dau theo id hai doi." << endl;
+                            cout << "4. Truy van thong tin lich su tran dau theo id vong." << endl;
+                            cout << "5. Truy van thong tin lich su tran dau cua toan giai dau." << endl;
+                            cout << "0. Thoat." << endl;
+                            cout << "Xin moi nhap lua chon: ";
+                            cin >> lc25;
+                            cin.ignore();
+                            if (lc25 == 1)
+                            {
+                                system("cls");
+                                String datee;
+                                cout << "QUAN LY GIAI DAU/Truy van thong tin lich su tran dau/Truy van thong tin lich su tran dau theo ngay, thang, nam" << endl << endl;
+                                cout << "Xin moi nhap ngay, thang, nam(dd/mm/yyyy): ";
+                                String::getline(cin, datee);
+                                if (datee[1] == '/')
+                                {
+                                    String tmp("0");
+                                    datee = tmp + datee;
+                                }
+                                if (datee[4] == '/')
+                                    datee.insert(3, "0");
+                                HistoryMatch h;
+                                h.showHMbydate(datee);
+                                cout << "Nhan Enter de tiep tuc . .";
+                                getchar();
+                            }
+                            else if (lc25 == 2)
+                            {
+                                system("cls");
+                                String id1;
+                                cout << "QUAN LY GIAI DAU/Truy van thong tin lich su tran dau/Truy van thong tin lich su tran dau theo id mot doi" << endl << endl;
+                                cout << "Xin moi nhap ID doi: ";
+                                String::getline(cin, id1);
+                                HistoryMatch h;
+                                h.showHMbyidoneteam(id1);
+                                cout << "Nhan Enter de tiep tuc . .";
+                                getchar();
+                            }
+                            else if (lc25 == 3)
+                            {
+                                system("cls");
+                                String id1, id2;
+                                cout << "QUAN LY GIAI DAU/Truy van thong tin lich su tran dau/Truy van thong tin lich su tran dau theo id hai doi" << endl << endl;
+                                cout << "Xin moi nhap ID doi thu nhat: ";
+                                String::getline(cin, id1);
+                                cout << "Xin moi nhap ID doi thu hai: ";
+                                String::getline(cin, id2);
+                                HistoryMatch h;
+                                h.showHMbyidtwoteam(id1, id2);
+                                cout << "Nhan Enter de tiep tuc . .";
+                                getchar();
+                            }
+                            else if (lc25 == 4)
+                            {
+                                system("cls");
+                                String idv;
+                                cout << "QUAN LY GIAI DAU/Truy van thong tin lich su tran dau/Truy van thong tin lich su tran dau theo id vong" << endl << endl;
+                                cout << "Xin moi nhap ID vong: ";
+                                String::getline(cin, idv);
+                                HistoryMatch h;
+                                h.showHMbyidround(idv);
+                                cout << "Nhan Enter de tiep tuc . .";
+                                getchar();
+                            }
+                            else if (lc25 == 5)
+                            {
+                                system("cls");
+                                HistoryMatch h;
+                                cout << "QUAN LY GIAI DAU/Truy van thong tin lich su tran dau/Truy van thong tin lich su tran dau cua toan giai dau" << endl << endl;
+                                h.showHistoryMatch();
+                                cout << "Nhan Enter de tiep tuc . .";
+                                getchar();
+                            }
+                        } while (lc25 != 0);
                     }
                     else if (lc2 == 6)
                     {
-                        //XEM LAI
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin lich su tran dau" << endl << endl;
+                        // XEM LAI
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin lich su tran dau" << endl
+                             << endl;
                         HistoryMatch h;
                         h.updateHistoryMatch();
                     }
                     else if (lc2 == 7)
                     {
-                        int lc27;
-                        do
-                        {
-                            system("cls");
-                            cout << "QUAN LY GIAI DAU/Tong ket giai dau" << endl << endl;
-                            cout << "1. Tong so tran dau da dien ra." << endl;
-                            cout << "2. Tong so doi bong tham gia giai dau." << endl;
-                            cout << "3. Tong so cau thu tham gia giai dau." << endl;
-                            cout << "4. Tong so HLV cua giai dau." << endl;
-                            cout << "5. Doi bong co thu hang cao nhat (Doi vo dich)." << endl;
-                            cout << "6. Cau thu co nhieu ban thang nhat (Vua pha luoi)." << endl;
-                            cout << "0. Thoat." << endl;
-                            cout << "Xin moi nhap lua chon: ";
-                            cin >> lc27;
-                            cin.ignore();
-                            if (lc27 == 1)
-                            {
-                                int line = countLines(filename1);
-                                int kq = (line * (line - 1)) / 2;
-                                system("cls");
-                                cout << "QUAN LY GIAI DAU/Tong ket giai dau/Tong so tran dau da dien ra" << endl << endl;
-                                cout << "Tong so tran dau da dien ra la: " << kq << endl;
-                                cout << "Nhan Enter de tiep tuc . . ";
-                                getchar();
-                            }
-                            else if (lc27 == 2)
-                            {
-                                int line = countLines(filename1);
-                                system("cls");
-                                cout << "QUAN LY GIAI DAU/Tong ket giai dau/Tong so doi bong tham gia giai dau" << endl << endl;
-                                cout << "Tong so doi bong tham gia giai dau la: " << line << endl;
-                                cout << "Nhan Enter de tiep tuc . . ";
-                                getchar();
-                            }
-                            else if (lc27 == 3)
-                            {
-                                int line = countLines(filename3);
-                                system("cls");
-                                cout << "QUAN LY GIAI DAU/Tong ket giai dau/Tong so cau thu tham gia giai dau" << endl << endl;
-                                cout << "Tong so cau thu tham gia giai dau la: " << line << endl;
-                                cout << "Nhan Enter de tiep tuc . . ";
-                                getchar();
-                            }
-                            else if (lc27 == 4)
-                            {
-                                int line = countLines(filename2);
-                                system("cls");
-                                cout << "QUAN LY GIAI DAU/Tong ket giai dau/Tong so HLV cua giai dau" << endl << endl;
-                                cout << "Tong so HLV tham gia giai dau la: " << line << endl;
-                                cout << "Nhan Enter de tiep tuc . . ";
-                                getchar();
-                            }
-                            else if (lc27 == 5)
-                            {
-                                system("cls");
-                                cout << "QUAN LY GIAI DAU/Tong ket giai dau/Doi bong co thu hang cao nhat (Doi vo dich)" << endl << endl;
-                                cout << "Doi bong co thu hang cao nhat (Doi vo dich) la: " << endl;
-                                ifstream i("Team.txt");
-                                if (i.is_open())
-                                {
-                                    String tmp;
-                                    String::getline(i, tmp);
-                                    while (!i.eof())
-                                    {
-                                        String::getline(i, tmp);
-                                        int check = 1;
-                                        bool status = false;
-                                        String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
-                                        for (int i = 0; i < tmp.size(); i++)
-                                        {
-                                            if (tmp[i] != ' ')
-                                                status = true;
-                                            if (tmp[i] == ',')
-                                            {
-                                                status = false;
-                                                check++;
-                                                continue;
-                                            }
-                                            if (check == 1 && status)
-                                                id = id + tmp[i];
-                                            else if (check == 2 && status)
-                                                nameTeam = nameTeam + tmp[i];
-                                            else if (check == 3 && status)
-                                                numMember = numMember + tmp[i];
-                                            else if (check == 4 && status)
-                                                nameCoach = nameCoach + tmp[i];
-                                            else if (check == 5 && status)
-                                                numberGoal = numberGoal + tmp[i];
-                                            else if (check == 6 && status)
-                                                numberLoseGoal = numberLoseGoal + tmp[i];
-                                            else if (check == 7 && status)
-                                                difference = difference + tmp[i];
-                                            else if (check == 8 && status)
-                                                point = point + tmp[i];
-                                            else if (check == 9 && status && tmp[i] != '\n')
-                                            {
-                                                rank = rank + tmp[i];
-                                                if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
-                                                    break;
-                                            }
-                                        }
-                                        if (rank == "1")
-                                        {
-                                            cout << nameTeam << endl;
-                                        }
-                                    }
-                                }
-                                cout << "Nhan Enter de tiep tuc . .";
-                                getchar();
-                            }
-                            else if (lc27 == 6)
-                            {
-                                system("cls");
-                                cout << "QUAN LY GIAI DAU/Tong ket giai dau/Cau thu co nhieu ban thang nhat (Vua pha luoi)" << endl << endl;
-                                cout << "Cau thu co nhieu ban thang nhat (Vua pha luoi) la: " << endl;
-                                ifstream i("Player.txt");
-                                if (i.is_open())
-                                {
-                                    String tmp;
-                                    String::getline(i, tmp);
-                                    while (!i.eof())
-                                    {
-                                        String::getline(i, tmp);
-                                        int check = 1;
-                                        bool status = false;
-                                        String id, name, date, address, age, numberClo, yellowCard, redCard, goal, nameTeam;
-                                        for (int i = 0; i < tmp.size(); i++)
-                                        {
-                                            if (tmp[i] != ' ')
-                                                status = true;
-                                            if (tmp[i] == ',')
-                                            {
-                                                status = false;
-                                                check++;
-                                                continue;
-                                            }
-                                            if (check == 1 && status)
-                                                id = id + tmp[i];
-                                            else if (check == 2 && status)
-                                                name = name + tmp[i];
-                                            else if (check == 3 && status)
-                                                date = date + tmp[i];
-                                            else if (check == 4 && status)
-                                                address = address + tmp[i];
-                                            else if (check == 5 && status)
-                                                age = age + tmp[i];
-                                            else if (check == 6 && status)
-                                                numberClo = numberClo + tmp[i];
-                                            else if (check == 7 && status)
-                                                yellowCard = yellowCard + tmp[i];
-                                            else if (check == 8 && status)
-                                                redCard = redCard + tmp[i];
-                                            else if (check == 9 && status)
-                                                goal = goal + tmp[i];
-                                            else if (check == 10 && status && tmp[i] != '\n')
-                                            {
-                                                nameTeam = nameTeam + tmp[i];
-                                                if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
-                                                    break;
-                                            }
-                                        } 
-                                        if (goal == String::tostring(maxgoal()))
-                                        {
-                                            cout << name << " voi " << maxgoal() << " ban thang." << endl;
-                                        }
-                                    }
-                                }
-                                cout << "Nhan Enter de tiep tuc . .";
-                                getchar();
-                            }
-                        } while (lc27 != 0);
+                        system("cls");
+                        Team doi;
+                        cout << "Bang xep hang cua giai dau: " << endl;
+                        doi.showTeam();
+                        cout << "===========================================================================================================================================================================" << endl;
+                        int line1 = countLines(filename4);
+                        cout << "Tong so tran dau da dien ra la: " << line1 << endl;
+                        HistoryMatch lsd;
+                        lsd.showHistoryMatch();
+                        cout << "===========================================================================================================================================================================" << endl;
+                        int line2 = countLines(filename1);
+                        cout << "Tong so doi bong tham gia giai dau la: " << line2 << endl;
+                        doi.showTeam();
+                        cout << "===========================================================================================================================================================================" << endl;                      
+                        Player ct;
+                        int line3 = countLines(filename3);
+                        cout << "Tong so cau thu tham gia giai dau la: " << line3 << endl;
+                        ct.showPlayer();
+                        cout << "===========================================================================================================================================================================" << endl;
+                        Coach hlv;
+                        int line4 = countLines(filename2);
+                        cout << "Tong so HLV cua giai dau la: " << line4 << endl;
+                        hlv.showCoach();
+                        cout << "===========================================================================================================================================================================" << endl;
+                        cout << "Doi bong vo dich cua mua giai(Mau do): " << endl;
+                        doi.showTeam();
+                        cout << "===========================================================================================================================================================================" << endl;
+                        cout << "Vua pha luoi cua mua giai(Mau do): " << endl;
+                        cout << "Nhan Enter de tiep tuc . . ";
+                        getchar();
                     }
                 } while (lc2 != 0);
             }

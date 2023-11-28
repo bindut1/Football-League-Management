@@ -2,7 +2,11 @@
 #include "Team.h"
 #include <iomanip>
 #include <limits>
+#include "../Library.h"
 #include <fstream>
+//#include <Windows.h>
+#define ANSI_COLOR_RED "\x1b[31m"
+#define ANSI_COLOR_RESET "\x1b[0m"
 Team::Team()
 {
     // cout << "Tao t";
@@ -108,7 +112,8 @@ String Team::getIdTeam()
 
 void Team::showAllMemberOfTeam()
 {
-    cout << endl << "Danh Sach Cau Thu" << endl;
+    cout << endl
+         << "Danh Sach Cau Thu" << endl;
     this->listMember.duyetxuoi();
 }
 DBLL<Player> Team::getlistMember()
@@ -716,7 +721,8 @@ void Team::deleteTeamById()
     bool ck = true;
     system("cls");
     String ma, thaythe;
-    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Xoa doi bong" << endl << endl;
+    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Xoa doi bong" << endl
+         << endl;
     cout << "Nhap ID doi bong can xoa: ";
     String::getline(cin, ma);
     fstream file("Team.txt", ios::in);
@@ -1731,7 +1737,7 @@ void Team::increaseNumberOfTeam(String tt, int ofset)
     cout << "Dang o day" << endl;
     if (file.is_open() && tempFile.is_open())
     {
-        cout << "Vao roi ne" << endl;
+        // cout << "Vao roi ne" << endl;
         String tmp;
         String::getline(file, tmp);
         while (!file.eof())
@@ -1816,4 +1822,186 @@ int Team::String_to_int(String x)
         a[i] = x[i];
     }
     return atoi(a);
+}
+
+String Team::nameTeambyId(String ma)
+{
+    ifstream file("Team.txt");
+    String tmp;
+    String::getline(file, tmp);
+    String notF = "Khong tim thay Id";
+    while (!file.eof())
+    {
+        String::getline(file, tmp);
+        int check = 1;
+        bool status = false;
+        String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+        for (int i = 0; i < tmp.size(); i++)
+        {
+            if (tmp[i] != ' ')
+                status = true;
+            if (tmp[i] == ',')
+            {
+                status = false;
+                check++;
+                continue;
+            }
+            if (check == 1 && status)
+                id = id + tmp[i];
+            else if (check == 2 && status)
+                nameTeam = nameTeam + tmp[i];
+            else if (check == 3 && status)
+                numMember = numMember + tmp[i];
+            else if (check == 4 && status)
+                nameCoach = nameCoach + tmp[i];
+            else if (check == 5 && status)
+                numberGoal = numberGoal + tmp[i];
+            else if (check == 6 && status)
+                numberLoseGoal = numberLoseGoal + tmp[i];
+            else if (check == 7 && status)
+                difference = difference + tmp[i];
+            else if (check == 8 && status)
+                point = point + tmp[i];
+            else if (check == 9 && status && tmp[i] != '\n')
+            {
+                rank = rank + tmp[i];
+                if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                    break;
+            }
+        }
+        if (ma == id)
+        {
+            file.close();
+            return nameTeam;
+        }
+    }
+    file.close();
+    return notF;
+}
+
+void Team::showTeam()
+{
+    ifstream file("Team.txt");
+    String tmp;
+    String::getline(file, tmp);
+    cout << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Thu hang" << endl;
+    while (!file.eof())
+    {
+        String::getline(file, tmp);
+        int check = 1;
+        bool status = false;
+        String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+        for (int i = 0; i < tmp.size(); i++)
+        {
+            if (tmp[i] != ' ')
+                status = true;
+            if (tmp[i] == ',')
+            {
+                status = false;
+                check++;
+                continue;
+            }
+            if (check == 1 && status)
+                id = id + tmp[i];
+            else if (check == 2 && status)
+                nameTeam = nameTeam + tmp[i];
+            else if (check == 3 && status)
+                numMember = numMember + tmp[i];
+            else if (check == 4 && status)
+                nameCoach = nameCoach + tmp[i];
+            else if (check == 5 && status)
+                numberGoal = numberGoal + tmp[i];
+            else if (check == 6 && status)
+                numberLoseGoal = numberLoseGoal + tmp[i];
+            else if (check == 7 && status)
+                difference = difference + tmp[i];
+            else if (check == 8 && status)
+                point = point + tmp[i];
+            else if (check == 9 && status && tmp[i] != '\n')
+            {
+                rank = rank + tmp[i];
+                if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                    break;
+            }
+        }
+        cout << left << setw(10) << id + "," << setw(20) << nameTeam + "," << setw(20) << numMember + "," << setw(15) << nameCoach + "," << setw(15) << numberGoal + "," << setw(15) << numberLoseGoal + "," << setw(15) << difference + "," << setw(15) << point + "," << setw(15) << rank << endl;
+    }
+    file.close();
+}
+
+
+// void setcolor(int color)
+// {
+//     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+//     SetConsoleTextAttribute(hConsole, color);
+// }
+
+//#include <conio.h>
+// void setcolor(int color)
+// {
+//     textcolor(color);
+// }
+
+void Team::showchampion()
+{
+    ifstream file("Team.txt");
+    cout << left << setw(10) << "ID," << setw(20) << "Ten Doi Bong," << setw(20) << "So Thanh Vien," << setw(15) << "Ten HLV," << setw(15) << "Ban Thang," << setw(15) << "Ban Thua," << setw(15) << "Hieu So," << setw(15) << "Diem," << setw(15) << "Thu hang" << endl;
+    if (file.is_open())
+    {
+        String tmp;
+        String::getline(file, tmp);
+        while (!file.eof())
+        {
+            String::getline(file, tmp);
+            int check = 1;
+            bool status = false;
+            String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+            for (int i = 0; i < tmp.size(); i++)
+            {
+                if (tmp[i] != ' ')
+                    status = true;
+                if (tmp[i] == ',')
+                {
+                    status = false;
+                    check++;
+                    continue;
+                }
+                if (check == 1 && status)
+                    id = id + tmp[i];
+                else if (check == 2 && status)
+                    nameTeam = nameTeam + tmp[i];
+                else if (check == 3 && status)
+                    numMember = numMember + tmp[i];
+                else if (check == 4 && status)
+                    nameCoach = nameCoach + tmp[i];
+                else if (check == 5 && status)
+                    numberGoal = numberGoal + tmp[i];
+                else if (check == 6 && status)
+                    numberLoseGoal = numberLoseGoal + tmp[i];
+                else if (check == 7 && status)
+                    difference = difference + tmp[i];
+                else if (check == 8 && status)
+                    point = point + tmp[i];
+                else if (check == 9 && status && tmp[i] != '\n')
+                {
+                    rank = rank + tmp[i];
+                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                        break;
+                }
+            }
+            if(rank == 1)
+            {
+                //setcolor(FOREGROUND_RED);
+                //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+                SetColor(4);
+                cout << left << setw(10) << id + "," << setw(20) << nameTeam + "," << setw(20) << numMember + "," << setw(15) << nameCoach + "," << setw(15) << numberGoal + "," << setw(15) << numberLoseGoal + "," << setw(15) << difference + "," << setw(15) << point + "," << setw(15) << rank << endl;
+                SetColor(15);
+                //setcolor(FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+            }
+            else
+                cout << left << setw(10) << id + "," << setw(20) << nameTeam + "," << setw(20) << numMember + "," << setw(15) << nameCoach + "," << setw(15) << numberGoal + "," << setw(15) << numberLoseGoal + "," << setw(15) << difference + "," << setw(15) << point + "," << setw(15) << rank << endl;
+        }
+    }
+    file.close();
 }

@@ -78,6 +78,10 @@ public:
     void addTeamFromFile();
     void increaseNumberOfTeam(String,int = 1);
     void addPlayerToTeam();
+    String nameTeambyId(String);
+    void showTeam();
+    void showchampion();
+    // void setcolor(int);
 };
 
 #endif

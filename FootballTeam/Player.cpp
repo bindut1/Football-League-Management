@@ -213,7 +213,8 @@ void Player::enterInforPlayer()
     system("cls");
     String id, name, date, address, nameTeam;
     int numberClothes, goal, yellowCard, redCard;
-    cout << "KHOI TAO GIAI DAU/Them mot doi bong/Them doi bong thu cong/Them cau thu vao doi bong" << endl << endl;
+    cout << "KHOI TAO GIAI DAU/Them mot doi bong/Them doi bong thu cong/Them cau thu vao doi bong" << endl
+         << endl;
     cout << "Nhap CCCD cua cau thu: ";
     String::getline(cin, id);
     cout << "Nhap ho va ten cua cau thu: ";
@@ -259,7 +260,8 @@ void Player::updatePlayer()
     bool kt = true;
     system("cls");
     String ma;
-    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu" << endl << endl;
+    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu" << endl
+         << endl;
     cout << "Nhap CCCD cua cau thu can chinh sua: ";
     String::getline(cin, ma);
     fstream file("Player.txt", ios::in);
@@ -321,7 +323,8 @@ void Player::updatePlayer()
                     int newage, newnum, newyl, newr, newg, d, m, y, year, month, day;
                     time_t ti = time(0);
                     tm *now = localtime(&ti);
-                    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu" << endl << endl;
+                    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu" << endl
+                         << endl;
                     cout << "1. Chinh sua Ten cua cau thu" << endl;
                     cout << "2. Chinh sua Ngay sinh cua cau thu" << endl;
                     cout << "3. Chinh sua Dia chi cua cau thu" << endl;
@@ -340,14 +343,16 @@ void Player::updatePlayer()
                     {
                     case 1:
                         system("cls");
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua Ten cua cau thu" << endl << endl;
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua Ten cua cau thu" << endl
+                             << endl;
                         cout << "Nhap ten cau thu: ";
                         String::getline(cin, newname);
                         name = newname;
                         break;
                     case 2:
                         system("cls");
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua Ngay sinh cua cau thu" << endl << endl;
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua Ngay sinh cua cau thu" << endl
+                             << endl;
                         cout << "Nhap ngay sinh cau thu: ";
                         String::getline(cin, newdate);
                         if (newdate[1] == '/')
@@ -399,35 +404,40 @@ void Player::updatePlayer()
                         break;
                     case 3:
                         system("cls");
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua Dia chi cua cau thu" << endl << endl;
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua Dia chi cua cau thu" << endl
+                             << endl;
                         cout << "Nhap dia chi cau thu: ";
                         String::getline(cin, newadd);
                         address = newadd;
                         break;
                     case 4:
                         system("cls");
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua So ao cua cau thu" << endl << endl;
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua So ao cua cau thu" << endl
+                             << endl;
                         cout << "Nhap so ao cua cau thu: ";
                         cin >> newnum;
                         numberClo = String::tostring(newnum);
                         break;
                     case 5:
                         system("cls");
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua so the vang cua cau thu" << endl << endl;
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua so the vang cua cau thu" << endl
+                             << endl;
                         cout << "Nhap so the vang cua cau thu: ";
                         cin >> newyl;
                         yellowCard = String::tostring(newyl);
                         break;
                     case 6:
                         system("cls");
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua so the do cua cau thu" << endl << endl;
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua so the do cua cau thu" << endl
+                             << endl;
                         cout << "Nhap so the do cua cau thu: ";
                         cin >> newr;
                         redCard = String::tostring(newr);
                         break;
                     case 7:
                         system("cls");
-                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua so ban thang cua cau thu" << endl << endl;
+                        cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Cap nhat thong tin cau thu/Chinh sua so ban thang cua cau thu" << endl
+                             << endl;
                         cout << "Nhap so ban thang cua cau thu: ";
                         cin >> newg;
                         goal = String::tostring(newg);
@@ -463,7 +473,7 @@ void Player::updatePlayer()
     else
         cout << "Khong mo dc file";
     if (kt)
-        cout << "Cau thu co CCCD " << ma << " khong ton tai" 
+        cout << "Cau thu co CCCD " << ma << " khong ton tai"
              << endl;
 }
 
@@ -579,8 +589,6 @@ void Player::updatePlayerAfterMatch(String idCheck, int ylCard, int rCard, int n
                     if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
                         break;
                 }
-                    
-                    
             }
             Player p(id, name, date, address, nameTeam, String::toint(numberClo), String::toint(goal), String::toint(yellowCard), String::toint(redCard));
             if (id == idCheck)
@@ -672,7 +680,8 @@ void Player::deletePlayerById()
     bool kt = true;
     system("cls");
     String ma, thaythe;
-    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Xoa cau thu" << endl << endl;
+    cout << "QUAN LY GIAI DAU/Cap nhat thong tin doi bong, cau thu va HLV/Xoa cau thu" << endl
+         << endl;
     cout << "Nhap CCCD cua cau thu can xoa: ";
     String::getline(cin, ma);
     fstream file("Player.txt", ios::in);
@@ -806,7 +815,61 @@ void Player::addPlayerFromFile()
         cout << "Ko mo duoc";
     }
 }
-ostream& operator<<(ostream& o, const Player& p) {
-    o << endl << left << setw(10) << p.id << setw(15) << p.name << setw(15) << p.dateOfBirth << setw(20) << p.address + "," << setw(10) << p.age << setw(15) << p.numberClothes << setw(15) << p.yellowCard << setw(10) << p.redCard << setw(10) << p.goal << setw(20) << p.nameFootballTeam << endl;
+ostream &operator<<(ostream &o, const Player &p)
+{
+    o << endl
+      << left << setw(10) << p.id << setw(15) << p.name << setw(15) << p.dateOfBirth << setw(20) << p.address + "," << setw(10) << p.age << setw(15) << p.numberClothes << setw(15) << p.yellowCard << setw(10) << p.redCard << setw(10) << p.goal << setw(20) << p.nameFootballTeam << endl;
     return o;
+}
+
+void Player::showPlayer()
+{
+    ifstream file("Player.txt");
+    String tmp;
+    String::getline(file, tmp);
+    cout << left << setw(10) << "ID" << setw(15) << "Ten cau thu" << setw(15) << "Ngay sinh" << setw(20) << "Dia chi" << setw(10) << "Tuoi" << setw(15) << "So ao" << setw(15) << "The vang" << setw(10) << "The do" << setw(10) << "Ban thang" << setw(20) << "Ten doi bong" << endl;
+    while (!file.eof())
+    {
+        String::getline(file, tmp);
+        int check = 1;
+        bool status = false;
+        String id, name, date, address, age, numberClo, yellowCard, redCard, goal, nameTeam;
+        for (int i = 0; i < tmp.size(); i++)
+        {
+            if (tmp[i] != ' ')
+                status = true;
+            if (tmp[i] == ',')
+            {
+                status = false;
+                check++;
+                continue;
+            }
+            if (check == 1 && status)
+                id = id + tmp[i];
+            else if (check == 2 && status)
+                name = name + tmp[i];
+            else if (check == 3 && status)
+                date = date + tmp[i];
+            else if (check == 4 && status)
+                address = address + tmp[i];
+            else if (check == 5 && status)
+                age = age + tmp[i];
+            else if (check == 6 && status)
+                numberClo = numberClo + tmp[i];
+            else if (check == 7 && status)
+                yellowCard = yellowCard + tmp[i];
+            else if (check == 8 && status)
+                redCard = redCard + tmp[i];
+            else if (check == 9 && status)
+                goal = goal + tmp[i];
+            else if (check == 10 && status && tmp[i] != '\n')
+            {
+                nameTeam = nameTeam + tmp[i];
+                if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                    break;
+            }
+        }
+        cout << left << setw(10) << id + "," << setw(15) << name + "," << setw(15) << date + "," << setw(20) << address + "," << setw(10) << age + "," << setw(15) << numberClo + "," << setw(15) << yellowCard + "," << setw(10) << redCard + "," << setw(10) << goal + "," << setw(20) << nameTeam << endl;
+    }
+    file.close();
 }
