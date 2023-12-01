@@ -760,60 +760,64 @@ void Player::deletePlayerById()
 }
 void Player::addPlayerFromFile()
 {
-    char filename[256];
-    cout << "Nhap ten file chua Player: ";
-    cin.getline(filename, 256);
-    ifstream i(filename);
-    if (i.is_open())
-    {
-        String tmp;
-        String::getline(i, tmp);
-        cout << "Mo duoc roi";
-        while (!i.eof())
+    while(true) {
+        char filename[256];
+        cout << "Nhap ten file chua Player: ";
+        cin.getline(filename, 256);
+        ifstream i(filename);
+        if (i.is_open())
         {
+            String tmp;
             String::getline(i, tmp);
-            int check = 1;
-            bool status = false;
-            String id, name, date, address, age, numberClo, yellowCard, redCard, goal, nameTeam;
-            for (int i = 0; i < tmp.size(); i++)
+            while (!i.eof())
             {
-                if (tmp[i] != ' ')
-                    status = true;
-                if (tmp[i] == ',')
+                String::getline(i, tmp);
+                int check = 1;
+                bool status = false;
+                String id, name, date, address, age, numberClo, yellowCard, redCard, goal, nameTeam;
+                for (int i = 0; i < tmp.size(); i++)
                 {
-                    status = false;
-                    check++;
-                    continue;
+                    if (tmp[i] != ' ')
+                        status = true;
+                    if (tmp[i] == ',')
+                    {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if (check == 1 && status)
+                        id = id + tmp[i];
+                    else if (check == 2 && status)
+                        name = name + tmp[i];
+                    else if (check == 3 && status)
+                        date = date + tmp[i];
+                    else if (check == 4 && status)
+                        address = address + tmp[i];
+                    else if (check == 5 && status)
+                        age = age + tmp[i];
+                    else if (check == 6 && status)
+                        numberClo = numberClo + tmp[i];
+                    else if (check == 7 && status)
+                        yellowCard = yellowCard + tmp[i];
+                    else if (check == 8 && status)
+                        redCard = redCard + tmp[i];
+                    else if (check == 9 && status)
+                        goal = goal + tmp[i];
+                    else if (check == 10 && status && tmp[i] != '\n')
+                        nameTeam = nameTeam + tmp[i];
                 }
-                if (check == 1 && status)
-                    id = id + tmp[i];
-                else if (check == 2 && status)
-                    name = name + tmp[i];
-                else if (check == 3 && status)
-                    date = date + tmp[i];
-                else if (check == 4 && status)
-                    address = address + tmp[i];
-                else if (check == 5 && status)
-                    age = age + tmp[i];
-                else if (check == 6 && status)
-                    numberClo = numberClo + tmp[i];
-                else if (check == 7 && status)
-                    yellowCard = yellowCard + tmp[i];
-                else if (check == 8 && status)
-                    redCard = redCard + tmp[i];
-                else if (check == 9 && status)
-                    goal = goal + tmp[i];
-                else if (check == 10 && status && tmp[i] != '\n')
-                    nameTeam = nameTeam + tmp[i];
+                Player p(id, name, date, address, nameTeam, String::toint(numberClo), String::toint(goal), String::toint(yellowCard), String::toint(redCard));
+                ofstream o("Player.txt", ios::app);
+                p.savePlayerToFile(o);
             }
-            Player p(id, name, date, address, nameTeam, String::toint(numberClo), String::toint(goal), String::toint(yellowCard), String::toint(redCard));
-            ofstream o("Player.txt", ios::app);
-            p.savePlayerToFile(o);
+            cout << "Them du lieu thanh cong" << endl;
+            return;
         }
-    }
-    else
-    {
-        cout << "Ko mo duoc";
+        else
+        {
+            cout << "File khong ton tai. Vui long thu lai" << endl;
+        }
+
     }
 }
 ostream &operator<<(ostream &o, const Player &p)

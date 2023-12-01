@@ -82,6 +82,7 @@ public:
     void showTeam();
     void showchampion();
     void showNameTeam();
+    int getMaxIdFromFile();
     // void setcolor(int);
 
 };

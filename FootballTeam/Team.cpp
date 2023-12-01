@@ -89,6 +89,25 @@ String Team::getSizeTeamFromFile()
     sprintf(id, "%d", size + 1);
     return String(id);
 }
+int Team::getMaxIdFromFile() {
+    ifstream f("Team.txt");
+    int max = 0;
+    if(f.is_open()) {
+        String tmp;
+        String::getline(f,tmp);
+        while(!f.eof()) {
+            String::getline(f,tmp);
+            String s;
+            for(int i=0;i<tmp.size();i++) {
+                if(tmp[i] == ',') break;
+                s = s + tmp[i];
+            }
+            int s1 = String::toint(s);
+            if(s1 > max) max = s1;
+        }
+    }
+    return max;
+}
 
 Team::Team(String nameTeam, Coach coach, int rank, int numberGoal, int numberLoseGoal, int point)
 {
@@ -519,7 +538,8 @@ void Team::createNewFootballTeam()
             String::getline(cin, ctn);
             if (ctn == "y" || ctn == "Y")
             {
-                this->setIdTeam(this->getSizeTeamFromFile());
+                int s = this->getMaxIdFromFile() +1;
+                this->setIdTeam(String::tostring(s));
                 ofstream o("Team.txt", ios::app);
                 this->saveTeamToFile(o);
                 break;
@@ -527,6 +547,8 @@ void Team::createNewFootballTeam()
         }
     } while (true);
 }
+
+
 
 /* void Team::deletePlayerById(ifstream &i, ofstream &tmp2)
 {
@@ -1682,62 +1704,69 @@ void Team::addTeamFromFile()
     char filename[256];
     cout << "KHOI TAO GIAI DAU/Them mot doi bong/Them doi bong voi du lieu tu file" << endl
          << endl;
-    cout << "Nhap ten file chua Team: ";
-    cin.getline(filename, 256);
-    ifstream i(filename);
-    if (i.is_open())
-    {
-        String tmp;
-        String::getline(i, tmp);
-        while (!i.eof())
+    while(true) {
+        cout << "Nhap ten file chua Team: ";
+        cin.getline(filename, 256);
+        ifstream i(filename);
+        if (i.is_open())
         {
+            String tmp;
             String::getline(i, tmp);
-            int check = 1;
-            bool status = false;
-            String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
-            for (int i = 0; i < tmp.size(); i++)
+            while (!i.eof())
             {
-                if (tmp[i] != ' ')
-                    status = true;
-                if (tmp[i] == ',')
+                String::getline(i, tmp);
+                int check = 1;
+                bool status = false;
+                String id, nameTeam, numMember, nameCoach, numberGoal, numberLoseGoal, difference, point, rank;
+                for (int i = 0; i < tmp.size(); i++)
                 {
-                    status = false;
-                    check++;
-                    continue;
+                    if (tmp[i] != ' ')
+                        status = true;
+                    if (tmp[i] == ',')
+                    {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if (check == 1 && status)
+                        id = id + tmp[i];
+                    else if (check == 2 && status)
+                        nameTeam = nameTeam + tmp[i];
+                    else if (check == 3 && status)
+                        numMember = numMember + tmp[i];
+                    else if (check == 4 && status)
+                        nameCoach = nameCoach + tmp[i];
+                    else if (check == 5 && status)
+                        numberGoal = numberGoal + tmp[i];
+                    else if (check == 6 && status)
+                        numberLoseGoal = numberLoseGoal + tmp[i];
+                    else if (check == 7 && status)
+                        difference = difference + tmp[i];
+                    else if (check == 8 && status)
+                        point = point + tmp[i];
+                    else if (check == 9 && status && tmp[i] != '\n')
+                    {
+                        rank = rank + tmp[i];
+                        if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                            break;
+                    }
                 }
-                if (check == 1 && status)
-                    id = id + tmp[i];
-                else if (check == 2 && status)
-                    nameTeam = nameTeam + tmp[i];
-                else if (check == 3 && status)
-                    numMember = numMember + tmp[i];
-                else if (check == 4 && status)
-                    nameCoach = nameCoach + tmp[i];
-                else if (check == 5 && status)
-                    numberGoal = numberGoal + tmp[i];
-                else if (check == 6 && status)
-                    numberLoseGoal = numberLoseGoal + tmp[i];
-                else if (check == 7 && status)
-                    difference = difference + tmp[i];
-                else if (check == 8 && status)
-                    point = point + tmp[i];
-                else if (check == 9 && status && tmp[i] != '\n')
-                {
-                    rank = rank + tmp[i];
-                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
-                        break;
-                }
+                Coach c = this->getCoachByNameFootballTeam(nameTeam);
+                Team t(nameTeam, c, String::toint(rank), String::toint(numberGoal), String::toint(numberLoseGoal), String::toint(point));
+                int s  = this->getMaxIdFromFile() + 1;
+                t.setIdTeam(String::tostring(s));
+                t.setListMember(this->getListPlayerByNameFootballTeam(nameTeam));
+                ofstream o("Team.txt", ios::app);
+                t.saveTeamToFile(o);
             }
-            Coach c = this->getCoachByNameFootballTeam(nameTeam);
-            Team t(nameTeam, c, String::toint(rank), String::toint(numberGoal), String::toint(numberLoseGoal), String::toint(point));
-
-            t.setIdTeam(id);
-            t.setListMember(this->getListPlayerByNameFootballTeam(nameTeam));
-            // t.showALLInforOfTeam();
-            cout << this->listMember.size() << endl;
-            ofstream o("Team.txt", ios::app);
-            t.saveTeamToFile(o);
+            cout << "Them du lieu thanh cong" << endl;
+            return;
         }
+        else {
+            cout << "File khong ton tai. Vui long nhap lai ten file " << endl;
+        } 
+        
+
     }
 }
 void Team::increaseNumberOfTeam(String tt, int ofset)

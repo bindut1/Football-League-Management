@@ -533,55 +533,60 @@ void Coach::deleteCoachById()
 }
 void Coach::addCoachFromFile()
 {
-    char filename[256];
-    cout << "Nhap ten file chua Coach: ";
-    cin.getline(filename, 256);
-    ifstream i(filename);
-    if (i.is_open())
-    {
-        String tmp;
-        String::getline(i, tmp);
-        while (!i.eof())
+    while(true) {
+        char filename[256];
+        cout << "Nhap ten file chua Coach: ";
+        cin.getline(filename, 256);
+        ifstream i(filename);
+        if (i.is_open())
         {
+            String tmp;
             String::getline(i, tmp);
-            int check = 1;
-            bool status = false;
-            String id, name, date, address, age, nameTeam;
-            for (int i = 0; i < tmp.size(); i++)
+            while (!i.eof())
             {
-                if (tmp[i] != ' ')
-                    status = true;
-                if (tmp[i] == ',')
+                String::getline(i, tmp);
+                int check = 1;
+                bool status = false;
+                String id, name, date, address, age, nameTeam;
+                for (int i = 0; i < tmp.size(); i++)
                 {
-                    status = false;
-                    check++;
-                    continue;
+                    if (tmp[i] != ' ')
+                        status = true;
+                    if (tmp[i] == ',')
+                    {
+                        status = false;
+                        check++;
+                        continue;
+                    }
+                    if (check == 1 && status)
+                        id = id + tmp[i];
+                    else if (check == 2 && status)
+                        name = name + tmp[i];
+                    else if (check == 3 && status)
+                        date = date + tmp[i];
+                    else if (check == 4 && status)
+                        address = address + tmp[i];
+                    else if (check == 5 && status)
+                        age = age + tmp[i];
+                    else if (check == 6 && status)
+                    {
+                        nameTeam = nameTeam + tmp[i];
+                        if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
+                            break;
+                    }
                 }
-                if (check == 1 && status)
-                    id = id + tmp[i];
-                else if (check == 2 && status)
-                    name = name + tmp[i];
-                else if (check == 3 && status)
-                    date = date + tmp[i];
-                else if (check == 4 && status)
-                    address = address + tmp[i];
-                else if (check == 5 && status)
-                    age = age + tmp[i];
-                else if (check == 6 && status)
-                {
-                    nameTeam = nameTeam + tmp[i];
-                    if ((tmp[i + 1] == ' ' && tmp[i + 2] == ' ') || (tmp[i + 1] == ' ' && i + 1 == tmp.size() - 1))
-                        break;
-                }
+                Coach c(id, name, date, address, nameTeam);
+                ofstream o("Coach.txt", ios::app);
+                c.saveInforIntoFile(o);
             }
-            Coach c(id, name, date, address, nameTeam);
-            ofstream o("Coach.txt", ios::app);
-            c.saveInforIntoFile(o);
+            cout << "Them du lieu thanh cong" << endl;
+            return ;
         }
-    }
-    else
-    {
-        cout << "Khong the mo file";
+        else
+        {
+            cout << "File khong ton tai. Vui long nhap lai" << endl;
+        }
+
     }
 }
 
